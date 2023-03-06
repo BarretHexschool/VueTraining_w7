@@ -38,7 +38,7 @@ export default {
         .then(res => {
           const { token, expired } = res.data
           document.cookie = `hexToken=${token}; expires=${new Date(expired)}`
-          this.$router.push('/admin/products')
+          this.$router.push('/admin')
         //   window.location = 'products.html'
         })
         .catch(err => {
