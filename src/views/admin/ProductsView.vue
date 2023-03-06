@@ -1,8 +1,4 @@
-<!-- eslint-disable no-unused-vars -->
-<!-- eslint-disable no-undef -->
-<!-- eslint-disable no-undef -->
 <template>
-    <h1>這是後台產品列表</h1>
     <div class="container">
       <div class="row py-3">
         <div>
@@ -12,7 +8,7 @@
               新增產品
             </button>
           </h2>
-          <admin-product-list :products="products" :open-modal="openModal"></admin-product-list>
+          <admin-product-list :products="products" :open-modal="openModal" :change-state="changeState"></admin-product-list>
           <div class="d-flex justify-content-center">
           <admin-pagination :page-data="pageData" :get-products="getProducts"></admin-pagination>
         </div>
@@ -90,6 +86,17 @@ export default {
         .catch(err => {
           alert(err.responsel.data.message)
           delProductModalElement.hide()
+        })
+    },
+    changeState (data) {
+      this.$http.put(`${VITE_APP_URL}/v2/api/${VITE_APP_PATH}/admin/product/${data.id}`, { data })
+        .then(res => {
+          console.log(res)
+          alert(res.data.message)
+          this.getProducts()
+        })
+        .catch(err => {
+          alert(err.response.data.message)
         })
     },
     createImages () {

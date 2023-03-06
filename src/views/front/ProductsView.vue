@@ -11,7 +11,8 @@
             </thead>
             <tbody>
               <tr v-for="product in products" :key="product.id">
-                <td style="width: 200px">
+                <template v-if="product.is_enabled == 1">
+                  <td style="width: 200px">
                   <div
                     style="
                       height: 100px;
@@ -45,6 +46,8 @@
                     <button type="button" class="btn btn-outline-primary" @click="addToCart(product.id,1)">加入購物車</button>
                 </div>
                 </td>
+                </template>
+
               </tr>
             </tbody>
           </table>
@@ -62,7 +65,7 @@ export default {
   },
   methods: {
     getProduct () {
-      this.$http.get(`${VITE_APP_URL}/v2/api/${VITE_APP_PATH}/products`)
+      this.$http.get(`${VITE_APP_URL}/v2/api/${VITE_APP_PATH}/products/all`)
         .then(res => {
           this.products = res.data.products
           console.log(this.products)

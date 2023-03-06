@@ -46,9 +46,9 @@ export default {
     }
   },
   mounted () {
-    this.checkLogin()
     const token = document.cookie.replace(/(?:(?:^|.*;\s*)hexToken\s*=\s*([^;]*).*$)|^.*$/, '$1')
     this.$http.defaults.headers.common.Authorization = token
+    this.checkLogin()
   }
 }
 </script>

@@ -21,7 +21,7 @@
                 <td width="100">
                   <div class="form-check form-switch">
                     <input class="form-check-input" type="checkbox" role="switch" id="changeStatus"
-                      v-model="product.is_enabled" :true-value="1" :false-value="0" />
+                      v-model="product.is_enabled" :true-value="1" :false-value="0" @change="changeState(product)"/>
                   </div>
                 </td>
                 <td width="100">
@@ -40,6 +40,6 @@
 </template>
 <script>
 export default {
-  props: ['products', 'openModal']
+  props: ['products', 'openModal', 'changeState']
 }
 </script>
