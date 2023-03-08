@@ -2,16 +2,17 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/VueTraining_w7/vite.svg" />
+    <link rel="icon" type="image/svg+xml" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADEAAAA4CAYAAABUkxDUAAAACXBIWXMAAAsSAAALEgHS3X78AAAEAklEQVRoge1aS27iQBAto4jNICU3CLMbVpMDDIpzguEGOEtWw5wg5ARhVmzNCQZOECMOMM6KLdyASKzYeFTOq6jSttsEUNKWeBIiuNudetX16e5qL0kS2hXtVuOKiHwiuiCiK3wfExERrfl7vtjEu45bSqLdarCgfSIKiOjyyELb8ExEIREN54vN0tbRSqLdagxA4ByPnqEt1tISn2OhiY/M9rka9x5k1juTgPZZ2O949IRBwiMKbUW71ehAgddKhiDPzDIkYPcRNMGaH8wXm+FHCW8CZEIlj28SeUMCMxDD9guZfzQMy8gQqRnyRIpAhvFnAb7gQy6ekQmIvSUBJxamQZETOUBkBUUPpC01J7BaguXvz/SBMrRbDSbyiG5fOfzKTEgYnblMgF5mhE1+jJ/pbAiJAN9OE1AQU+qyFXk/vn3hkPqPbW2+2DSdEHEHtFuNGD58yzPRwSuR01JnMcETv4Y0TxUkIfI2a2olesx10EdA5L02k11loFe279pPuIrKzoTGiYQr4GQXqIxdRYRn2BJeV5hEdIZdU9USncbyFGJdwaeS2Pa8i23Pk7Xb3siY07bn6Z1Tivoo8Yw++qVxfZQERvsuY/Ce4A4/0z19fZSszXZ+T/W9qY+SjP+eWdjPShx+hqjW3fa8qD5K8s6kbGMIAd4zf8eWYK9zLRsJFmxga8ea/gFhep8xVhC+f8gq2kZiFxxiz0/YmXVMc3wvbI59x7YPe8wDa6+L54UmYxmjr/oUkoD/3RW1UwmJGQ5yiwQUJ5zmOVvZGHjnFj+H255XZJL3GKcQNhKpPVsEDGHTNpMqHAMRjJ9PcVzUyRsAPmVdURyaJ9ixL/eM9Y84IpKItHfB5lASoiG/oD3g8MufnDY+Lv1JRH/x+6jRaQ0btA0q7RH+Nu15XWbHWP6Lc8c5eWapxpC/dy+yVA2nBaArOJFwBXxQIMvmFSqkmeN9FGGGSEhSmn1CUXKS07+J4/eueszRpZ9XQkPhZGDs9ccYPxMlUYyUytaNJiGY6nIXqqkTSyH+z3yx6Rv/IDTq0Bq3upTcbjX43YeCvpxLOiisSP/QUM7Na4g1BpOi+4XSzgrkIswMa+KXaouRL3TtmwVYYmaGSG7SFmPJIv3HmKk1FBeqNskRV0qZrwV6swRcpPVpXjHSovU3s6P6mzcUqKhWnqMowQpkX8246EaBD9Zsj3HZ3Qr096Fda38IJ+NH6F9YqcUsyqWYWJuWlUTVcMoTrkAOlNnuwjLbdw0IFOlSPEAYjapUt4PDp3vvmhK8asf7Iu+spraHXYRK54F8JnkolAsqOpXfu+ofyDEdZH+5i+LrWzahWhZUAXInK7PsYDtjpi6T4XUUW8qLGxDRf4zG3xI2pw2TAAAAAElFTkSuQmCC" />
+    <link rel="apple-touch-icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADEAAAA4CAYAAABUkxDUAAAACXBIWXMAAAsSAAALEgHS3X78AAAEAklEQVRoge1aS27iQBAto4jNICU3CLMbVpMDDIpzguEGOEtWw5wg5ARhVmzNCQZOECMOMM6KLdyASKzYeFTOq6jSttsEUNKWeBIiuNudetX16e5qL0kS2hXtVuOKiHwiuiCiK3wfExERrfl7vtjEu45bSqLdarCgfSIKiOjyyELb8ExEIREN54vN0tbRSqLdagxA4ByPnqEt1tISn2OhiY/M9rka9x5k1juTgPZZ2O949IRBwiMKbUW71ehAgddKhiDPzDIkYPcRNMGaH8wXm+FHCW8CZEIlj28SeUMCMxDD9guZfzQMy8gQqRnyRIpAhvFnAb7gQy6ekQmIvSUBJxamQZETOUBkBUUPpC01J7BaguXvz/SBMrRbDSbyiG5fOfzKTEgYnblMgF5mhE1+jJ/pbAiJAN9OE1AQU+qyFXk/vn3hkPqPbW2+2DSdEHEHtFuNGD58yzPRwSuR01JnMcETv4Y0TxUkIfI2a2olesx10EdA5L02k11loFe279pPuIrKzoTGiYQr4GQXqIxdRYRn2BJeV5hEdIZdU9USncbyFGJdwaeS2Pa8i23Pk7Xb3siY07bn6Z1Tivoo8Yw++qVxfZQERvsuY/Ce4A4/0z19fZSszXZ+T/W9qY+SjP+eWdjPShx+hqjW3fa8qD5K8s6kbGMIAd4zf8eWYK9zLRsJFmxga8ea/gFhep8xVhC+f8gq2kZiFxxiz0/YmXVMc3wvbI59x7YPe8wDa6+L54UmYxmjr/oUkoD/3RW1UwmJGQ5yiwQUJ5zmOVvZGHjnFj+H255XZJL3GKcQNhKpPVsEDGHTNpMqHAMRjJ9PcVzUyRsAPmVdURyaJ9ixL/eM9Y84IpKItHfB5lASoiG/oD3g8MufnDY+Lv1JRH/x+6jRaQ0btA0q7RH+Nu15XWbHWP6Lc8c5eWapxpC/dy+yVA2nBaArOJFwBXxQIMvmFSqkmeN9FGGGSEhSmn1CUXKS07+J4/eueszRpZ9XQkPhZGDs9ccYPxMlUYyUytaNJiGY6nIXqqkTSyH+z3yx6Rv/IDTq0Bq3upTcbjX43YeCvpxLOiisSP/QUM7Na4g1BpOi+4XSzgrkIswMa+KXaouRL3TtmwVYYmaGSG7SFmPJIv3HmKk1FBeqNskRV0qZrwV6swRcpPVpXjHSovU3s6P6mzcUqKhWnqMowQpkX8246EaBD9Zsj3HZ3Qr096Fda38IJ+NH6F9YqcUsyqWYWJuWlUTVcMoTrkAOlNnuwjLbdw0IFOlSPEAYjapUt4PDp3vvmhK8asf7Iu+spraHXYRK54F8JnkolAsqOpXfu+ofyDEdZH+5i+LrWzahWhZUAXInK7PsYDtjpi6T4XUUW8qLGxDRf4zG3xI2pw2TAAAAAElFTkSuQmCC">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="鮮堡漢堡早餐 板橋文化店 活力早餐的加油站！">
+    <meta name="subject" content="鮮堡漢堡 線上點餐">
     <title>鮮堡漢堡 活力早餐的加油站！</title>
-    <script type="module" crossorigin src="/VueTraining_w7/assets/index-c9e35247.js"></script>
+    <script type="module" crossorigin src="/VueTraining_w7/assets/index-ea065d52.js"></script>
     <link rel="stylesheet" href="/VueTraining_w7/assets/index-d20b7048.css">
   </head>
   <body style="height: 100%;">
     <div id="app"  style="min-height: calc(100vh - 50px)"></div>
     
-    <footer class="bg-light d-flex align-items-center justify-content-center"
-    style="height: 50px;"><p class="mb-0">© 2023 鮮堡漢堡 板橋文化店 版權所有</p></footer>
   </body>
 </html>
