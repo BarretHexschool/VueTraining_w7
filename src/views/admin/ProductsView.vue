@@ -133,6 +133,7 @@ export default {
     delProductModalElement = new Modal(document.querySelector('#delProductModal'), {
       keyboard: false
     })
+    document.title = '產品管理 | 鮮堡漢堡 文化店'
   }
 }
 </script>

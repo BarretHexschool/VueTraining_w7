@@ -53,7 +53,7 @@
       <div class="modal-content">
         <div class="modal-header">
           <h1 class="modal-title fs-5" id="orderModalLabel">
-            訂單編號#{{ tempOrder.num }} ({{ tempOrder.id}})
+            訂單編號#{{ tempOrder.num }} ({{ tempOrder.id }})
           </h1>
           <button
             type="button"
@@ -63,13 +63,19 @@
           ></button>
         </div>
         <div class="modal-body">
-          <h2>訂單狀態 {{  !tempOrder.orderStatues ? '接收訂單' : tempOrder.orderStatues}}</h2>
-          <h2> 內用：{{!tempOrder.desk ? '沒有桌號' :  tempOrder.desk}}</h2>
+          <!-- <h2>訂單狀態：{{  !tempOrder.orderStatues ? '接收訂單' : tempOrder.orderStatues}}</h2>
+          <h2> 內用：{{!tempOrder.desk ? '沒有桌號' :  tempOrder.desk}}</h2> -->
           <div class="row col-3">
-            <div class="cols">訂單日期：{{$moment(new Date(tempOrder.create_at * 1000)).format('YYYY-MM-DD HH:mm')}}</div>
-            <div class="cols">訂購姓名：{{ tempOrder.user.name}}</div>
-            <div class="cols">連絡電話：{{ tempOrder.user.tel}}</div>
-            <div class="cols">客戶備註：{{ tempOrder.message}}</div>
+            <div class="cols">
+              訂單日期：{{
+                $moment(new Date(tempOrder.create_at * 1000)).format(
+                  'YYYY-MM-DD HH:mm'
+                )
+              }}
+            </div>
+            <!-- <div class="cols">訂購姓名：{{ tempOrder.user.name}}</div> -->
+            <!-- <div class="cols">連絡電話：{{ tempOrder.user.tel}}</div> -->
+            <!-- <div class="cols">客戶備註：{{ tempOrder.message}}</div> -->
           </div>
           <table class="table table-bordered">
             <thead>
@@ -82,11 +88,13 @@
             </thead>
             <tbody>
               <tr v-for="item in tempOrder.products" :key="item.id">
-                <td>{{item.product.title}}</td>
-                <td>{{item.product.price}}</td>
+                <td>{{ item.product.title }}</td>
+                <td>{{ item.product.price }}</td>
                 <td>{{ item.qty }}</td>
                 <td>{{ item.total }}</td>
-                {{ product }}
+                {{
+                  product
+                }}
               </tr>
             </tbody>
           </table>
@@ -156,6 +164,7 @@ export default {
     orderModalElement = new Modal(document.querySelector('#orderModal'), {
       keyboard: false
     })
+    document.title = '訂單管理 | 鮮堡漢堡 文化店'
   }
 }
 </script>

@@ -8,9 +8,10 @@
     <router-link to="/admin/products">產品列表 </router-link> |
     <a href="#" @click.prevent="logout">登出 </a>
   </div>
-
     <hr>
     <router-view></router-view>
+    <footer class="bg-light d-flex align-items-center justify-content-center"
+    style="height: 50px;"><p class="mb-0">© 2023 鮮堡漢堡 板橋文化店 版權所有</p></footer>
     </template>
 <script>
 import { RouterView } from 'vue-router'
