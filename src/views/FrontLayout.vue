@@ -42,6 +42,7 @@
               <router-link class="nav-link" to="/cart">購物車</router-link>
             </li>
           </ul>
+          <img src="/src/assets/images/mobile-menu.png" class="" height="426" alt="">
         </div>
       </nav>
 
