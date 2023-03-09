@@ -1,0 +1,71 @@
+// 客製化樣式
+.close-icon{
+    display: none;
+}
+.collapsed{
+    .close-icon{
+        display: block;
+    }
+    .open-icon{
+        display: none;
+    }
+}
+
+
+// 測試用
+// .custom-class {
+//     display: none;
+//   }
+  
+//   .aboutSwiperImg {
+//     display: none;
+//     margin-right: 15px;
+//     margin-bottom: 100px;
+//     height: 500px;
+//     width: 500px;
+//     border-radius: 10px;
+//     object-fit: cover;
+//     position: absolute;
+//     right: 100px;
+//     bottom: 0px;
+//   }
+  
+//   .text-area{
+//     padding-left: 0px;
+//     padding-right: 0px;
+//   }
+  
+  
+//   @include media-breakpoint-up(sm) {
+//     .custom-class {
+//       display: block;
+//     }
+//     .text-area{
+//       padding-left: 0px;
+//       padding-right: 0px;
+//     }
+//   }
+  
+//   @include media-breakpoint-up(md) {
+//     .aboutSwiperImg {
+//       display: none;
+//       right: 100px;
+//     }
+//     .text-area{
+//       padding-left: 0px;
+//       padding-right: 0px;
+//     }
+  
+//   }
+  
+//   @include media-breakpoint-up(lg) {
+//     .aboutSwiperImg {
+//       display: block;
+//       right: 250px;
+//     }
+//     .text-area{
+//       padding-left: 160px;
+//       padding-right: 160px;
+//     }
+  
+//   }

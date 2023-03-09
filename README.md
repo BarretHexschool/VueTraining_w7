@@ -1,19 +1,3 @@
-# Vue Template
+# 鮮堡漢堡 早餐 
 
-## Project setup
-
-```
-npm install
-```
-
-### Compiles and hot-reloads for development
-
-```
-npm run dev
-```
-
-### Compiles and minifies for production
-
-```
-npm run build
-```
+## 六角 Vte Template

@@ -164,7 +164,7 @@ export default {
     orderModalElement = new Modal(document.querySelector('#orderModal'), {
       keyboard: false
     })
-    document.title = '訂單管理 | 鮮堡漢堡 文化店'
+    document.title = '訂單管理 | 鮮堡漢堡'
   }
 }
 </script>
