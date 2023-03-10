@@ -11,6 +11,142 @@
     }
 }
 
+.border-start-16{
+    height:64px;
+    width: 16px;
+    border-top: 4px solid $secondary;
+    border-left: 4px solid $secondary;
+    border-bottom: 4px solid $secondary;
+    border-top-left-radius: 24px;
+    border-bottom-left-radius: 24px;
+}
+.border-end-16{
+    height:64px;
+    width: 16px;
+    border-top: 4px solid $secondary;
+    border-right: 4px solid $secondary;
+    border-bottom: 4px solid $secondary;
+    border-top-right-radius: 24px;
+    border-bottom-right-radius: 24px;
+}
+
+
+.border-start-12{
+    height:40px;
+    width: 12px;
+    border-top: 4px solid $secondary;
+    border-left: 4px solid $secondary;
+    border-bottom: 4px solid $secondary;
+    border-top-left-radius: 24px;
+    border-bottom-left-radius: 24px;
+}
+.border-end-12{
+    height:40px;
+    width: 12px;
+    border-top: 4px solid $secondary;
+    border-right: 4px solid $secondary;
+    border-bottom: 4px solid $secondary;
+    border-top-right-radius: 24px;
+    border-bottom-right-radius: 24px;
+}
+
+.z-3{
+    z-index: 3;
+}
+.z-2{
+    z-index: 2;
+}
+.z-1{
+    z-index: 1;
+}
+.zn-0{
+    z-index: -1;
+}
+.mt-355{
+    margin-top: 355px;
+}
+
+@include media-breakpoint-down(sm){
+h1 .fs-1{
+    font-size: $font-size-base * 2.875 !important
+}
+h4 .fs-4{
+    font-size: $font-size-base !important
+}
+h2 .fs-2{
+    font-size: $font-size-base * 1.75 !important
+}
+h3 .fs-3{
+    font-size: $font-size-base * 1.25 !important
+}
+h5 h6 .fs-5 .fs-6{
+    font-size: $font-size-base * 0.875 !important
+}
+.fs-6-btn{
+    font-size: $font-size-base * 1.25 !important
+}
+
+}
+.ls-3 {
+    letter-spacing: 3px;
+  }
+  .ls-9 {
+    letter-spacing: 9.6px;
+  }
+
+
+
+
+.py-16{
+    padding-top: 16px;
+    padding-bottom: 16px;
+}
+.py-24{
+    padding-top: 24px;
+    padding-bottom: 24px;
+}
+.py-32{
+    padding-top: 32px;
+    padding-bottom: 32px;
+}
+.px-32{
+    padding-left: 32px;
+    padding-right: 32px;
+}
+.px-24{
+    padding-left: 24px;
+    padding-right: 24px;
+}
+.mx-32{
+    padding-left: 32px;
+    padding-right: 32px;
+}
+.ms-32{
+    margin-left: 32px;
+}
+.mb-32{
+    margin-bottom: 32px;
+}
+.mb-48{
+    margin-bottom: 48px;
+}
+.me-8{
+    margin-right: 8px;
+}
+.mb-72{
+    margin-bottom: 72px;
+}
+.mb-96{
+    margin-bottom: 96px;
+}
+.mt-200{
+    margin-top: 200px;
+}
+.mt-500{
+    margin-top: 500px;
+}
+
+
 
 // 測試用
 // .custom-class {

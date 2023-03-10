@@ -345,7 +345,7 @@ $enable-grid-classes:         true !default;
 $enable-container-classes:    true !default;
 $enable-cssgrid:              false !default;
 $enable-button-pointers:      true !default;
-$enable-rfs:                  false !default;
+$enable-rfs:                  true !default;
 $enable-validation-icons:     true !default;
 $enable-negative-margins:     false !default;
 $enable-deprecation-messages: true !default;
@@ -569,13 +569,11 @@ $line-height-lg:              2 !default;
 
 $h1-font-size:                $font-size-base * 4.5 !default;
 $h2-font-size:                $font-size-base * 3 !default;
-$h3-font-size:                $font-size-base * 2.875 !default;
-$h4-font-size:                $font-size-base * 1.75 !default;
-$h5-font-size:                $font-size-base * 1.5 !default;
-$h6-font-size:                $font-size-base * 1.25 !default;
-$h7-font-size:                $font-size-base !default;
-$h8-font-size:                $font-size-base * 0.875 !default;
-$h9-font-size:                $font-size-base * 0.8125 !default;
+$h3-font-size:                $font-size-base * 1.75 !default;
+$h4-font-size:                $font-size-base * 1.5 !default;
+$h5-font-size:                $font-size-base * 1.25 !default;
+$h6-font-size:                $font-size-base !default;
+$h7-font-size:                $font-size-base * 0.825 !default;
 // scss-docs-end font-variables
 
 // scss-docs-start font-sizes
@@ -587,8 +585,6 @@ $font-sizes: (
   5: $h5-font-size,
   6: $h6-font-size,
   7: $h7-font-size,
-  8: $h8-font-size,
-  9: $h9-font-size
 ) !default;
 // scss-docs-end font-sizes
 
@@ -1066,9 +1062,9 @@ $zindex-toast:                      1090 !default;
 $nav-link-padding-y:                .5rem !default;
 $nav-link-padding-x:                1rem !default;
 $nav-link-font-size:                null !default;
-$nav-link-font-weight:              null !default;
-$nav-link-color:                    var(--#{$prefix}link-color) !default;
-$nav-link-hover-color:              var(--#{$prefix}link-hover-color) !default;
+$nav-link-font-weight:              700 !default;
+$nav-link-color:                    $black !default;
+$nav-link-hover-color:              $secondary !default;
 $nav-link-transition:               color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out !default;
 $nav-link-disabled-color:           $gray-600 !default;
 
@@ -1108,9 +1104,9 @@ $navbar-toggler-border-radius:      $btn-border-radius !default;
 $navbar-toggler-focus-width:        $btn-focus-width !default;
 $navbar-toggler-transition:         box-shadow .15s ease-in-out !default;
 
-$navbar-light-color:                rgba($black, .55) !default;
-$navbar-light-hover-color:          rgba($black, .7) !default;
-$navbar-light-active-color:         rgba($black, .9) !default;
+$navbar-light-color:                $black !default;
+$navbar-light-hover-color:          $secondary !default;
+$navbar-light-active-color:         $secondary !default;
 $navbar-light-disabled-color:       rgba($black, .3) !default;
 $navbar-light-toggler-icon-bg:      url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'><path stroke='#{$navbar-light-color}' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/></svg>") !default;
 $navbar-light-toggler-border-color: rgba($black, .1) !default;
