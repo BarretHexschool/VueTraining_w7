@@ -1,3 +1,6 @@
+
+
+
 // 客製化樣式
 .close-icon{
     display: none;
@@ -47,21 +50,39 @@
     border-top-right-radius: 24px;
     border-bottom-right-radius: 24px;
 }
+.border-start-20{
+    height:66.67px;
+    width: 20px;
+    border-top: 4px solid $primary;
+    border-left: 4px solid $primary;
+    border-bottom: 4px solid $primary;
+    border-top-left-radius: 24px;
+    border-bottom-left-radius: 24px;
+}
+.border-end-20{
+    height:66.67px;
+    width: 20px;
+    border-top: 4px solid $primary;
+    border-right: 4px solid $primary;
+    border-bottom: 4px solid $primary;
+    border-top-right-radius: 24px;
+    border-bottom-right-radius: 24px;
+}
 .border-top-104{
     height:104px;
     width: 416px;
-    border-top: 4px solid $tertiary;
-    border-left: 4px solid $tertiary;
-    border-right: 4px solid $tertiary;
+    border-top: 4px solid $third;
+    border-left: 4px solid $third;
+    border-right: 4px solid $third;
     border-top-left-radius: 104px;
     border-top-right-radius: 104px;
 }
 .border-bottom-104{
     height:32px;
     width: 416px;
-    border-bottom: 4px solid $tertiary;
-    border-left: 4px solid $tertiary;
-    border-right: 4px solid $tertiary;
+    border-bottom: 4px solid $third;
+    border-left: 4px solid $third;
+    border-right: 4px solid $third;
     border-bottom-left-radius: 24px;
     border-bottom-right-radius: 24px;
 }
@@ -139,8 +160,17 @@ h5 h6 .fs-5 .fs-6{
     padding-left: 64px;
     
 }
+.p-88{
+    padding: 88px;
+}
 .mb-8{
     margin-bottom: 8px;
+}
+.me-16{
+    margin-right: 16px;
+}
+.mb-16{
+    margin-bottom: 16px;
 }
 .mx-32{
     padding-left: 32px;
@@ -151,6 +181,9 @@ h5 h6 .fs-5 .fs-6{
 }
 .mb-32{
     margin-bottom: 32px;
+}
+.mb-40{
+    margin-bottom: 40px;
 }
 .mb-48{
     margin-bottom: 48px;

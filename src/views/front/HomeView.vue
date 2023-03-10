@@ -151,17 +151,55 @@
           <div class="col-5">
             <h2 class="mb-8 ls-2">你的煩腦，</h2>
             <h2 class="mb-0 ls-2">我也許能幫忙！</h2>
-            <h1 class="text-secondary font-monospace text-uppercase mb-48">
+            <h1
+              class="text-secondary text-nowrap font-monospace text-uppercase mb-48"
+            >
               make life smoother
             </h1>
             <p class="fs-6 ls-15 mb-48">
               每天早上都要煩惱吃什麼嗎？除了日復一日的餐點，來試試樂透的早餐吧！
             </p>
-            <a name="" id="" class="btn btn-secondary rounded-pill fs-6 ls-3 px-32 py-24" href="#" role="button"
-              >讓我幫你選早餐吧</a
+            <router-link
+              to="/cart"
+              class="btn btn-secondary rounded-pill fs-6 ls-3 px-32 py-16"
+              role="button"
             >
+              <img
+                src="/src/assets/images/icon-dice.png"
+                class="me-8"
+                alt=""
+                srcset=""
+              />
+              讓我幫你選早餐吧
+            </router-link>
           </div>
         </div>
+      </div>
+    </div>
+  </section>
+  <section class="mt-200 container">
+    <div class="row justify-content-between">
+      <div class="col p-88 bg-third rounded-5">
+        <h2 class="ls-2 mb-0">造訪我們</h2>
+        <h1 class="text-danger font-monospace text-uppercase mb-40">
+          visit us
+        </h1>
+        <div class="d-flex justify-content-between align-items-center mb-40">
+          <span class="border-start-20"></span>
+          <p class="fs-3 px-24 mb-0 ls-2 fw-bold">鮮堡漢堡 板橋文化店</p>
+          <span class="border-end-20"></span>
+        </div>
+        <div class="d-flex align-items-center mb-16">
+          <span class="material-symbols-rounded me-16"> call </span>
+          <p class="ls-15 mb-0">02-22590910</p>
+        </div>
+        <div class="d-flex align-items-center">
+          <span class="material-symbols-rounded me-16"> location_on </span>
+          <p class="ls-15 mb-0">新北市板橋區文化路一段270巷3弄18號1樓</p>
+        </div>
+      </div>
+      <div class="col rounded-5">
+        <img src="/src/assets/images/map.png" alt="" />
       </div>
     </div>
   </section>
