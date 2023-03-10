@@ -11,6 +11,24 @@
     }
 }
 
+.border-start-12{
+    height:40px;
+    width: 12px;
+    border-top: 4px solid $secondary;
+    border-left: 4px solid $secondary;
+    border-bottom: 4px solid $secondary;
+    border-top-left-radius: 24px;
+    border-bottom-left-radius: 24px;
+}
+.border-end-12{
+    height:40px;
+    width: 12px;
+    border-top: 4px solid $secondary;
+    border-right: 4px solid $secondary;
+    border-bottom: 4px solid $secondary;
+    border-top-right-radius: 24px;
+    border-bottom-right-radius: 24px;
+}
 .border-start-16{
     height:64px;
     width: 16px;
@@ -29,24 +47,22 @@
     border-top-right-radius: 24px;
     border-bottom-right-radius: 24px;
 }
-
-
-.border-start-12{
-    height:40px;
-    width: 12px;
-    border-top: 4px solid $secondary;
-    border-left: 4px solid $secondary;
-    border-bottom: 4px solid $secondary;
-    border-top-left-radius: 24px;
-    border-bottom-left-radius: 24px;
+.border-top-104{
+    height:104px;
+    width: 416px;
+    border-top: 4px solid $tertiary;
+    border-left: 4px solid $tertiary;
+    border-right: 4px solid $tertiary;
+    border-top-left-radius: 104px;
+    border-top-right-radius: 104px;
 }
-.border-end-12{
-    height:40px;
-    width: 12px;
-    border-top: 4px solid $secondary;
-    border-right: 4px solid $secondary;
-    border-bottom: 4px solid $secondary;
-    border-top-right-radius: 24px;
+.border-bottom-104{
+    height:32px;
+    width: 416px;
+    border-bottom: 4px solid $tertiary;
+    border-left: 4px solid $tertiary;
+    border-right: 4px solid $tertiary;
+    border-bottom-left-radius: 24px;
     border-bottom-right-radius: 24px;
 }
 
@@ -87,14 +103,15 @@ h5 h6 .fs-5 .fs-6{
 }
 
 }
-.ls-3 {
-    letter-spacing: 3px;
+.ls-15 {
+    letter-spacing: 0.15em;
   }
-  .ls-9 {
-    letter-spacing: 9.6px;
+  .ls-2{
+    letter-spacing: 0.2em;
   }
-
-
+.ls-3{
+    letter-spacing: 0.3em;
+}
 
 
 .py-16{
@@ -116,6 +133,11 @@ h5 h6 .fs-5 .fs-6{
 .px-24{
     padding-left: 24px;
     padding-right: 24px;
+}
+.px-64{
+    padding-right: 64px;
+    padding-left: 64px;
+    
 }
 .mx-32{
     padding-left: 32px;
