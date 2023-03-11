@@ -42,28 +42,34 @@
         </button>
         <div class="collapse navbar-collapse" id="navCollapse">
           <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-center">
-            <li class="nav-item mx-32">
+            <li class="nav-item rounded rounded-pill">
               <router-link
-                class="nav-link fs-6 fs-6-btn ls-3 font-black"
+                class="nav-link fs-6 fs-6-btn ls-3 font-black py-16 px-32"
                 to="/products"
                 >鮮堡美食</router-link
               >
             </li>
-            <li class="nav-item mx-32">
-              <router-link class="nav-link fs-6 fs-6-btn ls-3" to="/about"
+            <li class="nav-item rounded rounded-pill">
+              <router-link class="nav-link fs-6 fs-6-btn ls-3 py-16 px-32" to="/about"
                 >關於我們</router-link
               >
             </li>
             <li
-              class="nav-item btn btn-secondary rounded-pill py-16 px-32 ms-32"
+              class="nav-item rounded rounded-pill"
             >
               <router-link
                 to="/cart"
-                class="d-flex nav-link justify-content-center align-items-center p-0 ls-3"
+                class="btn d-flex justify-content-center align-items-center ls-3 py-16 px-32 bg-secondary rounded-pill"
               >
                 <img
                   src="/src/assets/images/icon-cart.png"
-                  class="me-8"
+                  class="me-8 hover-hide"
+                  alt=""
+                  srcset=""
+                />
+                <img
+                  src="/src/assets/images/icon-cart-hover.png"
+                  class="me-8 hover"
                   alt=""
                   srcset=""
                 />

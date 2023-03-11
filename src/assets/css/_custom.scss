@@ -102,6 +102,27 @@
 .mt-355{
     margin-top: 355px;
 }
+.mw-416{
+    max-width: 416px;
+}
+.nav-item{
+    .hover{
+        display: none;
+    }
+    &:hover{
+        background: $black !important;
+        color:  $secondary !important;
+        .hover-hide{
+            display: none;
+        }
+        .hover{
+            display: block;
+        }
+        .bg-secondary{
+            background: $black !important;
+        }
+    }
+}
 
 @include media-breakpoint-down(sm){
 h1 .fs-1{
@@ -148,8 +169,8 @@ h5 h6 .fs-5 .fs-6{
     padding-bottom: 32px;
 }
 .px-32{
-    padding-left: 32px;
-    padding-right: 32px;
+    padding-left: 32px !important;
+    padding-right: 32px !important;
 }
 .px-24{
     padding-left: 24px;
@@ -176,6 +197,7 @@ h5 h6 .fs-5 .fs-6{
     padding-left: 32px;
     padding-right: 32px;
 }
+
 .ms-32{
     margin-left: 32px;
 }

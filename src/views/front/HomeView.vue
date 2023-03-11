@@ -63,77 +63,92 @@
           start from here
         </h1>
       </div>
-      <div class="row">
-        <div
-          class="col d-flex justify-content-center flex-column align-items-center"
-        >
-          <div class="position-relative mb-32">
-            <div class="border-top-104"></div>
-            <button
-              type="button"
-              class="btn btn-secondary fw-bold fs-3 text-nowrap rounded-pill position-absolute bottom-0 start-50 translate-middle-x py-16 px-64"
-            >
-              招牌漢堡
-            </button>
-          </div>
-          <img
-            src="/src/assets/images/product-1.jpg"
-            class="img-fluid rounded rounded-5 mb-32"
-            alt=""
-            srcset=""
-          />
-          <p class="text-center px-24">
-            最經典的美味，小時候老爸都會說，去找你阿母拿一個漢堡蛋當早餐
-          </p>
-          <div class="border-bottom-104"></div>
-        </div>
-        <div
-          class="col d-flex justify-content-center flex-column align-items-center"
-        >
-          <div class="position-relative mb-32">
-            <div class="border-top-104"></div>
-            <button
-              type="button"
-              class="btn btn-secondary fw-bold fs-3 text-nowrap rounded-pill position-absolute bottom-0 start-50 translate-middle-x py-16 px-64"
-            >
-              嚴選套餐
-            </button>
-          </div>
-          <img
-            src="/src/assets/images/product-2.jpg"
-            class="img-fluid rounded rounded-5 mb-32"
-            alt=""
-            srcset=""
-          />
-          <p class="text-center px-24">
-            這個也想吃、那個也想吃？那就來個套餐滿足慾望
-          </p>
-          <div class="border-bottom-104"></div>
-        </div>
-        <div
-          class="col d-flex justify-content-center flex-column align-items-center"
-        >
-          <div class="position-relative mb-32">
-            <div class="border-top-104"></div>
-            <button
-              type="button"
-              class="btn btn-secondary fw-bold fs-3 text-nowrap rounded-pill position-absolute bottom-0 start-50 translate-middle-x py-16 px-64"
-            >
-              滑嫩蛋餅
-            </button>
-          </div>
-          <img
-            src="/src/assets/images/product-3.jpg"
-            class="img-fluid rounded rounded-5 mb-32"
-            alt=""
-            srcset=""
-          />
-          <p class="text-center px-24">
-            傳統的蛋餅皮，換上Q彈滑嫩的河粉餅皮，蹦出新滋味！
-          </p>
-          <div class="border-bottom-104"></div>
-        </div>
-      </div>
+      <ul class="row list-unstyled">
+        <li class="col">
+          <a href="#" class="btn mw-416">
+            <div class="card border-0 bg-transparent align-items-center">
+              <div class="card-header position-relative mb-32 border-0 bg-transparent">
+                <div class="border-top-104"></div>
+                <button
+                  type="button"
+                  class="btn btn-secondary fw-bold fs-3 text-nowrap rounded-pill position-absolute bottom-0 start-50 translate-middle-x py-16 px-64"
+                >
+                  招牌漢堡
+                </button>
+              </div>
+              <div class="rounded rounded-5 mb-32">
+                <img
+                  src="/src/assets/images/product-1.jpg"
+                  class="img-fluid object-top rounded-5"
+                  alt="Hamburger"
+                />
+              </div>
+              <div class="card-body">
+                <p class="text-center px-24">
+                  最經典的美味，小時候老爸都會說，去找你阿母拿一個漢堡蛋當早餐
+                </p>
+                <div class="border-bottom-104"></div>
+              </div>
+            </div>
+          </a>
+        </li>
+        <li class="col">
+          <a href="#" class="btn mw-416">
+            <div class="card border-0 bg-transparent align-items-center">
+              <div class="card-header position-relative mb-32 border-0 bg-transparent">
+                <div class="border-top-104"></div>
+                <button
+                  type="button"
+                  class="btn btn-secondary fw-bold fs-3 text-nowrap rounded-pill position-absolute bottom-0 start-50 translate-middle-x py-16 px-64"
+                >
+                嚴選套餐
+                </button>
+              </div>
+              <div class="rounded rounded-5 mb-32">
+                <img
+                  src="/src/assets/images/product-2.jpg"
+                  class="img-fluid object-top rounded-5"
+                  alt="Hamburger"
+                />
+              </div>
+              <div class="card-body">
+                <p class="text-center px-24">
+                  這個也想吃、那個也想吃？那就來個套餐滿足慾望
+                </p>
+                <div class="border-bottom-104"></div>
+              </div>
+            </div>
+          </a>
+        </li>
+        <li class="col">
+          <a href="#" class="btn mw-416">
+            <div class="card border-0 bg-transparent align-items-center">
+              <div class="card-header position-relative mb-32 border-0 bg-transparent">
+                <div class="border-top-104"></div>
+                <button
+                  type="button"
+                  class="btn btn-secondary fw-bold fs-3 text-nowrap rounded-pill position-absolute bottom-0 start-50 translate-middle-x py-16 px-64"
+                >
+                滑嫩蛋餅
+                </button>
+              </div>
+              <div class="rounded rounded-5 mb-32">
+                <img
+                  src="/src/assets/images/product-3.jpg"
+                  class="img-fluid object-top rounded-5"
+                  alt="Hamburger"
+                />
+              </div>
+              <div class="card-body">
+                <p class="text-center px-24">
+                  傳統的蛋餅皮，換上Q彈滑嫩的河粉餅皮，蹦出新滋味！
+                </p>
+                <div class="border-bottom-104"></div>
+              </div>
+            </div>
+          </a>
+        </li>
+      </ul>
     </section>
   </div>
   <!-- make life smoother -->
