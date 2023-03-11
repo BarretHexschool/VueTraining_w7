@@ -23,7 +23,7 @@ git init
 # git remote add origin https://github.com/BarretHexschool/VueTraining_w7.git
 git checkout -B main
 git add -A
-git commit -m 'deploy'
+git commit -m "$commidWord"
 
 # if you are deploying to https://BarretHexschool.github.io
  git push -f origin main   
@@ -35,7 +35,7 @@ cd dist
 git init
 git checkout -B main
 git add -A
-git commit -m 'deploy'
+git commit -m "$commidWord"
 # if you are deploying to https://BarretHexschool.github.io/vuetraining_w6
 git push -f git@github.com:BarretHexschool/VueTraining_w7.git main:gh-pages
 cd -
