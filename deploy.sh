@@ -7,14 +7,9 @@ set -e
 npm run build
 
 read -p "請問本次commit內容是？" commidWord
-# if ($commidWord == ''){
-#     echo $commidWord
-# } 
+test –z $commidWord && echo "字串為空" || commidWord="-"$commidWord
 
-# echo $變數名稱
-test –z $commidWord && echo "字串為空" || echo $commidWord
 
-wait
 
 # place .nojekyll to bypass Jekyll processing
 echo > .nojekyll
