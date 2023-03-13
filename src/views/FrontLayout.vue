@@ -1,8 +1,16 @@
 <template>
+
   <div class="bg-primary  position-absolute zn-0 w-100">
-  <div class="position-absolute z-3 w-100">
-    <div class="container py-4">
-      <nav class="navbar navbar-expand-lg bg-body-tertiary py-3 bg-none">
+  <div class="position-absolute z-3 w-100"
+>
+    <div class="py-4"
+    >
+      <nav class="navbar navbar-expand-lg bg-body-tertiary py-3 bg-none" :class="{
+      'fixed-top': isScrolled || isOpen,
+      'bg-primary': isScrolled || isOpen,
+      'shadow-nv':isScrolled || isOpen,
+      }">
+      <div class="container">
         <router-link class="nav-link" to="/"
           ><img
             src="/src/assets/images/logo.png"
@@ -79,6 +87,7 @@
           </ul>
           <!-- <img src="/src/assets/images/mobile-menu.png" height="426" alt=""> -->
         </div>
+      </div>
       </nav>
     </div>
   </div>
@@ -96,9 +105,30 @@ import { RouterView } from 'vue-router'
 import Collapse from 'bootstrap/js/dist/collapse.js'
 let navCollapse = ''
 export default {
+  data () {
+    return {
+      isScrolled: false,
+      isOpen: false
+    }
+  },
   methods: {
     navToggle () {
       navCollapse.toggle()
+    },
+    handleScroll () {
+      const ninety = (window.innerHeight) * 0.1
+      if (window.pageYOffset > ninety) {
+        this.isScrolled = true
+      } else {
+        this.isScrolled = false
+      }
+    },
+    openHb () {
+      if (this.isOpen !== true) {
+        this.isOpen = true
+      } else {
+        this.isOpen = false
+      }
     }
   },
   components: {
@@ -108,6 +138,47 @@ export default {
     navCollapse = new Collapse(document.querySelector('#navCollapse'), {
       toggle: false
     })
+    window.addEventListener('scroll', this.handleScroll)
   }
 }
 </script>
+<style>
+  .topNegative{
+    top: -16px;
+  }
+  .endNegative{
+    display: none;
+  }
+  .endflex{
+    display: flex;
+  }
+  @media screen and (min-width: 992px) {
+    .writing-nav{
+      writing-mode: vertical-lr;
+    }
+    .desktopPx{
+      padding: 0 11rem;
+    }
+  }
+  @media screen and (max-width: 991px) {
+    .topNegative{
+      display: none;
+    }
+    .endNegative{
+      display: block;
+    }
+    .endHeight{
+      height: 60vh;
+    }
+    .endflex{
+      display: block;
+    }
+    .hb{
+      padding: 1rem 0.5rem;
+      border-bottom: 1px solid #A8A29E;
+    }
+    .hb-navColor{
+      color: #292524;
+    }
+  }
+  </style>

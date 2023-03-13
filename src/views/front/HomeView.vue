@@ -25,7 +25,7 @@
   </main>
   <!-- scroll down -->
   <section
-    class="vh-100 d-none d-lg-flex justify-content-center align-items-end position-sticky z-3"
+    class="vh-100 d-none d-lg-flex justify-content-center align-items-end position-relative z-2"
   >
     <div class="d-flex justify-content-center align-items-center mb-72">
       <span class="border-start-12"></span>
@@ -200,7 +200,7 @@
             start from here
           </h2>
         </div>
-        <img src="/src/assets/images/hero2-m.png" class="w-100 mb-3" alt="" />
+        <img src="/src/assets/images/hero2-m.png" class="mb-3 img-fluid" alt="" />
         <div class="container text-center">
           <router-link
             to="/cart"
@@ -292,16 +292,15 @@
           </li>
         </ul>
       </div>
-      <div class="w-100 w-md-50 rounded-md-8 rounded-6" style="min-height: 376px; min-width: 351px;">
+      <div class="w-100 w-md-50 rounded-md-8 rounded-6">
         <img
           src="/src/assets/images/map.png"
           class="d-none d-md-inline"
           alt=""
         />
         <img
-          src="/src/assets/images/map.png"
-          class="d-md-none h-100 vw-100"
-          style="object-fit:cover;"
+          src="/src/assets/images/map-m.png"
+          class="d-md-none img-fluid"
           alt=""
         />
       </div>
