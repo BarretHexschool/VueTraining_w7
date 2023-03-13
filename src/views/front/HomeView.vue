@@ -267,8 +267,8 @@
     </div>
   </section>
   <!-- visit us -->
-  <section class="mt-200 container mt-sm-80">
-    <div class="d-flex justify-content-md-between flex-column flex-md-row">
+  <section class="mt-200 container mt-sm-80 w-100">
+    <div class="d-flex justify-content-md-between flex-column flex-md-row w-100">
       <div class="w-100 w-md-50 p-88 bg-third rounded-md-8 rounded-6 text-md-start text-center mb-2 mb-md-0 me-md-3">
         <h2 class="ls-2 mb-md-0 mb-1">造訪我們</h2>
         <h1 class="text-danger font-monospace text-uppercase mb-md-5 mb-3">
