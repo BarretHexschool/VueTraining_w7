@@ -269,7 +269,7 @@
   <!-- visit us -->
   <section class="mt-200 container mt-sm-80">
     <div class="d-flex justify-content-md-between flex-column flex-md-row">
-      <div class="w-50 p-88 bg-third rounded-md-8 rounded-6 text-md-start text-center mb-2 mb-md-0 me-md-3">
+      <div class="w-100 w-md-50 p-88 bg-third rounded-md-8 rounded-6 text-md-start text-center mb-2 mb-md-0 me-md-3">
         <h2 class="ls-2 mb-md-0 mb-1">造訪我們</h2>
         <h1 class="text-danger font-monospace text-uppercase mb-md-5 mb-3">
           visit us
@@ -292,7 +292,7 @@
           </li>
         </ul>
       </div>
-      <div class="w-50 rounded-md-8 rounded-6" style="min-height: 376px; min-width: 351px;">
+      <div class="w-100 w-md-50 rounded-md-8 rounded-6" style="min-height: 376px; min-width: 351px;">
         <img
           src="/src/assets/images/map.png"
           class="d-none d-md-inline"
@@ -300,7 +300,7 @@
         />
         <img
           src="/src/assets/images/map.png"
-          class="d-md-none h-100 w-100"
+          class="d-md-none h-100 vw-100"
           style="object-fit:cover;"
           alt=""
         />
