@@ -25,7 +25,7 @@
   </main>
   <!-- scroll down -->
   <section
-    class="vh-100 d-none d-lg-flex justify-content-center align-items-end"
+    class="vh-100 d-none d-lg-flex justify-content-center align-items-end position-sticky z-3"
   >
     <div class="d-flex justify-content-center align-items-center mb-72">
       <span class="border-start-12"></span>
