@@ -166,31 +166,31 @@ h5, h6, .fs-5, .fs-6{
 }
 
 .border-start-16{
-    height:40px;
-    width: 12px;
+    max-height:40px;
+    max-width: 12px;
     border-top: 2px solid $secondary;
     border-left: 2px solid $secondary;
     border-bottom: 2px solid $secondary;
 }
 .border-end-16{
-    height:40px;
-    width: 12px;
+    max-height:40px;
+    max-width: 12px;
     border-top: 2px solid $secondary;
     border-right: 2px solid $secondary;
     border-bottom: 2px solid $secondary;
 }
 
 .border-top-104{
-    height:80px;
-    width: 351px;
+    max-height:80px;
+    max-width: 351px;
     border-top: 2px solid $third;
     border-left: 2px solid $third;
     border-right: 2px solid $third;
 
 }
 .border-bottom-104{
-    height:32px;
-    width: 351px;
+    max-height:32px;
+    max-width: 351px;
     border-bottom: 2px solid $third;
     border-left: 2px solid $third;
     border-right: 2px solid $third;
@@ -198,15 +198,15 @@ h5, h6, .fs-5, .fs-6{
 }
 
 .border-start-20{
-    height:30px;
-    width: 9px;
+    max-height:30px;
+    max-width: 9px;
     border-top: 2px solid $primary;
     border-left: 2px solid $primary;
     border-bottom: 2px solid $primary;
 }
 .border-end-20{
-    height:30px;
-    width: 9px;
+    max-height:30px;
+    max-width: 9px;
     border-top: 2px solid $primary;
     border-right: 2px solid $primary;
     border-bottom: 2px solid $primary;

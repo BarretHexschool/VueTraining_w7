@@ -11,7 +11,7 @@ const routes = [
         component: () => import('../views/front/HomeView.vue')
       },
       {
-        path: 'abouts',
+        path: 'about',
         component: () => import('../views/front/AboutView.vue')
       },
       {

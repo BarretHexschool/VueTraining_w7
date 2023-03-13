@@ -154,7 +154,7 @@
                 <div class="border-top-104"></div>
                 <button
                   type="button"
-                  class="btn btn-secondary fw-bold fs-3 text-nowrap rounded-pill position-absolute bottom-0 start-50 translate-middle-x py-2 px-7s"
+                  class="btn btn-secondary fw-bold fs-3 text-nowrap rounded-pill position-absolute bottom-0 start-50 translate-middle-x py-2 px-7"
                 >
                   滑嫩蛋餅
                 </button>
@@ -181,15 +181,15 @@
     </section>
   </div>
   <!-- make life smoother -->
-  <section class="mt-200 position-relative mt-sm-80">
-    <div class="d-flex justify-content-md-end">
+  <section class="mt-200 position-relative mt-sm-80 w-100">
+    <div class="d-flex justify-content-md-end w-100">
       <img
         src="/src/assets/images/hero2.png"
         style="margin-right: 110.8px"
         class="d-md-inline d-none float-end img-fluid"
         alt=""
       />
-      <div class="d-md-none">
+      <div class="d-md-none w-100">
         <div class="container">
           <h2 class="ls-2 mb-0 text-sm-end text-center">
             活力早晨，從這開始！
@@ -200,7 +200,7 @@
             start from here
           </h2>
         </div>
-        <img src="/src/assets/images/hero2-m.png" class="mb-3 img-fluid" alt="" />
+        <img src="/src/assets/images/hero2-m.png" class="mb-3 w-100" alt="" />
         <div class="container text-center">
           <router-link
             to="/cart"
@@ -300,7 +300,7 @@
         />
         <img
           src="/src/assets/images/map-m.png"
-          class="d-md-none img-fluid"
+          class="d-md-none w-100"
           alt=""
         />
       </div>
