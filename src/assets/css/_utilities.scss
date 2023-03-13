@@ -598,6 +598,7 @@ $utilities: map-merge(
     // scss-docs-start utils-border-radius
     "rounded": (
       property: border-radius,
+      responsive: true,
       class: rounded,
       values: (
         null: var(--#{$prefix}border-radius),
@@ -607,6 +608,9 @@ $utilities: map-merge(
         3: var(--#{$prefix}border-radius-lg),
         4: var(--#{$prefix}border-radius-xl),
         5: var(--#{$prefix}border-radius-2xl),
+        6: 72px,
+        7: 120px,
+        8: 136px,
         circle: 50%,
         pill: var(--#{$prefix}border-radius-pill)
       )

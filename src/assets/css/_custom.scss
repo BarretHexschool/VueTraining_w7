@@ -116,7 +116,7 @@
             display: none;
         }
         .hover{
-            display: block;
+            display: inline;
         }
         .bg-secondary{
             background: $black !important;
@@ -124,27 +124,7 @@
     }
 }
 
-@include media-breakpoint-down(sm){
-h1 .fs-1{
-    font-size: $font-size-base * 2.875 !important
-}
-h4 .fs-4{
-    font-size: $font-size-base !important
-}
-h2 .fs-2{
-    font-size: $font-size-base * 1.75 !important
-}
-h3 .fs-3{
-    font-size: $font-size-base * 1.25 !important
-}
-h5 h6 .fs-5 .fs-6{
-    font-size: $font-size-base * 0.875 !important
-}
-.fs-6-btn{
-    font-size: $font-size-base * 1.25 !important
-}
-
-}
+//fonts Letter
 .ls-15 {
     letter-spacing: 0.15em;
   }
@@ -155,64 +135,101 @@ h5 h6 .fs-5 .fs-6{
     letter-spacing: 0.3em;
 }
 
+@include media-breakpoint-down(sm){
+h1, .fs-1{
+    font-size: $font-size-base * 2.875 !important
+}
+h4, .fs-4{
+    font-size: $font-size-base !important
+}
+h2, .fs-2{
+    font-size: $font-size-base * 1.75 !important
+}
+h3, .fs-3{
+    font-size: $font-size-base * 1.25 !important
+}
+h5, h6, .fs-5, .fs-6{
+    font-size: $font-size-base * 0.875 !important
+}
+.fs-6-btn{
+    font-size: $font-size-base * 1.25 !important
+}
 
-.py-16{
-    padding-top: 16px;
-    padding-bottom: 16px;
+.mt-sm-184{
+    margin-top: 184px !important;
 }
-.py-24{
-    padding-top: 24px;
-    padding-bottom: 24px;
+.mt-sm-860{
+    margin-top: 860px !important;
 }
-.py-32{
-    padding-top: 32px;
-    padding-bottom: 32px;
+.mt-sm-80{
+    margin-top: 80px !important;
 }
-.px-32{
+
+.border-start-16{
+    height:40px;
+    width: 12px;
+    border-top: 2px solid $secondary;
+    border-left: 2px solid $secondary;
+    border-bottom: 2px solid $secondary;
+}
+.border-end-16{
+    height:40px;
+    width: 12px;
+    border-top: 2px solid $secondary;
+    border-right: 2px solid $secondary;
+    border-bottom: 2px solid $secondary;
+}
+
+.border-top-104{
+    height:80px;
+    width: 351px;
+    border-top: 2px solid $third;
+    border-left: 2px solid $third;
+    border-right: 2px solid $third;
+
+}
+.border-bottom-104{
+    height:32px;
+    width: 351px;
+    border-bottom: 2px solid $third;
+    border-left: 2px solid $third;
+    border-right: 2px solid $third;
+
+}
+
+.border-start-20{
+    height:30px;
+    width: 9px;
+    border-top: 2px solid $primary;
+    border-left: 2px solid $primary;
+    border-bottom: 2px solid $primary;
+}
+.border-end-20{
+    height:30px;
+    width: 9px;
+    border-top: 2px solid $primary;
+    border-right: 2px solid $primary;
+    border-bottom: 2px solid $primary;
+}
+
+.mw-416{
+    max-width: 351px !important;
+}
+.p-88{
+    padding-top: 56px !important;
+    padding-bottom: 56px !important;
     padding-left: 32px !important;
     padding-right: 32px !important;
 }
-.px-24{
-    padding-left: 24px;
-    padding-right: 24px;
+
+
 }
-.px-64{
-    padding-right: 64px;
-    padding-left: 64px;
-    
-}
+
+
 .p-88{
     padding: 88px;
 }
-.mb-8{
-    margin-bottom: 8px;
-}
-.me-16{
-    margin-right: 16px;
-}
-.mb-16{
-    margin-bottom: 16px;
-}
-.mx-32{
-    padding-left: 32px;
-    padding-right: 32px;
-}
 
-.ms-32{
-    margin-left: 32px;
-}
-.mb-32{
-    margin-bottom: 32px;
-}
-.mb-40{
-    margin-bottom: 40px;
-}
-.mb-48{
-    margin-bottom: 48px;
-}
-.me-8{
-    margin-right: 8px;
-}
 .mb-72{
     margin-bottom: 72px;
 }
@@ -225,63 +242,3 @@ h5 h6 .fs-5 .fs-6{
 .mt-500{
     margin-top: 500px;
 }
-
-
-
-// 測試用
-// .custom-class {
-//     display: none;
-//   }
-  
-//   .aboutSwiperImg {
-//     display: none;
-//     margin-right: 15px;
-//     margin-bottom: 100px;
-//     height: 500px;
-//     width: 500px;
-//     border-radius: 10px;
-//     object-fit: cover;
-//     position: absolute;
-//     right: 100px;
-//     bottom: 0px;
-//   }
-  
-//   .text-area{
-//     padding-left: 0px;
-//     padding-right: 0px;
-//   }
-  
-  
-//   @include media-breakpoint-up(sm) {
-//     .custom-class {
-//       display: block;
-//     }
-//     .text-area{
-//       padding-left: 0px;
-//       padding-right: 0px;
-//     }
-//   }
-  
-//   @include media-breakpoint-up(md) {
-//     .aboutSwiperImg {
-//       display: none;
-//       right: 100px;
-//     }
-//     .text-area{
-//       padding-left: 0px;
-//       padding-right: 0px;
-//     }
-  
-//   }
-  
-//   @include media-breakpoint-up(lg) {
-//     .aboutSwiperImg {
-//       display: block;
-//       right: 250px;
-//     }
-//     .text-area{
-//       padding-left: 160px;
-//       padding-right: 160px;
-//     }
-  
-//   }
