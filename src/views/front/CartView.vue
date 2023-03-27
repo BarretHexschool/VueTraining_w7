@@ -180,7 +180,7 @@ export default {
           this.swalError(err)
         })
     },
-    ...mapActions(cartStore, ['getCartData', 'cartDataExist']),
+    ...mapActions(cartStore, ['getCartData']),
     ...mapActions(sweetAlert, ['swalError', 'swalToastTopEnd'])
   },
   computed: {

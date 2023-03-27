@@ -182,7 +182,7 @@
             </tfoot>
           </table>
           <div class="d-flex justify-content-between mb-4">
-            <button class="btn btn-danger" type="button" @click="swalClearCart">
+            <button class="btn btn-danger" type="button" @click="swalClearAllCart">
               清空商品
             </button>
             <router-link class="btn btn-secondary" type="button" to="/products"
@@ -195,6 +195,9 @@
   </main>
 </template>
 <script>
+import { mapActions, mapState } from 'pinia'
+import cartStore from '@/stores/useCartStore'
+import sweetAlertStore from '@/stores/useSweetAlertStore'
 const { VITE_APP_URL, VITE_APP_PATH } = import.meta.env
 export default {
   data () {
@@ -214,8 +217,6 @@ export default {
       winner: null,
       products: [],
       productID: '',
-      carts: {},
-      finalTotal: '',
       loadingItem: ''
     }
   },
@@ -287,78 +288,11 @@ export default {
           this.swalError(err)
         })
     },
-    getCartData () {
-      this.$http
-        .get(`${VITE_APP_URL}/v2/api/${VITE_APP_PATH}/cart`)
-        .then((res) => {
-          this.carts = res.data.data.carts
-          this.finalTotal = res.data.data.final_total
-        })
-        .catch((err) => {
-          this.swalError(err)
-        })
-    },
-    deleteOneCart (cartId = null) {
-      // eslint-disable-next-line camelcase
-      this.loadingItem = cartId
-      this.$http
-        // eslint-disable-next-line camelcase
-        .delete(`${VITE_APP_URL}/v2/api/${VITE_APP_PATH}/cart/${cartId}`)
-        .then((res) => {
-          this.swalToastTopEnd(res.data.message)
-          this.loadingItem = ''
-          this.getCartData()
-        })
-        .catch((err) => {
-          this.swalError(err)
-        })
-    },
-    swalClearCart () {
-      this.$swal({
-        title: '真的要清掉已選好商品嗎？',
-        text: '清除後，只能重新挑選商品，無法復原唷 :(',
-        icon: 'warning',
-        showCancelButton: true,
-        confirmButtonText: '堅決清空重來',
-        cancelButtonText: '先不用'
-      }).then((result) => {
-        if (result.isConfirmed) {
-          this.cleanAllCart()
-        }
-      })
-    },
-    cleanAllCart () {
-      this.$http
-        .delete(`${VITE_APP_URL}/v2/api/${VITE_APP_PATH}/carts`)
-        .then((res) => {
-          this.$swal('購物車已清空，重新選新的餐點吧！')
-          this.$router.push('/products')
-        })
-        .catch((err) => {
-          this.swalError(err)
-        })
-    },
-    swalToastTopEnd (message) {
-      this.$swal({
-        toast: true,
-        position: 'top-end',
-        showConfirmButton: false,
-        timer: 30000,
-        icon: 'success',
-        title: message
-      })
-    },
-    swalError (message) {
-      this.$swal({
-        showConfirmButton: false,
-        showCancelButton: true,
-        cancelButtonText: 'OK',
-        toast: true,
-        icon: 'error',
-        title: message,
-        text: '請重新操作，若再次出現請通知管理者，謝謝'
-      })
-    }
+    ...mapActions(cartStore, ['getCartData', 'addToCart', 'deleteOneCart', 'swalClearAllCart']),
+    ...mapActions(sweetAlertStore, ['swalError', 'swalToastTopEnd'])
+  },
+  computed: {
+    ...mapState(cartStore, ['finalTotal', 'carts'])
   },
 
   mounted () {

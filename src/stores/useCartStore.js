@@ -11,17 +11,24 @@ const cartStore = defineStore('cart', {
   state: () => {
     return {
       carts: [],
-      cartDetailNum: ''
+      finalTotal: null,
+      cartDetailNum: null,
+      actionPage: null
     }
   },
 
   actions: {
-    getCartData (pageAction) {
+    getActionPage () {
+      this.actionPage = router.options.history.location
+      console.log(this.actionPage)
+    },
+    getCartData (actionPage) {
       axios
         .get(`${VITE_APP_URL}/v2/api/${VITE_APP_PATH}/cart`)
         .then((res) => {
+          this.getActionPage()
           this.carts = res.data.data.carts
-          if (pageAction === 'CartView') {
+          if (this.actionPage === '/cart') {
             this.cartDataExist()
           }
         })
@@ -30,6 +37,7 @@ const cartStore = defineStore('cart', {
         })
     },
     cartDataExist () {
+      console.log('doit')
       if (this.carts.length === 0) {
         router.push('/products')
         Swal.fire({
@@ -90,7 +98,7 @@ const cartStore = defineStore('cart', {
         .delete(`${VITE_APP_URL}/v2/api/${VITE_APP_PATH}/carts`)
         .then((res) => {
           Swal.fire('購物車已清空，重新選新的餐點吧！')
-          router.push('/products')
+          this.getCartData()
         })
         .catch((err) => {
           sweetAlert.swalError(err)
