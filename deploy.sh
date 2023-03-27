@@ -31,7 +31,7 @@ git commit -m "deploy$commidWord"
 
 # navigate into the build output directory
 cd dist
-
+echo > .nojekyll
 git init
 git checkout -B main
 git add -A

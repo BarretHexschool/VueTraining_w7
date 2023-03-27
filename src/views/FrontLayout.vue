@@ -165,7 +165,8 @@ export default {
       toggle: false
     })
     window.addEventListener('scroll', this.handleScroll)
-    this.getCartData()
+    console.dir(this.$router)
+    // this.getCartData()
   }
 }
 </script>
