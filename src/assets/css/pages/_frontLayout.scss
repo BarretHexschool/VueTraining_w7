@@ -1,0 +1,56 @@
+.nav-m-bg{
+    background-image: url(images/nav-m.png);
+    background-size:100%;
+    background-position: bottom;
+    background-repeat: no-repeat;
+    margin-left: calc(-1 * $container-padding-x * 0.5);
+    margin-right: calc(-1 * $container-padding-x * 0.5);
+}
+
+.mb-382{
+margin-bottom: 382px;
+}
+.footer{
+    background-image: url(images/waves-m.png);
+    background-repeat: repeat-x;
+    padding-top: 24px;
+    padding-bottom: 32px;
+}
+.mt-128{
+    margin-top: 128px;
+}
+.hero{
+    padding-top: 184px;
+}
+.common-hero{
+    padding-top: 56px;
+}
+.hero-banner{
+    max-height: 300px !important;
+}
+@include media-breakpoint-up(lg){
+    .footer{
+        background-image: url(images/waves.png);
+        padding-top: 40px;
+        padding-bottom: 40px;
+    }
+    .pb-sm-382{
+        padding-bottom: 0px;
+        }
+        .nav-m-bg{        
+            background-image: none;
+        }
+        .hero{
+            padding-top: 355px;
+        }
+        .common-hero{
+            padding-top: 144px;
+        }
+}
+
+//productsView
+.btn-porduct-add{
+    width: calc(100% - 2rem);
+    height: calc(100% - 2rem);
+
+}

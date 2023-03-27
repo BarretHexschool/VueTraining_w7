@@ -1,0 +1,302 @@
+// 客製化樣式
+.min-h {
+  min-height: calc(100vh - 82px);
+}
+
+.object-fit-cover {
+  object-fit: cover !important;
+}
+.object-position-center {
+  object-position: center center;
+}
+
+.object-top {
+  object-fit: cover;
+  object-position: center;
+}
+
+.product-img {
+  width: 150px;
+  img {
+    height: 100%;
+  }
+}
+
+.close-icon {
+  display: none;
+}
+
+.collapsed {
+  .close-icon {
+    display: block;
+  }
+
+  .open-icon {
+    display: none;
+  }
+}
+
+.z-3 {
+  z-index: 3;
+}
+
+.z-2 {
+  z-index: 2;
+}
+
+.z-1 {
+  z-index: 1;
+}
+
+.zn-0 {
+  z-index: -1;
+}
+
+.nav-item {
+  .hover {
+    display: none;
+  }
+
+  &:hover {
+    background: $black !important;
+    color: $secondary !important;
+
+    .hover-hide {
+      display: none;
+    }
+
+    .hover {
+      display: inline;
+    }
+
+    .bg-secondary {
+      background: $black !important;
+    }
+  }
+}
+
+//fonts Letter
+.ls-15 {
+  letter-spacing: 0.15em;
+}
+
+.ls-2 {
+  letter-spacing: 0.2em;
+}
+
+.ls-3 {
+  letter-spacing: 0.3em;
+}
+
+.mw-416 {
+  max-width: 416px;
+}
+
+@include media-breakpoint-down(sm) {
+  h1,
+  .fs-1 {
+    font-size: $font-size-base * 2.875 !important;
+  }
+
+  h4,
+  .fs-4 {
+    font-size: $font-size-base !important;
+  }
+
+  h2,
+  .fs-2 {
+    font-size: $font-size-base * 1.75 !important;
+  }
+
+  h3,
+  .fs-3 {
+    font-size: $font-size-base * 1.25 !important;
+  }
+
+  h5,
+  h6,
+  .fs-5,
+  .fs-6 {
+    font-size: $font-size-base * 0.875 !important;
+  }
+
+  .fs-6-btn {
+    font-size: $font-size-base * 1.25 !important;
+  }
+
+  .mt-sm-80 {
+    margin-top: 80px !important;
+  }
+  .mt-sm-473 {
+    margin-top: 473px !important;
+  }
+
+  .mb-sm-80 {
+    // margin-bottom: 80px !important;
+    padding-bottom: 80px !important;
+  }
+
+  .mw-416 {
+    max-width: 351px !important;
+  }
+
+  .p-88 {
+    padding-top: 56px !important;
+    padding-bottom: 56px !important;
+    padding-left: 32px !important;
+    padding-right: 32px !important;
+  }
+}
+
+.p-88 {
+  padding: 88px;
+}
+
+.mb-72 {
+  margin-bottom: 72px;
+}
+
+.mb-96 {
+  margin-bottom: 96px;
+}
+
+.mt-200 {
+  margin-top: 200px;
+}
+.mt-499 {
+  margin-top: 499px;
+}
+
+.mb-200 {
+  // margin-bottom: 200px;
+  padding-bottom: 200px;
+}
+.border-start-12 {
+  max-height: 40px;
+  max-width: 12px;
+  border-top: 4px solid $secondary;
+  border-left: 4px solid $secondary;
+  border-bottom: 4px solid $secondary;
+  border-top-left-radius: 24px;
+  border-bottom-left-radius: 24px;
+}
+
+.border-end-12 {
+  max-height: 40px;
+  max-width: 12px;
+  border-top: 4px solid $secondary;
+  border-right: 4px solid $secondary;
+  border-bottom: 4px solid $secondary;
+  border-top-right-radius: 24px;
+  border-bottom-right-radius: 24px;
+}
+
+.border-start-16 {
+  height: 40px;
+  width: 12px;
+  border-top: 2px solid $secondary;
+  border-left: 2px solid $secondary;
+  border-bottom: 2px solid $secondary;
+  border-top-left-radius: 24px;
+  border-bottom-left-radius: 24px;
+}
+
+.border-end-16 {
+  height: 40px;
+  width: 12px;
+  border-top: 2px solid $secondary;
+  border-right: 2px solid $secondary;
+  border-bottom: 2px solid $secondary;
+  border-top-right-radius: 24px;
+  border-bottom-right-radius: 24px;
+}
+
+.border-top-104 {
+  height: 80px;
+  // width: 351px;
+  border-top: 2px solid $third;
+  border-left: 2px solid $third;
+  border-right: 2px solid $third;
+  border-top-left-radius: 104px;
+  border-top-right-radius: 104px;
+}
+
+.border-bottom-104 {
+  height: 32px;
+  // width: 351px;
+  border-bottom: 2px solid $third;
+  border-left: 2px solid $third;
+  border-right: 2px solid $third;
+  border-bottom-left-radius: 24px;
+  border-bottom-right-radius: 24px;
+}
+
+.border-start-20 {
+  height: 30px;
+  width: 9px;
+  border-top: 2px solid $primary;
+  border-left: 2px solid $primary;
+  border-bottom: 2px solid $primary;
+  border-top-left-radius: 24px;
+  border-bottom-left-radius: 24px;
+}
+
+.border-end-20 {
+  height: 30px;
+  width: 9px;
+  border-top: 2px solid $primary;
+  border-right: 2px solid $primary;
+  border-bottom: 2px solid $primary;
+  border-top-right-radius: 24px;
+  border-bottom-right-radius: 24px;
+}
+
+@include media-breakpoint-up(sm) {
+  .border-start-16 {
+    max-height: 64px;
+    max-width: 16px;
+    border-top: 4px solid $secondary;
+    border-left: 4px solid $secondary;
+    border-bottom: 4px solid $secondary;
+  }
+
+  .border-end-16 {
+    max-height: 64px;
+    max-width: 16px;
+    border-top: 4px solid $secondary;
+    border-right: 4px solid $secondary;
+    border-bottom: 4px solid $secondary;
+  }
+
+  .border-start-20 {
+    max-height: 66.67px;
+    max-width: 20px;
+    border-top: 4px solid $primary;
+    border-left: 4px solid $primary;
+    border-bottom: 4px solid $primary;
+  }
+
+  .border-end-20 {
+    max-height: 66.67px;
+    max-width: 20px;
+    border-top: 4px solid $primary;
+    border-right: 4px solid $primary;
+    border-bottom: 4px solid $primary;
+  }
+
+  .border-top-104 {
+    max-height: 104px;
+    // max-width: 416px;
+    border-top: 4px solid $third;
+    border-left: 4px solid $third;
+    border-right: 4px solid $third;
+  }
+
+  .border-bottom-104 {
+    max-height: 32px;
+    // max-width: 416px;
+    border-bottom: 4px solid $third;
+    border-left: 4px solid $third;
+    border-right: 4px solid $third;
+  }
+}
