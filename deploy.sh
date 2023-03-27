@@ -20,7 +20,7 @@ echo > .nojekyll
 git init
 
 # 第一次執行須執行下面地，第二次就不用了
-git remote add origin https://github.com/BarretHexschool/VueTraining_w7.git
+# git remote add origin https://github.com/BarretHexschool/VueTraining_w7.git
 git checkout -B main
 git add -A
 git commit -m "deploy$commidWord"
