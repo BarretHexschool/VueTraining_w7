@@ -22,6 +22,8 @@
 
 </template>
 <script>
+import { mapActions } from 'pinia'
+import sweetAlertStore from '@/stores/useSweetAlertStore'
 const { VITE_APP_URL } = import.meta.env
 export default {
   data () {
@@ -39,15 +41,12 @@ export default {
           const { token, expired } = res.data
           document.cookie = `hexToken=${token}; expires=${new Date(expired)}`
           this.$router.push('/admin')
-        //   window.location = 'products.html'
         })
         .catch(err => {
-          this.alert(err.response.data.message)
+          this.loginCheckError(err.response.data.message)
         })
     },
-    alert (message) {
-      window.alert(`${message}`)
-    }
+    ...mapActions(sweetAlertStore, ['loginCheckError'])
 
   }
 }

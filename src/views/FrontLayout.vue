@@ -58,18 +58,18 @@
               id="navCollapse"
             >
               <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-center">
-                <li class="nav-item rounded rounded-pill mb-6 mb-lg-0">
+                <li class="nav-item rounded rounded-pill mb-6 mb-lg-0 mx-2">
                   <router-link
                     @click="navClose()"
-                    class="nav-link fs-6-btn ls-3 font-black p-1 py-lg-2 px-lg-4"
+                    class="nav-link fs-6-btn ls-3 font-black p-1 py-2 px-4"
                     to="/products"
                     >鮮堡美食</router-link
                   >
                 </li>
-                <li class="nav-item rounded rounded-pill mb-6 mb-lg-0">
+                <li class="nav-item rounded rounded-pill mb-6 mb-lg-0 mx-2">
                   <router-link
                     @click="navClose()"
-                    class="nav-link fs-6-btn ls-3 p-1 py-lg-2 px-lg-4"
+                    class="nav-link fs-6-btn ls-3 p-1 py-2 px-4"
                     to="/about"
                     >關於我們</router-link
                   >

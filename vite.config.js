@@ -20,7 +20,7 @@ export default defineConfig({
       ]
     })
   ],
-  base: '/VueTraining_w7/',
+  base: process.env.NODE_ENV === 'production' ? '/VueTraining_w7/' : '/',
   resolve: {
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url))

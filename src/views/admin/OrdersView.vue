@@ -120,6 +120,8 @@
 <script>
 import Modal from 'bootstrap/js/dist/modal.js'
 import AdminPagination from '../../components/AdminPagination.vue'
+import sweetAlertStore from '@/stores/useSweetAlertStore'
+import { mapActions } from 'pinia'
 const { VITE_APP_URL, VITE_APP_PATH } = import.meta.env
 let orderModalElement = ''
 export default {
@@ -137,33 +139,31 @@ export default {
         .then((res) => {
           this.orders = res.data.orders
           this.pageData = res.data.pagination
-          console.log(res)
         })
         .catch((err) => {
-          console.dir(err)
+          this.loginCheckError(err.response.data.message)
         })
     },
     updateOrder (order) {
-      console.log('改變狀態')
       order.status = 2
       order.buyerMessage = '強制塞入'
-      console.log(order)
       this.$http
         .put(
           `${VITE_APP_URL}/v2/api/${VITE_APP_PATH}/admin/order/${order.id}`,
           { order }
         )
         .then((res) => {
-          console.log(res)
+          this.swalError(res)
         })
         .catch((err) => {
-          console.dir(err)
+          this.swalToastTopEnd(err.response.data.message)
         })
     },
     openOrderModal (item) {
       this.tempOrder = { ...item }
       orderModalElement.show()
-    }
+    },
+    ...mapActions(sweetAlertStore, ['swalError', 'swalToastTopEnd', 'loginCheckError'])
   },
   components: {
     AdminPagination

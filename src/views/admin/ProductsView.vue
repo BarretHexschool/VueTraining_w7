@@ -27,6 +27,8 @@ import AdminProductModal from '../../components/AdminProductModal.vue'
 import AdminDelProductModal from '../../components/AdminDelProductModal.vue'
 import AdminPagination from '../../components/AdminPagination.vue'
 import Modal from 'bootstrap/js/dist/modal.js'
+import sweetAlertStore from '@/stores/useSweetAlertStore'
+import { mapActions } from 'pinia'
 
 const { VITE_APP_URL, VITE_APP_PATH } = import.meta.env
 
@@ -51,7 +53,7 @@ export default {
           this.pageData = res.data.pagination
         })
         .catch(err => {
-          alert(err.response.data.message)
+          this.loginCheckError(err.response.data.message)
         })
     },
     productDetail (product) {
@@ -67,36 +69,35 @@ export default {
       }
       this.$http[type](urlStr, { data: this.tempProduct })
         .then(res => {
-          alert(res.data.message)
+          this.swalToastTopEnd(res.data.message)
           productModalElement.hide()
           this.getProducts()
         })
         .catch(err => {
-          alert(err.response.data.message)
+          this.swalError(err.response.data.message)
         })
     },
     delProduct () {
       this.$http.delete(`${VITE_APP_URL}/v2/api/${VITE_APP_PATH}/admin/product/${this.tempProduct.id}`)
         .then(res => {
-          alert(res.data.message)
+          this.swalToastTopEnd(res.data.message)
           delProductModalElement.hide()
           this.getProducts()
         }
         )
         .catch(err => {
-          alert(err.responsel.data.message)
+          this.swalError(err.response.data.message)
           delProductModalElement.hide()
         })
     },
     changeState (data) {
       this.$http.put(`${VITE_APP_URL}/v2/api/${VITE_APP_PATH}/admin/product/${data.id}`, { data })
         .then(res => {
-          console.log(res)
-          alert(res.data.message)
+          this.swalToastTopEnd(res.data.message)
           this.getProducts()
         })
         .catch(err => {
-          alert(err.response.data.message)
+          this.swalError(err.response.data.message)
         })
     },
     createImages () {
@@ -118,7 +119,8 @@ export default {
         this.tempProduct = { ...item }
         delProductModalElement.show()
       }
-    }
+    },
+    ...mapActions(sweetAlertStore, ['swalError', 'swalToastTopEnd', 'loginCheckError'])
 
   },
   components: {

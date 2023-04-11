@@ -138,16 +138,12 @@ export default {
       this.$http
         .post(`${VITE_APP_URL}/v2/api/user/check`)
         .then((res) => {
-          // this.getProducts()
           if (!res.data.success) {
-            console.log(res)
             this.$router.push('/login')
-            console.log(res)
           }
         })
         // eslint-disable-next-line n/handle-callback-err
         .catch((err) => {
-          console.dir(err)
           this.$router.push('/login')
         })
     }

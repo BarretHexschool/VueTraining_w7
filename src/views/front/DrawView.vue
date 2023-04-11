@@ -248,8 +248,6 @@ export default {
         const index = Math.floor(Math.random() * this.products.length)
         const candidate = this.products[index]
         this.winner = candidate
-        console.log(timer, this.winner)
-
         if (lotterySpeedUpTimes < maxLotterySpeedUpTimes) {
           lotterySpeed += lotterySpeedUpInterval
           lotterySpeedUpTimes++

@@ -20,7 +20,6 @@ const cartStore = defineStore('cart', {
   actions: {
     getActionPage () {
       this.actionPage = router.options.history.location
-      console.log(this.actionPage)
     },
     getCartData (actionPage) {
       axios
@@ -37,7 +36,6 @@ const cartStore = defineStore('cart', {
         })
     },
     cartDataExist () {
-      console.log('doit')
       if (this.carts.length === 0) {
         router.push('/products')
         Swal.fire({

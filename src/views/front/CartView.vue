@@ -73,7 +73,7 @@
                   class="form-select"
                   v-model="form.user.address"
                 >
-                  <option selected value="take-out">外帶</option>
+                  <option value="take-out">外帶</option>
                   <option value="1">1</option>
                   <option value="2">2</option>
                   <option value="3">3</option>
@@ -106,7 +106,7 @@
                 <v-field
                   id="tel"
                   name="電話"
-                  type="text"
+                  type="tel"
                   class="form-control"
                   :class="{ 'is-invalid': errors['電話'] }"
                   placeholder="請輸入電話"
@@ -156,7 +156,7 @@ export default {
         user: {
           name: '',
           tel: '',
-          address: '',
+          address: 'take-out',
           email: 'no-email'
         },
         message: '',
