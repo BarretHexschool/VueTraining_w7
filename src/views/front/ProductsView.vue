@@ -7,7 +7,7 @@
         class="hero-banner overflow-hidden rounded rounded-6 rounded-lg-7 mb-3"
       >
         <ProgressiveImage
-          src="/src/assets/images/product-hero.jpg"
+          src="./assets/images/product-hero.jpg"
           alt=""
           class="img-fluid object-fit-cover object-position-center"
         />
