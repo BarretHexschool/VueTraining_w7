@@ -22,7 +22,6 @@ import Loading from 'vue-loading-overlay'
 import 'vue-loading-overlay/dist/css/index.css'
 
 import 'vue-progressive-image/dist/style.css'
-// import VueProgressiveImage from 'vue-progressive-image'
 import ProgressiveImage from 'vue-progressive-image'
 
 import './assets/css/all.scss'

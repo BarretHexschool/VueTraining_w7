@@ -24,7 +24,7 @@
             ></button>
             <div class="d-flex align-items-start align-items-lg-center">
               <div class="box-img me-2 ratio ratio-1x1 product-img">
-                <img
+                <ProgressiveImage
                   :src="`${product.imageUrl}?width=200`"
                   class="img-fluid object-top"
                   alt="{{ product.mainTitle }}"
@@ -102,7 +102,7 @@ export default {
   data () {
     return {
       products: [],
-      isLoading: true
+      isLoading: false
     }
   },
   methods: {
