@@ -16,7 +16,8 @@
       <div class="bottom-bun"></div>
     </div>
     <h2 class="dynamic-text">美味製作中...</h2>
-  </div>
+
+    </div>
 </template>
 
 <script>
@@ -267,11 +268,16 @@ body {
 }
 
 .dynamic-text {
-  width: 13ch;
-  border-right: 0.05em solid;
-  overflow: hidden;
-  white-space: nowrap;
-  animation:  typing 3s steps(6) infinite, caret 1s steps(1) infinite;
+  width: 7rem;
+    border-right: 0.05em solid;
+    overflow: hidden;
+    white-space: nowrap;
+    animation: typing 5s steps(7) infinite, caret 1s steps(1) infinite;
+    text-align: center;
+    font-size: 16px !important;
+    /* font-weight: 500; */
+    margin: 0 auto;
+    margin-top: 10px;
 }
 
 /* Animations */
@@ -434,14 +440,24 @@ body {
     transform: scale(1) translate(5px, 85px);
   }
 }
-@keyframes caret {
+/* @keyframes caret {
   50% {
     border-color: transparent;
   }
 }
 @keyframes typing {
   from {
-    width: 0;
-  }
+        margin-left: -999px;
+    }
+
+} */
+
+@keyframes caret {
+  50% { border-color: transparent; }
+}
+@keyframes typing {
+from {
+ width: 0;
+ }
 }
 </style>
