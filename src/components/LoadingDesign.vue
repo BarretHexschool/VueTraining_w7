@@ -36,6 +36,13 @@ export default {
       loaded: this.isLoading
     }
   },
+  mounted () {
+    window.addEventListener('load', () => {
+      setTimeout(() => {
+        this.loaded = false
+      }, 2000)
+    })
+  },
   watch: {
     isLoading (newVal) {
       setTimeout(() => {
