@@ -102,7 +102,7 @@ export default {
   data () {
     return {
       products: [],
-      isLoading: false
+      isLoading: true
     }
   },
   methods: {
