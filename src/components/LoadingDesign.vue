@@ -1,4 +1,6 @@
 <template>
+    <Loading :active="loaded" :opacity="0.8" :z-index="1000">
+
   <div class="load">
     <div class="hamburger">
       <div class="top-bun"></div>
@@ -18,10 +20,29 @@
     <h2 class="dynamic-text">美味製作中...</h2>
 
     </div>
+  </Loading>
 </template>
 
 <script>
 export default {
+  props: {
+    isLoading: {
+      type: Boolean,
+      default: true
+    }
+  },
+  data () {
+    return {
+      loaded: this.isLoading
+    }
+  },
+  watch: {
+    isLoading (newVal) {
+      setTimeout(() => {
+        this.loaded = newVal
+      }, 2000)
+    }
+  }
 
 }
 </script>
@@ -124,8 +145,6 @@ body {
   box-shadow: 35px 15px #f9cc92;
 }
 
-/* Pickles */
-
 .hamburger .pickle,
 .hamburger .pickle:before {
   position: absolute;
@@ -154,8 +173,6 @@ body {
   transform: translate(20px, -18px) rotate(40deg);
   box-shadow: 15px -5px #3f592a;
 }
-
-/* Tomatoes */
 
 .hamburger .tomato,
 .hamburger .tomato:before {
@@ -211,9 +228,6 @@ body {
   background-color: #d75f44;
   transform: translate(-8px, -7px);
 }
-
-/* Cheese */
-
 .hamburger .cheese {
   position: absolute;
   width: 125px;
@@ -222,8 +236,6 @@ body {
   border: 5px solid #eebd42;
   box-shadow: 0 2px 2px 0 #cf8516;
 }
-
-/* Beef */
 
 .hamburger .beef,
 .hamburger .beef:before {
@@ -244,9 +256,6 @@ body {
   height: 70px;
   transform: translate(-5px, -10px);
 }
-
-/* Bottom Bun */
-
 .hamburger .bottom-bun,
 .hamburger .bottom-bun:before {
   position: absolute;
@@ -275,12 +284,9 @@ body {
     animation: typing 5s steps(7) infinite, caret 1s steps(1) infinite;
     text-align: center;
     font-size: 16px !important;
-    /* font-weight: 500; */
     margin: 0 auto;
     margin-top: 10px;
 }
-
-/* Animations */
 
 @keyframes animate-top-bun {
   0% {
@@ -440,17 +446,6 @@ body {
     transform: scale(1) translate(5px, 85px);
   }
 }
-/* @keyframes caret {
-  50% {
-    border-color: transparent;
-  }
-}
-@keyframes typing {
-  from {
-        margin-left: -999px;
-    }
-
-} */
 
 @keyframes caret {
   50% { border-color: transparent; }

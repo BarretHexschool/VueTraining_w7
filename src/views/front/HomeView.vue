@@ -11,6 +11,7 @@
       <span class="border-end-12"></span>
     </div>
   </section> -->
+  <LoadingDesign :is-Loading="isLoading"></LoadingDesign>
 
   <section class="position-absolute z-1 w-100">
     <img
@@ -318,3 +319,22 @@
     </section>
   </main>
 </template>
+<script>
+import LoadingDesign from '@/components/LoadingDesign.vue'
+
+export default {
+  data () {
+    return {
+      isLoading: true
+    }
+  },
+  components: {
+    LoadingDesign
+  },
+  mounted () {
+    setTimeout(() => {
+      this.isLoading = false
+    }, 1000)
+  }
+}
+</script>

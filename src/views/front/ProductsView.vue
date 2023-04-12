@@ -1,14 +1,12 @@
 <template>
-  <Loading :active="isLoading" :opacity="0.8" :z-index="1000">
-    <LoadingDesign></LoadingDesign>
-  </Loading>
+<LoadingDesign :is-loading="isLoading"></LoadingDesign>
 
   <main class="w-100 position-relative z-2">
     <section class="common-hero container">
       <div
         class="hero-banner overflow-hidden rounded rounded-6 rounded-lg-7 mb-3"
       >
-        <img
+        <ProgressiveImage
           src="/src/assets/images/priduct-hero.jpg"
           alt=""
           class="img-fluid object-fit-cover object-position-center"
@@ -109,11 +107,11 @@ export default {
   },
   methods: {
     getProduct () {
-      // this.isLoading = true
       this.$http
         .get(`${VITE_APP_URL}/v2/api/${VITE_APP_PATH}/products/all`)
         .then((res) => {
           this.products = res.data.products
+          this.isLoading = false
         })
         .catch((err) => {
           this.swalError(err)

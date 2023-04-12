@@ -21,6 +21,10 @@ import moment from 'moment'
 import Loading from 'vue-loading-overlay'
 import 'vue-loading-overlay/dist/css/index.css'
 
+import 'vue-progressive-image/dist/style.css'
+// import VueProgressiveImage from 'vue-progressive-image'
+import ProgressiveImage from 'vue-progressive-image'
+
 import './assets/css/all.scss'
 Object.keys(AllRules).forEach((rule) => {
   defineRule(rule, AllRules[rule])
@@ -40,13 +44,12 @@ app.use(VueAxios, axios)
 
 app.use(VueSweetalert2)
 
-// 掛載 Global 的 Momvnt元件
 app.use(moment)
-// 掛載 Global 的 VeeValidate 元件
 app.component('VField', Field)
 app.component('VForm', Form)
 app.component('ErrorMessage', ErrorMessage)
 
 app.component('Loading', Loading)
+app.use(ProgressiveImage)
 app.use(router)
 app.mount('#app')
