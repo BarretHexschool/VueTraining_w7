@@ -24,7 +24,12 @@ import 'vue-loading-overlay/dist/css/index.css'
 import 'vue-progressive-image/dist/style.css'
 import ProgressiveImage from 'vue-progressive-image'
 
+import AOS from 'aos'
+import 'aos/dist/aos.css'
+
 import './assets/css/all.scss'
+
+AOS.init()
 Object.keys(AllRules).forEach((rule) => {
   defineRule(rule, AllRules[rule])
 })

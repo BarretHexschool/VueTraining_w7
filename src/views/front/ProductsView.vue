@@ -13,7 +13,7 @@
         />
       </div>
       <ul class="list-unstyled mb-0 pb-6 row row-cols-1 row-cols-md-2">
-        <li class="col mb-2" v-for="product in products" :key="product.id">
+        <li class="col mb-2" data-aos="fade-up" data-aos-easing="liner"   data-aos-delay="60" v-for="product in products" :key="product.id">
           <div
             class="position-relative bg-secondary rounded rounded-3 p-2 porductList"
           >
