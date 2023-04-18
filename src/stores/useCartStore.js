@@ -1,5 +1,3 @@
-/* eslint-disable no-unused-expressions */
-/* eslint-disable camelcase */
 import { defineStore } from 'pinia'
 import axios from 'axios'
 import router from '../router'
@@ -58,8 +56,10 @@ const cartStore = defineStore('cart', {
         })
     },
     updateCart (cart) {
+      // eslint-disable-next-line camelcase
       const { product_id, qty } = cart
       const data = {
+        // eslint-disable-next-line camelcase
         product_id,
         qty
       }

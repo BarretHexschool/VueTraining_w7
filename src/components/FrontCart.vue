@@ -47,10 +47,6 @@
         <td colspan="4" class="text-end border-0">總計</td>
         <td class="text-end border-0">{{ finalTotal }}</td>
       </tr>
-      <!-- <tr>
-                <td colspan="3" class="text-end text-success">折扣價</td>
-                <td class="text-end text-success">{{  }}</td>
-              </tr> -->
     </tfoot>
   </table>
   <div class="d-flex justify-content-between mb-4">
@@ -67,9 +63,6 @@
 import cartStore from '@/stores/useCartStore'
 import sweetAlertStore from '@/stores/useSweetAlertStore'
 import { mapActions, mapState } from 'pinia'
-// const { VITE_APP_URL, VITE_APP_PATH } = import.meta.env
-// const store = storeFor(cartStore)
-// store.defaultAction()
 
 export default {
   data () {

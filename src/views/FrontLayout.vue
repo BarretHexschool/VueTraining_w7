@@ -105,13 +105,12 @@
                   </router-link>
                 </li>
               </ul>
-              <!-- <img src="/src/assets/images/mobile-menu.png" height="426" alt=""> -->
             </div>
           </div>
         </nav>
       </div>
     </div>
-    <router-view></router-view>
+    <router-view />
     <!-- footer -->
   </div>
   <footer class="bg-primary">
@@ -134,7 +133,8 @@ export default {
   data () {
     return {
       isScrolled: false,
-      isOpen: false
+      isOpen: false,
+      isLoading: true
     }
   },
   methods: {

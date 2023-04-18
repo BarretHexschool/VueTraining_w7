@@ -1,4 +1,5 @@
 <template>
+  <LoadingDesign :is-Loading="isLoading"></LoadingDesign>
   <main class="w-100 position-relative z-2">
     <section class="container common-hero">
       <div class="row flex-column flex-lg-row mb-sm-96 mb-4">
@@ -51,9 +52,21 @@
   </main>
 </template>
 <script>
+import LoadingDesign from '@/components/LoadingDesign.vue'
 export default {
+  data () {
+    return {
+      isLoading: true
+    }
+  },
+  components: {
+    LoadingDesign
+  },
   mounted () {
     document.title = '鮮堡漢堡 文化店 | 關於我們'
+    if (document.readyState === 'complete') {
+      this.isLoading = false
+    }
   }
 }
 </script>

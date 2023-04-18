@@ -1,5 +1,5 @@
 <template>
-    <Loading :active="loaded" :opacity="0.8" :z-index="1000">
+    <Loading :active="loaded" :opacity="0.8" :z-index="1000" :background-color="'#ffdba4'">
 
   <div class="load">
     <div class="hamburger">
@@ -55,9 +55,6 @@ export default {
 </script>
 
 <style>
-body {
-  background-color: #f4a42b;
-}
 .load {
   position: absolute;
   transform: translate(-50%, -50%);
@@ -78,42 +75,42 @@ body {
 
 .hamburger div:nth-child(2) {
   z-index: 8;
-  animation: animate-pickle-1 7s infinite;
+  animation: animate-pickle-1 3s infinite;
 }
 
 .hamburger div:nth-child(3) {
   z-index: 7;
-  animation: animate-pickle-2 7s infinite;
+  animation: animate-pickle-2 3s infinite;
 }
 
 .hamburger div:nth-child(4) {
   z-index: 5;
-  animation: animate-tomato-1 7s infinite;
+  animation: animate-tomato-1 3s infinite;
 }
 
 .hamburger div:nth-child(5) {
   z-index: 6;
-  animation: animate-tomato-2 7s infinite;
+  animation: animate-tomato-2 3s infinite;
 }
 
 .hamburger div:nth-child(6) {
   z-index: 4;
-  animation: animate-cheese-1 7s infinite;
+  animation: animate-cheese-1 3s infinite;
 }
 
 .hamburger div:nth-child(7) {
   z-index: 3;
-  animation: animate-cheese-2 7s infinite;
+  animation: animate-cheese-2 3s infinite;
 }
 
 .hamburger div:nth-child(8) {
   z-index: 2;
-  animation: animate-beef 7s infinite;
+  animation: animate-beef 3s infinite;
 }
 
 .hamburger div:nth-child(9) {
   z-index: 1;
-  animation: animate-bottom-bun 7s infinite;
+  animation: animate-bottom-bun 3s infinite;
 }
 
 /* Top Bun*/
@@ -129,7 +126,7 @@ body {
   border-bottom-left-radius: 45%;
   border-bottom-right-radius: 45%;
   transform: translate(0px, -80px);
-  animation: animate-top-bun 7s infinite;
+  animation: animate-top-bun 3s infinite;
 }
 
 .hamburger .top-bun:before,
@@ -288,7 +285,7 @@ body {
     border-right: 0.05em solid;
     overflow: hidden;
     white-space: nowrap;
-    animation: typing 5s steps(7) infinite, caret 1s steps(1) infinite;
+    animation: typing 3s steps(7) infinite, caret 1s steps(1) infinite;
     text-align: center;
     font-size: 16px !important;
     margin: 0 auto;

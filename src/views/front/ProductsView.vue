@@ -89,10 +89,12 @@
           </div>
         </li>
       </ul>
+      <FrontProductsModal />
     </section>
   </main>
 </template>
 <script>
+import FrontProductsModal from '@/components/FrontProductsModal.vue'
 import LoadingDesign from '@/components/LoadingDesign.vue'
 import cartStore from '@/stores/useCartStore'
 import sweetAlertStore from '@/stores/useSweetAlertStore'
@@ -125,7 +127,8 @@ export default {
     document.title = '鮮堡漢堡 文化店 | 美味鮮堡'
   },
   components: {
-    LoadingDesign
+    LoadingDesign,
+    FrontProductsModal
   }
 }
 </script>

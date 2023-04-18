@@ -40,7 +40,7 @@
     </tbody>
   </table>
   <div class="d-flex justify-content-center">
-          <admin-pagination :page-data="pageData" :get-products="getOrders"></admin-pagination>
+          <AdminPagination :page-data="pageData" :get-datas="getOrders"></AdminPagination>
         </div>
 </div>
   <!-- Modal -->
@@ -110,7 +110,6 @@
           >
             Close
           </button>
-          <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
         </div>
       </div>
     </div>

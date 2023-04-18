@@ -332,9 +332,9 @@ export default {
     LoadingDesign
   },
   mounted () {
-    setTimeout(() => {
+    if (document.readyState === 'complete') {
       this.isLoading = false
-    }, 1000)
+    }
   }
 }
 </script>

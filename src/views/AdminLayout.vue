@@ -105,7 +105,7 @@
       </nav>
 
       <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-          <router-view></router-view>
+        <router-view v-if="isChecked"></router-view>
 
       </main>
     </div>
@@ -124,6 +124,11 @@ import { RouterView } from 'vue-router'
 const { VITE_APP_URL } = import.meta.env
 
 export default {
+  data () {
+    return {
+      isChecked: false
+    }
+  },
   components: {
     RouterView
   },
@@ -139,11 +144,15 @@ export default {
         .post(`${VITE_APP_URL}/v2/api/user/check`)
         .then((res) => {
           if (!res.data.success) {
+            this.isChecked = false
             this.$router.push('/login')
+          } else {
+            this.isChecked = true
           }
         })
         // eslint-disable-next-line n/handle-callback-err
         .catch((err) => {
+          this.isChecked = false
           this.$router.push('/login')
         })
     }

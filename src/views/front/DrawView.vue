@@ -1,4 +1,5 @@
 <template>
+  <LoadingDesign :is-Loading="isLoading"></LoadingDesign>
   <main class="w-100 position-relative z-2">
     <section class="common-hero container">
       <h2 class="mb-1ls-2 text-sm-start text-center">
@@ -17,14 +18,6 @@
             <h5>有特別想要的餐點類別嗎？（預設全選）</h5>
             <div class="form-group mb-2">
               <div class="form-check">
-                <!-- <input
-                  class="form-check-input"
-                  type="checkbox"
-                  id="check-all"
-                  v-model="checkAll"
-                  @change="onCheckAllChange"
-                /> -->
-                <!-- <label class="form-check-label" for="check-all">全選</label> -->
               </div>
               <div
                 class="form-check"
@@ -52,76 +45,6 @@
     <div class="mt-5 fs-5" v-if="winner">
       您覺得今天吃 『 {{ winner.mainTitle }} 』 好嗎？
     </div>
-            <!-- <v-form ref="form" v-slot="{ errors }" @submit="createOrder">
-              <div class="mb-3">
-                <label for="desk" class="form-label">桌次</label>
-                <v-field
-                  name="desk"
-                  as="select"
-                  class="form-select"
-                  v-model="form.user.address"
-                >
-                  <option selected value="take-out">外帶</option>
-                  <option value="1">1</option>
-                  <option value="2">2</option>
-                  <option value="3">3</option>
-                  <option value="5">5</option>
-                  <option value="6">6</option>
-                  <option value="7">7</option>
-                  <option value="8">8</option>
-                  <option value="9">9</option>
-                </v-field>
-              </div>
-              <div class="mb-3">
-                <label for="name" class="form-label">訂購人姓名</label>
-                <v-field
-                  id="name"
-                  name="姓名"
-                  type="text"
-                  class="form-control"
-                  :class="{ 'is-invalid': errors['姓名'] }"
-                  placeholder="請輸入姓名"
-                  rules="required"
-                  v-model="form.user.name"
-                ></v-field>
-                <error-message
-                  name="姓名"
-                  class="invalid-feedback"
-                ></error-message>
-              </div>
-              <div class="mb-3">
-                <label for="tel" class="form-label">聯絡電話</label>
-                <v-field
-                  id="tel"
-                  name="電話"
-                  type="text"
-                  class="form-control"
-                  :class="{ 'is-invalid': errors['電話'] }"
-                  placeholder="請輸入電話"
-                  rules="required|min:8|max:10"
-                  v-model="form.user.tel"
-                ></v-field>
-                <error-message
-                  name="電話"
-                  class="invalid-feedback"
-                ></error-message>
-              </div>
-
-              <div class="mb-3">
-                <label for="message" class="form-label">備註留言</label>
-                <textarea
-                  id="message"
-                  class="form-control"
-                  placeholder="如果有任何餐點製作需求，您可在此留言，我們將盡量配合。"
-                  cols="30"
-                  rows="10"
-                  v-model="form.message"
-                ></textarea>
-              </div>
-              <div class="text-center w-100">
-                <button type="submit" class="btn btn-danger w-100">送出訂單</button>
-              </div>
-            </v-form> -->
           </div>
         </div>
         <div class="col">
@@ -175,10 +98,6 @@
                 <td colspan="4" class="text-end border-0">總計</td>
                 <td class="text-end border-0">{{ finalTotal }}</td>
               </tr>
-              <!-- <tr>
-                <td colspan="3" class="text-end text-success">折扣價</td>
-                <td class="text-end text-success">{{  }}</td>
-              </tr> -->
             </tfoot>
           </table>
           <div class="d-flex justify-content-between mb-4">
@@ -198,10 +117,12 @@
 import { mapActions, mapState } from 'pinia'
 import cartStore from '@/stores/useCartStore'
 import sweetAlertStore from '@/stores/useSweetAlertStore'
+import LoadingDesign from '@/components/LoadingDesign.vue'
 const { VITE_APP_URL, VITE_APP_PATH } = import.meta.env
 export default {
   data () {
     return {
+      isLoading: true,
       categorys: [
         '精選套餐',
         '現烤總匯',
@@ -265,6 +186,7 @@ export default {
         .get(`${VITE_APP_URL}/v2/api/${VITE_APP_PATH}/products/all`)
         .then((res) => {
           this.products = res.data.products
+          this.isLoading = false
         })
         .catch((err) => {
           this.swalError(err)
@@ -292,7 +214,9 @@ export default {
   computed: {
     ...mapState(cartStore, ['finalTotal', 'carts'])
   },
-
+  components: {
+    LoadingDesign
+  },
   mounted () {
     this.getProduct()
     this.getCartData()

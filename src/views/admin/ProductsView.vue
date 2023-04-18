@@ -8,17 +8,17 @@
               新增產品
             </button>
           </h2>
-          <admin-product-list :products="products" :open-modal="openModal" :change-state="changeState"></admin-product-list>
+          <AdminProductList :products="products" :open-modal="openModal" :change-state="changeState"></AdminProductList>
           <div class="d-flex justify-content-center">
-          <admin-pagination :page-data="pageData" :get-products="getProducts"></admin-pagination>
+          <AdminPagination :page-data="pageData" :get-datas="getProducts"></AdminPagination>
         </div>
         </div>
       </div>
     </div>
     <!-- 產品編輯 Modal -->
-    <admin-product-modal :temp-product="tempProduct" :is-new="isNew" :update-product="updateProduct"></admin-product-modal>
+    <AdminProductModal :temp-product="tempProduct" :is-new="isNew" :update-product="updateProduct"></AdminProductModal>
     <!-- 產品刪除 Modal -->
-    <admin-del-product-modal :temp-product="tempProduct" :del-product="delProduct"></admin-del-product-modal>
+    <AdminDelProductModal :temp-product="tempProduct" :del-product="delProduct"></AdminDelProductModal>
   </template>
 
 <script>

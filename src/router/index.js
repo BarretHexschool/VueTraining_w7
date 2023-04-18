@@ -46,11 +46,6 @@ const routes = [
     name: 'Admin',
     component: () => import('../views/AdminLayout.vue'),
     children: [
-      // {
-      //   path: '',
-      //   name: 'Home',
-      //   component: () => import('../views/front/HomeView.vue')
-      // },
       {
         path: 'Orders',
         component: () => import('../views/admin/OrdersView.vue')
@@ -82,7 +77,6 @@ const router = createRouter({
     return savedPosition || new Promise((resolve) => {
       resolve({ top: 0, behavior: 'smooth' })
     })
-    // ...
   }
 })
 
