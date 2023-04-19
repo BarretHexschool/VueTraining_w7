@@ -70,7 +70,7 @@
         </div>
         <ul class="row row-cols-1 row-cols-md-2 row-cols-lg-3 list-unstyled">
           <li class="col mb-4 text-center productCard">
-            <router-link to="/products" class="btn mw-416">
+            <router-link to="/products#hamburger" class="btn mw-416">
               <div class="card border-0 align-items-center">
                 <div class="card-header position-relative mb-3 mb-md-4 border-0 w-100">
                   <div class="border-top-104"></div>
@@ -100,7 +100,7 @@
             </router-link>
           </li>
           <li class="col mb-4 text-center productCard">
-            <router-link to="/products" class="btn mw-416">
+            <router-link to="/products#selectSet" class="btn mw-416">
               <div class="card border-0 align-items-center">
                 <div class="card-header position-relative mb-3 mb-md-4 border-0 w-100">
                   <div class="border-top-104"></div>
@@ -130,7 +130,7 @@
             </router-link>
           </li>
           <li class="col mb-4 text-center productCard">
-            <router-link to="/products" class="btn mw-416">
+            <router-link to="/products#omelet" class="btn mw-416">
               <div class="card border-0 align-items-center">
                 <div class="card-header position-relative mb-3 mb-md-4 border-0 w-100">
                   <div class="border-top-104"></div>
