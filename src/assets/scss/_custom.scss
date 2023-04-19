@@ -176,7 +176,7 @@
   padding-bottom: 200px;
 }
 .border-start-12 {
-  max-height: 40px;
+  height: 40px;
   max-width: 12px;
   border-top: 4px solid $secondary;
   border-left: 4px solid $secondary;
@@ -186,7 +186,7 @@
 }
 
 .border-end-12 {
-  max-height: 40px;
+  height: 40px;
   max-width: 12px;
   border-top: 4px solid $secondary;
   border-right: 4px solid $secondary;
@@ -257,7 +257,7 @@
 
 @include media-breakpoint-up(sm) {
   .border-start-16 {
-    max-height: 64px;
+    height: 64px;
     max-width: 16px;
     border-top: 4px solid $secondary;
     border-left: 4px solid $secondary;
@@ -265,7 +265,7 @@
   }
 
   .border-end-16 {
-    max-height: 64px;
+    height: 64px;
     max-width: 16px;
     border-top: 4px solid $secondary;
     border-right: 4px solid $secondary;
@@ -273,23 +273,23 @@
   }
 
   .border-start-20 {
-    max-height: 66.67px;
-    max-width: 20px;
+    height: 66.67px;
+    width: 20px;
     border-top: 4px solid $primary;
     border-left: 4px solid $primary;
     border-bottom: 4px solid $primary;
   }
 
   .border-end-20 {
-    max-height: 66.67px;
-    max-width: 20px;
+    height: 66.67px;
+    width: 20px;
     border-top: 4px solid $primary;
     border-right: 4px solid $primary;
     border-bottom: 4px solid $primary;
   }
 
   .border-top-104 {
-    max-height: 104px;
+    height: 104px;
     // max-width: 416px;
     border-top: 4px solid $third;
     border-left: 4px solid $third;
@@ -297,7 +297,7 @@
   }
 
   .border-bottom-104 {
-    max-height: 32px;
+    height: 32px;
     // max-width: 416px;
     border-bottom: 4px solid $third;
     border-left: 4px solid $third;

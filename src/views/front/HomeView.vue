@@ -37,9 +37,10 @@
       </div>
     </div>
 
-    <div class="container">
       <!-- latest news -->
-      <section class="row flex-sm-row flex-column mt-499 mt-sm-473">
+      <section class="position-relative">
+        <div class="container">
+        <div class="row flex-sm-row flex-column mt-499 mt-sm-473">
         <div class="col-sm-5 col mb-sm-0 mb-4">
           <h2 class="ls-2 mb-sm-0 mb-1 text-sm-start text-center">最新消息</h2>
           <h2
@@ -55,9 +56,12 @@
             <span class="border-end-16 ms-auto"></span>
           </li>
         </ul>
+        </div></div>
+        <img class="position-absolute top-0 start-0 zn-0" src="/src/assets/images/mobile-menu.png">
       </section>
       <!-- start from here -->
       <section class="mt-200 mt-sm-80">
+        <div class="container">
         <div class="d-flex flex-column mb-sm-96 mb-4">
           <h2 class="ls-2 mb-0 text-sm-end text-center">
             活力早晨，從這開始！
@@ -69,8 +73,8 @@
           </h2>
         </div>
         <ul class="row row-cols-1 row-cols-md-2 row-cols-lg-3 list-unstyled">
-          <li class="col mb-4 text-center productCard">
-            <router-link to="/products#hamburger" class="btn mw-416">
+          <li class="col mb-4 text-center productCard" v-for="(product ,index) in homeProducts" :key="index">
+            <router-link :to="`/products#${product.link}`" class="btn mw-416">
               <div class="card border-0 align-items-center">
                 <div class="card-header position-relative mb-3 mb-md-4 border-0 w-100">
                   <div class="border-top-104"></div>
@@ -78,79 +82,19 @@
                     type="button"
                     class="btn btn-secondary fw-bold fs-3 text-nowrap rounded-pill position-absolute bottom-0 start-50 translate-middle-x py-2 px-7"
                   >
-                    招牌漢堡
+                  {{ product.name }}
                   </button>
                 </div>
                 <div class="rounded rounded-7 mb-3 mb-md-4">
                   <img
-                    src="/src/assets/images/product-1.jpg"
+                    :src=product.imgUrl
                     class="img-fluid object-top rounded-7"
-                    alt="Hamburger"
+                    :alt=product.link
                   />
                 </div>
                 <div class="card-body">
                   <p class="text-center px-3 mb-0">
-                    最經典的美味，小時候老爸都會說，去找你阿母拿一個漢堡蛋當早餐
-                  </p>
-                </div>
-                <div class="card-footer border-0 p-0 w-100">
-                  <div class="border-bottom-104"></div>
-                </div>
-              </div>
-            </router-link>
-          </li>
-          <li class="col mb-4 text-center productCard">
-            <router-link to="/products#selectSet" class="btn mw-416">
-              <div class="card border-0 align-items-center">
-                <div class="card-header position-relative mb-3 mb-md-4 border-0 w-100">
-                  <div class="border-top-104"></div>
-                  <button
-                    type="button"
-                    class="btn btn-secondary fw-bold fs-3 text-nowrap rounded-pill position-absolute bottom-0 start-50 translate-middle-x py-2 px-7"
-                  >
-                    嚴選套餐
-                  </button>
-                </div>
-                <div class="rounded rounded-7 mb-3 mb-md-4">
-                  <img
-                    src="/src/assets/images/product-2.jpg"
-                    class="img-fluid object-top rounded-7"
-                    alt="Hamburger"
-                  />
-                </div>
-                <div class="card-body">
-                  <p class="text-center px-3 mb-0">
-                    這個也想吃、那個也想吃？那就來個套餐吧！
-                  </p>
-                </div>
-                <div class="card-footer border-0 p-0 w-100">
-                  <div class="border-bottom-104"></div>
-                </div>
-              </div>
-            </router-link>
-          </li>
-          <li class="col mb-4 text-center productCard">
-            <router-link to="/products#omelet" class="btn mw-416">
-              <div class="card border-0 align-items-center">
-                <div class="card-header position-relative mb-3 mb-md-4 border-0 w-100">
-                  <div class="border-top-104"></div>
-                  <button
-                    type="button"
-                    class="btn btn-secondary fw-bold fs-3 text-nowrap rounded-pill position-absolute bottom-0 start-50 translate-middle-x py-2 px-7"
-                  >
-                    滑嫩蛋餅
-                  </button>
-                </div>
-                <div class="rounded rounded-7 mb-3 mb-md-4">
-                  <img
-                    src="/src/assets/images/product-3.jpg"
-                    class="img-fluid object-top rounded-7"
-                    alt="Hamburger"
-                  />
-                </div>
-                <div class="card-body">
-                  <p class="text-center px-3 mb-0">
-                    傳統的蛋餅皮，換上Q彈滑嫩的河粉餅皮，蹦出新滋味！
+                    {{ product.description}}
                   </p>
                 </div>
                 <div class="card-footer border-0 p-0 w-100">
@@ -160,8 +104,8 @@
             </router-link>
           </li>
         </ul>
+      </div>
       </section>
-    </div>
     <!-- make life smoother -->
     <section class="mt-200 position-relative mt-sm-80 w-100">
       <div class="d-flex justify-content-lg-end w-100">
@@ -305,7 +249,27 @@ export default {
   data () {
     return {
       isLoading: true,
-      newss: []
+      newss: [],
+      homeProducts: [
+        {
+          link: 'hamburger',
+          name: '招牌漢堡',
+          imgUrl: '/assets/images/product-1.jpg',
+          description: ' 最經典的美味，小時候老爸都會說，去找你阿母拿一個漢堡蛋當早餐 '
+        },
+        {
+          link: 'selectSet',
+          name: '嚴選套餐',
+          imgUrl: '/assets/images/product-2.jpg',
+          description: ' 這個也想吃、那個也想吃？那就來個套餐吧！'
+        },
+        {
+          link: 'omelet',
+          name: '滑嫩蛋餅',
+          imgUrl: '/assets/images/product-3.jpg',
+          description: '傳統的蛋餅皮，換上Q彈滑嫩的河粉餅皮，蹦出新滋味！'
+        }
+      ]
     }
   },
   methods: {
