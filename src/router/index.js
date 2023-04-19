@@ -47,7 +47,7 @@ const routes = [
     component: () => import('../views/AdminLayout.vue'),
     children: [
       {
-        path: 'Orders',
+        path: 'orders',
         component: () => import('../views/admin/OrdersView.vue')
       },
       {
@@ -57,6 +57,10 @@ const routes = [
       {
         path: 'products',
         component: () => import('../views/admin/ProductsView.vue')
+      },
+      {
+        path: 'news',
+        component: () => import('../views/admin/NewsView.vue')
       }
     ]
   },
@@ -74,6 +78,13 @@ const router = createRouter({
   linkActiveClass: 'active',
   routes,
   scrollBehavior (to, from, savedPosition) {
+    if (to.hash) {
+      return {
+        el: to.hash,
+        behavior: 'smooth',
+        top: 220
+      }
+    }
     return savedPosition || new Promise((resolve) => {
       resolve({ top: 0, behavior: 'smooth' })
     })

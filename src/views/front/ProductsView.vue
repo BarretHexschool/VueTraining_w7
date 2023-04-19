@@ -1,5 +1,5 @@
 <template>
-<LoadingDesign :is-loading="isLoading"></LoadingDesign>
+  <LoadingDesign :is-loading="isLoading"></LoadingDesign>
 
   <main class="w-100 position-relative z-2">
     <section class="common-hero container">
@@ -12,89 +12,111 @@
           class="img-fluid object-fit-cover object-position-center"
         />
       </div>
-      <ul class="list-unstyled mb-0 pb-6 row row-cols-1 row-cols-md-2">
-        <li class="col mb-2" data-aos="fade-up" data-aos-easing="liner"   data-aos-delay="60" v-for="product in products" :key="product.id">
-          <div
-            class="position-relative bg-secondary rounded rounded-3 p-2 porductList"
-          >
-            <button
-              type="button"
-              class="btn position-absolute z-2 btn-porduct-add"
-              @click="addToCart(product.id, 1)"
-            ></button>
-            <div class="d-flex align-items-start align-items-lg-center">
-              <div class="box-img me-2 ratio ratio-1x1 product-img">
-                <ProgressiveImage
-                  :src="`${product.imageUrl}?width=200`"
-                  class="img-fluid object-top"
-                  alt="{{ product.mainTitle }}"
-                />
-              </div>
-              <div
-                class="box-word w-100 d-flex flex-column justify-content-between"
-              >
-                <div class="product-word ls-15">
-                  <div v-if="product.is_select">
-                    <h3>
-                      {{ product.mainTitle }}
-                    </h3>
-                    <p class="mb-0 fs-6 ms-lg-2">
-                      搭配：{{ product.select1 }}、{{ product.select2 }} ({{
-                        product.select3
-                      }})
-                    </p>
-                  </div>
-                  <div v-else>
-                    <h3>{{ product.title }}</h3>
-                    <p class="fs-6 ms-lg-2">{{ product.select1 }}</p>
-                  </div>
-                </div>
-                <div
-                  class="d-flex justify-content-between align-items-start flex-column flex-lg-row align-content-end align-items-end"
-                >
-                  <div class="product-price text-end mb-1 mb-lg-0">
-                    <div
-                      class="fs-5"
-                      v-if="product.price == product.origin_price"
-                    >
-                      ${{ product.price }} 元
-                    </div>
-                    <div
-                      class="d-flex flex-column flex-lg-row align-content-end align-items-end me-1"
-                      v-else
-                    >
-                      <del class="fs-7 me-lg-1">
-                        原價：$ {{ product.origin_price }} 元</del
-                      >
-                      <span class="fs-5 fw-bold"
-                        >特價： $ {{ product.price }} 元</span
-                      >
-                    </div>
-                  </div>
-                  <div
-                    class="py-1 px-2 bg-third rounded-5 fs-6 d-none d-lg-flex"
-                  >
-                    <span class="material-symbols-rounded me-1">add_box</span
-                    >加入購物車
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div
-              class="d-flex justify-content-center py-1 px-2 mt-2 bg-third rounded-5 fs-6 d-lg-none"
-            >
-              <span class="material-symbols-rounded me-1">add_box</span
-              >加入購物車
-            </div>
-          </div>
+      <ul class="list-unstyled d-flex overflow-x-auto mx-auto mb-1 me-n1">
+        <li>
+          <router-link to="/products#selectSet" class="btn btn-secondary rounded-4 px-md-4 p-2 me-2 text-nowrap ls-15">嚴選套餐</router-link>
+        </li>
+        <li>
+          <router-link to="/products#hamburger"  class="btn btn-secondary rounded-4 px-md-4 p-2 me-2 text-nowrap ls-15">漢堡</router-link>
+        </li>
+        <li>
+          <router-link to="/products#toast"  class="btn btn-secondary rounded-4 px-md-4 p-2 me-2 text-nowrap ls-15">現烤吐司</router-link>
+        </li>
+        <li>
+          <router-link to="/products#sandwich"  class="btn btn-secondary rounded-4 px-md-4 p-2 me-2 text-nowrap ls-15">現烤總匯</router-link>
+        </li>
+        <li>
+          <router-link to="/products#snack"  class="btn btn-secondary rounded-4 px-md-4 p-2 me-2 text-nowrap ls-15">中西式點心</router-link>
+        </li>
+        <li>
+          <router-link to="/products#omelet"  class="btn btn-secondary rounded-4 px-md-4 p-2 me-2 text-nowrap ls-15">蛋餅、河粉蛋餅</router-link>
         </li>
       </ul>
-      <FrontProductsModal />
+      <h2
+        class="ls-2 mb-1 text-sm-start text-center"
+        data-aos="fade-up"
+        data-aos-easing="liner"
+        data-aos-delay="30"
+        id="selectSet"
+      >
+        嚴選套餐
+      </h2>
+      <FrontProductsList
+        :products="products"
+        category="精選套餐"
+      ></FrontProductsList>
+      <h2
+        class="ls-2 mb-1 text-sm-start text-center"
+        data-aos="fade-up"
+        data-aos-easing="liner"
+        data-aos-delay="30"
+        id="hamburger"
+      >
+        漢堡
+      </h2>
+      <FrontProductsList
+        :products="products"
+        category="漢堡"
+      ></FrontProductsList>
+      <h2
+        class="ls-2 mb-1 text-sm-start text-center"
+        data-aos="fade-up"
+        data-aos-easing="liner"
+        data-aos-delay="30"
+        id="toast"
+      >
+        現烤吐司
+      </h2>
+      <FrontProductsList
+        :products="products"
+        category="現烤三明治"
+      ></FrontProductsList>
+      <h2
+        class="ls-2 mb-1 text-sm-start text-center"
+        data-aos="fade-up"
+        data-aos-easing="liner"
+        data-aos-delay="30"
+        id="sandwich"
+      >
+        現烤總匯
+      </h2>
+      <FrontProductsList
+        :products="products"
+        category="現烤總匯"
+      ></FrontProductsList>
+      <h2
+        class="ls-2 mb-1 text-sm-start text-center"
+        data-aos="fade-up"
+        data-aos-easing="liner"
+        data-aos-delay="30"
+        id="snack"
+      >
+        中西式點心
+      </h2>
+      <FrontProductsList
+        :products="products"
+        category="中西式點心"
+      ></FrontProductsList>
+      <h2
+        class="ls-2 mb-1 text-sm-start text-center"
+        data-aos="fade-up"
+        data-aos-easing="liner"
+        data-aos-delay="30"
+        id="omelet"
+      >
+        蛋餅、河粉蛋餅
+      </h2>
+      <FrontProductsList
+        :products="products"
+        category="蛋餅、河粉蛋餅"
+      ></FrontProductsList>
+      <FrontProductModal />
     </section>
   </main>
 </template>
 <script>
-import FrontProductsModal from '@/components/FrontProductsModal.vue'
+import FrontProductsList from '@/components/FrontProductsList.vue'
+import FrontProductModal from '@/components/FrontProductModal.vue'
 import LoadingDesign from '@/components/LoadingDesign.vue'
 import cartStore from '@/stores/useCartStore'
 import sweetAlertStore from '@/stores/useSweetAlertStore'
@@ -128,7 +150,8 @@ export default {
   },
   components: {
     LoadingDesign,
-    FrontProductsModal
+    FrontProductModal,
+    FrontProductsList
   }
 }
 </script>

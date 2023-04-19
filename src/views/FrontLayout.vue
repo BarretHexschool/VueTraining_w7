@@ -75,6 +75,31 @@
                   >
                 </li>
                 <li
+                  class="nav-item rounded rounded-pill mb-6 mb-lg-0 mx-2"
+                >
+                  <router-link
+                    @click="navClose()"
+                    to="/draw"
+                    class="fs-6-btn btn d-flex justify-content-center align-items-center ls-3 p-1 py-2 px-4 border-0"
+                  >
+                    <div class="me-1 position-relative">
+                      <img
+                        src="/src/assets/images/icon-dice.png"
+                        class="me-1 hover-hide"
+                        alt=""
+                        srcset=""
+                      />
+                      <img
+                        src="/src/assets/images/icon-dice-hover.png"
+                        class="me-1 hover"
+                        alt=""
+                        srcset=""
+                      />
+                    </div>
+                    簡單點
+                  </router-link>
+                </li>
+                <li
                   class="nav-item rounded rounded-pill position-relative mb-382 mb-lg-0"
                 >
                   <router-link

@@ -1081,7 +1081,7 @@
 export default {
   data () {
     return {
-      drink: [{ cold: '冷飲(去冰)' }, { ice: '冰飲' }, { hot: '熱飲' }]
+      drinkType: [{ selectValue: 'cold', chinese: '冷飲(去冰)' }, { selectValue: 'ice', chinese: '冰飲' }, { selectValue: 'hot', chinese: '熱飲' }]
     }
   }
 }

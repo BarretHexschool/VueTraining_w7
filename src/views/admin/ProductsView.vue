@@ -2,12 +2,12 @@
     <div class="container">
       <div class="row py-3">
         <div>
-          <h2>
-            產品列表
+          <div class="d-flex align-items-center justify-content-between">
+            <h3 class="ls-2">產品管理</h3>
             <button @click="openModal('new')" type="button" class="btn btn-primary">
               新增產品
             </button>
-          </h2>
+          </div>
           <AdminProductList :products="products" :open-modal="openModal" :change-state="changeState"></AdminProductList>
           <div class="d-flex justify-content-center">
           <AdminPagination :page-data="pageData" :get-datas="getProducts"></AdminPagination>

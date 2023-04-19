@@ -31,8 +31,18 @@ margin-bottom: 382px;
 .porductList:hover{
     transform: scale(1.01);
     box-shadow: 0 5px 5px 1px #CF8516;
-    // box-shadow: 3px 3px 3px 3px #CF8516 ;
 }
+
+.productCard:hover{
+    border-radius: 80px 80px 16px 16px;
+    transform: scale(1.01);
+    box-shadow: 0 5px 5px 1px #CF8516;
+    img{
+        transform: scale(1.01);
+        box-shadow: 0 5px 5px 1px #CF8516;
+    }
+}
+
 @include media-breakpoint-up(lg){
     .footer{
         background-image: url(./assets/images/waves.png);
@@ -51,6 +61,16 @@ margin-bottom: 382px;
         .common-hero{
             padding-top: 144px;
         }
+        .productCard:hover{
+            border-radius: 120px 120px 20px 20px;
+            transform: scale(1.01);
+            box-shadow: 0 5px 5px 1px #CF8516;
+            img{
+                transform: scale(1.01);
+                box-shadow: 0 5px 5px 1px #CF8516;
+            }
+        }      
+
 }
 
 //productsView

@@ -48,36 +48,13 @@
             latest news
           </h2>
         </div>
-        <div class="col-sm-7 col">
-          <div
-            class="d-flex justify-content-between align-items-center mb-sm-6 mb-3"
-          >
+        <ul class="list-unstyled col col-sm-7">
+          <li v-for="news in newss" :key="news.id" class="d-flex justify-content-between align-items-center mb-sm-6 mb-3">
             <span class="border-start-16"></span>
-            <p class="fs-5 px-3 mb-0 ls-15">新上市！ 無糖紅茶</p>
+            <p class="fs-5 px-3 mb-0 ls-15">{{ news.title }}</p>
             <span class="border-end-16 ms-auto"></span>
-          </div>
-          <div
-            class="d-flex justify-content-between align-items-center mb-sm-6 mb-3"
-          >
-            <span class="border-start-16"></span>
-            <p class="fs-5 px-3 mb-0 ls-15">112 年春節 初一～初六休息</p>
-            <span class="border-end-16 ms-auto"></span>
-          </div>
-          <div
-            class="d-flex justify-content-between align-items-center mb-sm-6 mb-3"
-          >
-            <span class="border-start-16"></span>
-            <p class="fs-5 px-3 mb-0 ls-15">寒流來襲~ 來杯溫暖的玉米濃湯</p>
-            <span class="border-end-16 ms-auto"></span>
-          </div>
-          <div
-            class="d-flex justify-content-between align-items-center mb-sm-6 mb-3"
-          >
-            <span class="border-start-16"></span>
-            <p class="fs-5 px-3 mb-0 ls-15">多種套餐優惠中</p>
-            <span class="border-end-16 ms-auto"></span>
-          </div>
-        </div>
+          </li>
+        </ul>
       </section>
       <!-- start from here -->
       <section class="mt-200 mt-sm-80">
@@ -92,7 +69,7 @@
           </h2>
         </div>
         <ul class="row row-cols-1 row-cols-md-2 row-cols-lg-3 list-unstyled">
-          <li class="col mb-4 text-center">
+          <li class="col mb-4 text-center productCard">
             <router-link to="/products" class="btn mw-416">
               <div class="card border-0 align-items-center">
                 <div class="card-header position-relative mb-3 mb-md-4 border-0 w-100">
@@ -122,7 +99,7 @@
               </div>
             </router-link>
           </li>
-          <li class="col mb-4 text-center">
+          <li class="col mb-4 text-center productCard">
             <router-link to="/products" class="btn mw-416">
               <div class="card border-0 align-items-center">
                 <div class="card-header position-relative mb-3 mb-md-4 border-0 w-100">
@@ -152,7 +129,7 @@
               </div>
             </router-link>
           </li>
-          <li class="col mb-4 text-center">
+          <li class="col mb-4 text-center productCard">
             <router-link to="/products" class="btn mw-416">
               <div class="card border-0 align-items-center">
                 <div class="card-header position-relative mb-3 mb-md-4 border-0 w-100">
@@ -204,6 +181,9 @@
             >
               start from here
             </h2>
+            <p class="fs-6 ls-15 mb-6 text-center">
+                每天早上都要煩惱吃什麼嗎？除了日復一日的餐點，來試試樂透的早餐吧！
+              </p>
           </div>
           <img src="/src/assets/images/hero2-m.png" class="mb-3 w-100" alt="" />
           <div class="container text-center">
@@ -293,13 +273,11 @@
               </p>
               <span class="border-end-20"></span>
             </li>
-            <li class="d-flex align-items-center mb-2">
-              <span class="material-symbols-rounded me-2"> call </span>
-              <p class="ls-15 mb-0">02-22590910</p>
+            <li class="mb-2">
+              <a class="text-black text-decoration-none ls-15 mb-0" href="tel:+886222590910"><span class="material-symbols-rounded me-2"> call </span>02-22590910</a>
             </li>
-            <li class="d-flex align-items-center">
-              <span class="material-symbols-rounded me-2"> location_on </span>
-              <p class="ls-15 mb-0">新北市板橋區文化路一段270巷3弄18號1樓</p>
+            <li >
+              <a class="text-black text-decoration-none ls-15 mb-0" href="https://goo.gl/maps/zQBHesZuDBmdbXSD7" target="_blank"><span class="material-symbols-rounded me-2"> location_on </span>新北市板橋區文化路一段270巷3弄18號1樓</a>
             </li>
           </ul>
         </div>
@@ -322,16 +300,36 @@
 <script>
 import LoadingDesign from '@/components/LoadingDesign.vue'
 
+const { VITE_APP_URL, VITE_APP_PATH } = import.meta.env
 export default {
   data () {
     return {
-      isLoading: true
+      isLoading: true,
+      newss: []
+    }
+  },
+  methods: {
+    getNews () {
+      this.$http.get(`${VITE_APP_URL}/v2/api/${VITE_APP_PATH}/articles`)
+        .then(res => {
+          this.newss = res.data.articles
+        })
+        .catch(err => {
+          alert(err.response.data.message)
+        })
+    }
+  },
+  computed: {
+    latestNews () {
+      const sortedItems = this.news.slice(0).sort((a, b) => b.create_at - a.create_at)
+      return sortedItems.slice(0, 4)
     }
   },
   components: {
     LoadingDesign
   },
   mounted () {
+    this.getNews()
     if (document.readyState === 'complete') {
       this.isLoading = false
     }

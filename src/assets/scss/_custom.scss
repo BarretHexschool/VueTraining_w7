@@ -1,12 +1,12 @@
-// 客製化樣式
 :root {
-  // background color of the main image while loading
   --progressive-image-background-color: #ffdba4ad;
   }
 .min-h {
   min-height: calc(100vh - 82px);
 }
-
+.admin-min-h {
+  min-height: calc(100vh - 82px - 67px);
+}
 .object-fit-cover {
   object-fit: cover !important;
 }
