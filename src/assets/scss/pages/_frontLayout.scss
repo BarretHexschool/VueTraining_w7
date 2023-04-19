@@ -11,7 +11,7 @@
 margin-bottom: 382px;
 }
 .footer{
-    background-image: url(../assets/images/waves-m.png);
+    background-image: url(@/assets/images/waves-m.png);
     background-repeat: repeat-x;
     padding-top: 24px;
     padding-bottom: 32px;
@@ -48,7 +48,7 @@ margin-bottom: 382px;
 
 @include media-breakpoint-up(lg){
     .footer{
-        background-image: url(../assets/images/waves.png);
+        background-image: url(@/assets/images/waves.png);
         padding-top: 40px;
         padding-bottom: 40px;
     }
