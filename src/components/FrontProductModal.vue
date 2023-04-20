@@ -21,13 +21,13 @@
       <div class="modal-body">
         <form>
             <div class="mb-3">
-              <label for="message" class="col-form-label">餐點備註<br><span class="fs-6">我們將盡量配合，未符合期待還請多包容哦</span></label>
-              <textarea v-model="message" class="form-control" id="message" placeholder="例如：不要小黃瓜、不要沙拉醬、要加番茄醬"></textarea>
+              <label for="message" class="col-form-label">餐點備註<br><span class="fs-6">我們將盡量配合，未符合期待還請多包容哦，如兩份一樣的餐點要不同做法，請寫在一起。</span></label>
+              <textarea v-model="message" class="form-control" id="message" placeholder="例如：不要小黃瓜、不要沙拉醬、要加番茄醬、一份正常做，一份不要沙拉醬"></textarea>
             </div>
           </form>
       </div>
       <div class="modal-footer justify-content-between">
-        <button type="button" class="btn btn-danger" >看更多</button>
+        <button type="button" class="btn btn-danger"  @click="watchMore(tempProduct.id)">看更多</button>
         <button type="button" class="btn btn-secondary"  @click="addToCartBtn(tempProduct.id,1,message)">放入購物車</button>
       </div>
     </div>
@@ -50,6 +50,10 @@ export default {
       this.addToCart(id, 1, message)
       this.productModalElement.hide()
       this.message = ''
+    },
+    watchMore (id) {
+      this.productModalElement.hide()
+      this.$router.push(`/product/${id}`)
     },
     ...mapActions(cartStore, ['addToCart'])
   }
