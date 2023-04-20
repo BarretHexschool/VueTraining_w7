@@ -4,7 +4,6 @@ import eslintPlugin from 'vite-plugin-eslint'
 import { fileURLToPath, URL } from 'node:url'
 import { viteStaticCopy } from 'vite-plugin-static-copy'
 
-// https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
     vue(),

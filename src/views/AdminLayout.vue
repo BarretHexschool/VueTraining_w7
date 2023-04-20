@@ -106,8 +106,7 @@ export default {
             this.isChecked = true
           }
         })
-        // eslint-disable-next-line n/handle-callback-err
-        .catch((err) => {
+        .catch(() => {
           this.isChecked = false
           this.$router.push('/login')
         })

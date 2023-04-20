@@ -131,7 +131,6 @@ export default {
   },
   mounted () {
     this.getArticles()
-    // 建立model實體
     articleModalElement = new Modal(document.querySelector('#productModal'), {
       keyboard: false
     })

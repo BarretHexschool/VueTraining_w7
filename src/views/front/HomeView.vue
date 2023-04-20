@@ -243,7 +243,8 @@
 </template>
 <script>
 import LoadingDesign from '@/components/LoadingDesign.vue'
-
+import { mapActions } from 'pinia'
+import sweetAlertStore from '@/stores/useSweetAlertStore'
 const { VITE_APP_URL, VITE_APP_PATH } = import.meta.env
 export default {
   data () {
@@ -279,9 +280,10 @@ export default {
           this.newss = res.data.articles
         })
         .catch(err => {
-          alert(err.response.data.message)
+          this.swalError(err.response.data.message)
         })
-    }
+    },
+    ...mapActions(sweetAlertStore, ['swalError'])
   },
   computed: {
     latestNews () {
