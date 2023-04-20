@@ -254,19 +254,19 @@ export default {
         {
           link: 'hamburger',
           name: '招牌漢堡',
-          imgUrl: '@/assets/images/product-1.jpg',
+          imgUrl: 'assets/images/product-1.jpg',
           description: ' 最經典的美味，小時候老爸都會說，去找你阿母拿一個漢堡蛋當早餐 '
         },
         {
           link: 'selectSet',
           name: '嚴選套餐',
-          imgUrl: '@/assets/images/product-2.jpg',
+          imgUrl: 'assets/images/product-2.jpg',
           description: ' 這個也想吃、那個也想吃？那就來個套餐吧！'
         },
         {
           link: 'omelet',
           name: '滑嫩蛋餅',
-          imgUrl: '@/assets/images/product-3.jpg',
+          imgUrl: 'assets/images/product-3.jpg',
           description: '傳統的蛋餅皮，換上Q彈滑嫩的河粉餅皮，蹦出新滋味！'
         }
       ]
