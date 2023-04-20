@@ -57,7 +57,7 @@
           </li>
         </ul>
         </div></div>
-        <img class="position-absolute top-0 start-0 zn-0  d-none d-lg-inline" src="/src/assets/images/mobile-menu.png">
+        <img class="position-absolute top-0 start-0 zn-0  d-none d-lg-inline" src="/src/assets/images/news_bg.png">
       </section>
       <!-- start from here -->
       <section class="mt-200 mt-sm-80">
