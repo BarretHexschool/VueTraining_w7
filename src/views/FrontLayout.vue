@@ -4,6 +4,7 @@
       <div class="py-0 py-lg-4">
         <nav
           class="navbar navbar-expand-lg bg-body-tertiary py-lg-3 py-2 bg-primary bg-lg-transparent"
+          ref="navBar"
           :class="{
             'fixed-top': isScrolled || isOpen,
             'bg-primary': isScrolled || isOpen,

@@ -12,7 +12,7 @@
           class="img-fluid object-fit-cover object-position-center"
         />
       </div>
-      <ul class="list-unstyled d-flex overflow-x-auto mx-auto mb-1 sticky-top">
+      <ul class="list-unstyled overflow-x-auto productsCatalogNav">
         <li>
           <router-link to="/products#selectSet" class="btn btn-secondary rounded-4 px-md-4 p-2 me-2 text-nowrap ls-15">嚴選套餐</router-link>
         </li>
