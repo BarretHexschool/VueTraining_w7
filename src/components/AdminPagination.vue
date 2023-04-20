@@ -6,7 +6,7 @@
             <span aria-hidden="true">&laquo;</span>
           </a>
         </li>
-        <li class="page-item" :class = "{active: page == pageData.current_page}" v-for="page in pageData.total_pages" :key="page + 'page'"><a class="page-link" href="#" @click.prevent="getProducts(page)" >{{page}}</a></li>
+        <li class="page-item" :class = "{active: page == pageData.current_page}" v-for="page in pageData.total_pages" :key="page + 'page'"><a class="page-link" href="#" @click.prevent="getDatas(page)" >{{page}}</a></li>
         <li class="page-item" :class="{disabled: !pageData.has_next}" >
           <a class="page-link" href="#" @click.prevent="getDatas(pageData.current_page+1)"  aria-label="Next">
             <span aria-hidden="true">&raquo;</span>

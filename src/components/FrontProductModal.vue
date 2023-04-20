@@ -7,11 +7,11 @@
     aria-labelledby="productModalLabel"
     aria-hidden="true"
   >
-  <div class="modal-dialog modal-dialog-centered">
+  <div class="modal-dialog modal-dialog-centered modal-sm">
     <div class="modal-content">
       <img class="w-100" :src="tempProduct.imageUrl">
       <div class="modal-header d-block">
-        <div class="d-flex justify-content-between">
+        <div class="d-flex justify-content-between flex-wrap">
           <h3>{{ tempProduct.mainTitle }}</h3>
           <p>$ {{ tempProduct.price }}</p>
         </div>
@@ -28,7 +28,7 @@
       </div>
       <div class="modal-footer justify-content-between">
         <button type="button" class="btn btn-danger" >看更多</button>
-        <button type="button" class="btn btn-secondary"  @click="addToCart(tempProduct.id,1,message)">放入購物車</button>
+        <button type="button" class="btn btn-secondary"  @click="addToCartBtn(tempProduct.id,1,message)">放入購物車</button>
       </div>
     </div>
   </div>
@@ -38,7 +38,7 @@
 import cartStore from '@/stores/useCartStore'
 import { mapActions } from 'pinia'
 export default {
-  props: ['tempProduct'],
+  props: ['tempProduct', 'productModalElement'],
   data () {
     return {
       drinkType: [{ selectValue: 'cold', chinese: '冷飲(去冰)' }, { selectValue: 'ice', chinese: '冰飲' }, { selectValue: 'hot', chinese: '熱飲' }],
@@ -46,6 +46,11 @@ export default {
     }
   },
   methods: {
+    addToCartBtn (id, qty = 1, message) {
+      this.addToCart(id, 1, message)
+      this.productModalElement.hide()
+      this.message = ''
+    },
     ...mapActions(cartStore, ['addToCart'])
   }
 }

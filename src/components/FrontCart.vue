@@ -13,7 +13,7 @@
       <template v-if="carts">
         <tr v-for="cart in carts" :key="cart.id">
           <td>
-            {{ cart.product.title }}
+            {{ cart.product.title }} <span v-if ="cart.message"><br>*{{ cart.message }}</span>
             <div class="text-success" v-if="cart.coupon">已套用優惠券</div>
           </td>
           <td class="text-center">

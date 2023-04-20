@@ -26,9 +26,7 @@
                       {{ product.mainTitle }}
                     </h3>
                     <p class="mb-0 fs-6 ms-lg-2">
-                      搭配：{{ product.select1 }}、{{ product.select2 }} ({{
-                        product.select3
-                      }})
+                      搭配：{{ product.select1 }}、{{ product.select2 }}
                     </p>
                   </div>
                   <div v-else>
@@ -95,11 +93,6 @@ export default {
       } else {
         return products.filter(product => product.category === this.category)
       }
-    },
-
-    handleClick (product) {
-      this.$props.openModal(product)
-      console.log(product)
     },
     ...mapActions(cartStore, ['addToCart'])
   }

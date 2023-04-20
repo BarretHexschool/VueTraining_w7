@@ -128,7 +128,6 @@ export default {
   },
   mounted () {
     this.getProducts()
-    // 建立model實體
     productModalElement = new Modal(document.querySelector('#productModal'), {
       keyboard: false
     })

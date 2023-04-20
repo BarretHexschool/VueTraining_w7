@@ -116,7 +116,7 @@
         :products="products"
         category="蛋餅、河粉蛋餅"
       ></FrontProductsList>
-      <FrontProductModal :temp-product="tempProduct"></FrontProductModal>
+      <FrontProductModal :temp-product="tempProduct" :product-modal-element="productModalElement"></FrontProductModal>
     </section>
   </main>
 </template>
@@ -128,7 +128,7 @@ import cartStore from '@/stores/useCartStore'
 import sweetAlertStore from '@/stores/useSweetAlertStore'
 import Modal from 'bootstrap/js/dist/modal.js'
 import { mapActions } from 'pinia'
-let productModalElement = ''
+
 const { VITE_APP_URL, VITE_APP_PATH } = import.meta.env
 export default {
   data () {
@@ -136,7 +136,8 @@ export default {
       products: [],
       isLoading: true,
       tempProduct: {
-      }
+      },
+      productModalElement: ''
     }
   },
   methods: {
@@ -153,7 +154,7 @@ export default {
     },
     openModal (item) {
       this.tempProduct = { ...item }
-      productModalElement.show()
+      this.productModalElement.show()
     },
     ...mapActions(cartStore, ['addToCart']),
     ...mapActions(sweetAlertStore, ['swalError', 'swalToastTopEnd'])
@@ -161,10 +162,10 @@ export default {
   mounted () {
     document.title = '鮮堡漢堡 文化店 | 美味鮮堡'
     this.getProduct()
-    productModalElement = new Modal(document.querySelector('#productModal'), {
+    this.productModalElement = new Modal(document.querySelector('#productModal'), {
       keyboard: false
     })
-    productModalElement.hide()
+    this.productModalElement.hide()
   },
   components: {
     LoadingDesign,
