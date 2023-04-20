@@ -1,7 +1,7 @@
 <template>
   <LoadingDesign :is-loading="isLoading"></LoadingDesign>
 
-  <main class="w-100 position-relative z-2">
+  <main class="w-100 position-relative pb-3">
     <section class="common-hero container">
       <div
         class="hero-banner overflow-hidden rounded rounded-6 rounded-lg-7 mb-3"
@@ -42,6 +42,7 @@
         嚴選套餐
       </h2>
       <FrontProductsList
+        :open-modal="openModal"
         :products="products"
         category="精選套餐"
       ></FrontProductsList>
@@ -55,6 +56,7 @@
         漢堡
       </h2>
       <FrontProductsList
+      :open-modal="openModal"
         :products="products"
         category="漢堡"
       ></FrontProductsList>
@@ -68,6 +70,7 @@
         現烤吐司
       </h2>
       <FrontProductsList
+      :open-modal="openModal"
         :products="products"
         category="現烤三明治"
       ></FrontProductsList>
@@ -81,6 +84,7 @@
         現烤總匯
       </h2>
       <FrontProductsList
+      :open-modal="openModal"
         :products="products"
         category="現烤總匯"
       ></FrontProductsList>
@@ -94,6 +98,7 @@
         中西式點心
       </h2>
       <FrontProductsList
+      :open-modal="openModal"
         :products="products"
         category="中西式點心"
       ></FrontProductsList>
@@ -107,10 +112,11 @@
         蛋餅、河粉蛋餅
       </h2>
       <FrontProductsList
+      :open-modal="openModal"
         :products="products"
         category="蛋餅、河粉蛋餅"
       ></FrontProductsList>
-      <FrontProductModal />
+      <FrontProductModal :temp-product="tempProduct"></FrontProductModal>
     </section>
   </main>
 </template>
@@ -120,13 +126,17 @@ import FrontProductModal from '@/components/FrontProductModal.vue'
 import LoadingDesign from '@/components/LoadingDesign.vue'
 import cartStore from '@/stores/useCartStore'
 import sweetAlertStore from '@/stores/useSweetAlertStore'
+import Modal from 'bootstrap/js/dist/modal.js'
 import { mapActions } from 'pinia'
+let productModalElement = ''
 const { VITE_APP_URL, VITE_APP_PATH } = import.meta.env
 export default {
   data () {
     return {
       products: [],
-      isLoading: true
+      isLoading: true,
+      tempProduct: {
+      }
     }
   },
   methods: {
@@ -141,12 +151,20 @@ export default {
           this.swalError(err)
         })
     },
+    openModal (item) {
+      this.tempProduct = { ...item }
+      productModalElement.show()
+    },
     ...mapActions(cartStore, ['addToCart']),
     ...mapActions(sweetAlertStore, ['swalError', 'swalToastTopEnd'])
   },
   mounted () {
-    this.getProduct()
     document.title = '鮮堡漢堡 文化店 | 美味鮮堡'
+    this.getProduct()
+    productModalElement = new Modal(document.querySelector('#productModal'), {
+      keyboard: false
+    })
+    productModalElement.hide()
   },
   components: {
     LoadingDesign,

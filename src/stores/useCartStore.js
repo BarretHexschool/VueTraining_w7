@@ -102,11 +102,11 @@ const cartStore = defineStore('cart', {
           sweetAlert.swalError(err)
         })
     },
-    addToCart (id, qty = 1) {
+    addToCart (id, qty = 1, message = '') {
       const data = {
         product_id: id,
         qty,
-        message: ''
+        message
       }
       axios
         .post(`${VITE_APP_URL}/v2/api/${VITE_APP_PATH}/cart`, { data })
@@ -116,6 +116,7 @@ const cartStore = defineStore('cart', {
         })
         .catch((err) => {
           sweetAlert.swalError(err)
+          console.dir(err)
         })
     }
   },

@@ -1,7 +1,7 @@
 <template>
   <main class="w-100 position-relative z-2">
     <section class="common-hero container">
-      <div class="position-relative m-5">
+      <div class="position-relative m-5 mb-7">
         <div class="progress bg-third" style="height: 2px">
           <div
             class="progress-bar bg-danger"
@@ -56,30 +56,30 @@
       </div>
     </section>
     <section class="container" v-if="order.user">
-      <h2 class="ls-2 text-sm-start text-center">
+      <h2 class="ls-2 text-sm-start text-center mb-3">
         您的訂單已送出，正在製作中！
       </h2>
-      <p class="fs-4 ls-15">
+      <p class="fs-4 ls-15 mb-3">
         感謝您的選購，我們將立即為您準備餐點。<br />
-        有任何問題請直接來電<a
-          class="text-black text-decoration-none"
+        <span class=" text-danger">有任何問題請直接來電<a
+          class="text-danger text-decoration-none"
           href="tel:+886222590910"
           >02-22590910</a
-        ><br />
+        ></span><br />
         同時告知您的訂單編號 {{ order.id.substr(-4, 4) }} 與訂購人大名。<br />
       </p>
-      <ul class="list-unstyled fs-5">
-        <li class="mb-2">桌號：#{{ order.user.address }}</li>
-        <li class="mb-2">
+      <ul class="list-unstyled fs-5 mb-3">
+        <li class="mb-1">桌號：#{{ order.user.address }}</li>
+        <li class="mb-1">
           訂單日期：{{
             $moment(new Date(order.create_at * 1000)).format('YYYY-MM-DD HH:mm')
           }}
         </li>
-        <li class="mb-2">訂單編號：{{ order.id.substr(-4, 4) }}</li>
-        <li class="mb-2">訂購人：{{ order.user.name }}</li>
-        <li class="mb-2">訂購商品清單：</li>
+        <li class="mb-1">訂單編號：{{ order.id.substr(-4, 4) }}</li>
+        <li class="mb-1">訂購人：{{ order.user.name }}</li>
       </ul>
-      <div class="container pb-6">
+      <div class="pb-6">
+        <h4 class="text-center text-lg-start fw-bold mb-1">訂購商品清單</h4>
         <table class="table align-middle w-100 border-secondary">
           <thead>
             <tr class="w-100">
@@ -93,7 +93,6 @@
             <template v-if="order.products">
               <tr v-for="product in order.products" :key="product.id">
                 <td>
-                  {{ prroduct }}
                   {{ product.product.title }}
                 </td>
                 <td class="text-center">

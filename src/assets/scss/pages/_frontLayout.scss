@@ -47,6 +47,7 @@
 }
 .productsCatalogNav {
     display: flex;
+    overflow-x: scroll;
     margin-left: -5px;
     margin-right: -5px;
     padding-top: 8px;

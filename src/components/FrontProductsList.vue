@@ -7,7 +7,7 @@
             <button
               type="button"
               class="btn position-absolute z-2 btn-porduct-add"
-              @click="addToCart(product.id, 1)"
+              @click="openModal(product)"
             ></button>
             <div class="d-flex align-items-start align-items-lg-center">
               <div class="box-img me-2 ratio ratio-1x1 product-img">
@@ -78,20 +78,11 @@
       </ul>
 </template>
 <script>
-
+import cartStore from '@/stores/useCartStore'
+import { mapActions } from 'pinia'
 export default {
   name: 'FrontProductsList',
-  props: {
-    addToCart: Function,
-    products: {
-      type: Array,
-      default: () => []
-    },
-    category: {
-      type: String,
-      default: 'all'
-    }
-  },
+  props: ['openModal', 'products', 'category'],
   computed: {
     filteredProducts () {
       return this.filterProducts(this.products)
@@ -104,7 +95,13 @@ export default {
       } else {
         return products.filter(product => product.category === this.category)
       }
-    }
+    },
+
+    handleClick (product) {
+      this.$props.openModal(product)
+      console.log(product)
+    },
+    ...mapActions(cartStore, ['addToCart'])
   }
 }
 </script>

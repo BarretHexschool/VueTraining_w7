@@ -4,7 +4,6 @@
       <div class="py-0 py-lg-4">
         <nav
           class="navbar navbar-expand-lg bg-body-tertiary py-lg-3 py-2 bg-primary bg-lg-transparent"
-          ref="navBar"
           :class="{
             'fixed-top': isScrolled || isOpen,
             'bg-primary': isScrolled || isOpen,
@@ -101,7 +100,7 @@
                   </router-link>
                 </li>
                 <li
-                  class="nav-item rounded rounded-pill position-relative mb-382 mb-lg-0"
+                  class="nav-item rounded rounded-pill position-relative nav-m-height mb-lg-0"
                 >
                   <router-link
                     @click="navClose()"
