@@ -56,21 +56,23 @@
         </p>
       </div>
       <div class="row row-cols-1 row-cols-lg-2 p-1 pb-6">
-        <div class="col">
-          <front-cart></front-cart>
+        <div class="col mt-2 mt-lg-5">
+          <FrontCart />
         </div>
         <div class="col">
           <div
             class="row justify-content-center bg-third rounded rounded-4 rounded-lg-6 p-4 p-md-7"
           >
-            <h2>請輸入訂購資料</h2>
+            <h2 class=" mb-2 mb-lg-3">請輸入訂購資料</h2>
             <v-form ref="form" v-slot="{ errors }" @submit="createOrder">
               <div class="mb-3">
                 <label for="desk" class="form-label">桌次</label>
                 <v-field
+                  id="desk"
                   name="desk"
                   as="select"
                   class="form-select"
+                  :class="{ 'is-invalid': errors['桌號'] }"
                   v-model="form.user.address"
                 >
                   <option value="take-out">外帶</option>
@@ -83,6 +85,10 @@
                   <option value="8">8</option>
                   <option value="9">9</option>
                 </v-field>
+                <error-message
+                  name="桌號"
+                  class="invalid-feedback"
+                ></error-message>
               </div>
               <div class="mb-3">
                 <label for="name" class="form-label">訂購人姓名</label>

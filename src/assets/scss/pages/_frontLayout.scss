@@ -7,8 +7,8 @@
     margin-right: calc(-1 * $container-padding-x * 0.5);
 }
 
-.mb-382{
-margin-bottom: 382px;
+.nav-m-height{
+    margin-bottom: calc(14vh);
 }
 .footer{
     background-image: url(@/assets/images/waves-m.png);
@@ -20,7 +20,7 @@ margin-bottom: 382px;
     margin-top: 128px;
 }
 .hero{
-    padding-top: 184px;
+    padding-top: calc(49.0667vw);
 }
 .common-hero{
     padding-top: 56px;

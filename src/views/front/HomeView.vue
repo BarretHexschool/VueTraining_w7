@@ -57,7 +57,7 @@
           </li>
         </ul>
         </div></div>
-        <img class="position-absolute top-0 start-0 zn-0" src="/src/assets/images/mobile-menu.png">
+        <img class="position-absolute top-0 start-0 zn-0  d-none d-lg-inline" src="/src/assets/images/mobile-menu.png">
       </section>
       <!-- start from here -->
       <section class="mt-200 mt-sm-80">
@@ -254,19 +254,19 @@ export default {
         {
           link: 'hamburger',
           name: '招牌漢堡',
-          imgUrl: '/assets/images/product-1.jpg',
+          imgUrl: '/src/assets/images/product-1.jpg',
           description: ' 最經典的美味，小時候老爸都會說，去找你阿母拿一個漢堡蛋當早餐 '
         },
         {
           link: 'selectSet',
           name: '嚴選套餐',
-          imgUrl: '/assets/images/product-2.jpg',
+          imgUrl: '/src/assets/images/product-2.jpg',
           description: ' 這個也想吃、那個也想吃？那就來個套餐吧！'
         },
         {
           link: 'omelet',
           name: '滑嫩蛋餅',
-          imgUrl: '/assets/images/product-3.jpg',
+          imgUrl: '/src/assets/images/product-3.jpg',
           description: '傳統的蛋餅皮，換上Q彈滑嫩的河粉餅皮，蹦出新滋味！'
         }
       ]
