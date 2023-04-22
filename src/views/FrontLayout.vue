@@ -49,7 +49,7 @@
                 srcset=""
               />
               <span
-                class="position-absolute top-25 end-0 translate-middle badge rounded-pill text-danger p-0 close-icon"
+                class="position-absolute top-25 start-75 translate-middle badge rounded-pill text-danger p-0 ps-1 close-icon"
                 >{{ carts.length == 0 ? '' : carts.length }}
               </span>
             </button>
@@ -121,7 +121,7 @@
                         srcset=""
                       />
                       <span
-                        class="position-absolute top-0 end-0 translate-middle badge rounded-pill text-danger p-0"
+                        class="position-absolute top-0 start-50 translate-middle badge rounded-pill text-danger p-0 ps-1"
                         >{{ carts.length == 0 ? '' : carts.length }}
                       </span>
                     </div>
