@@ -116,7 +116,7 @@
         :products="products"
         category="蛋餅、河粉蛋餅"
       ></FrontProductsList>
-      <FrontProductModal :temp-product="tempProduct" :product-modal-element="productModalElement"></FrontProductModal>
+      <FrontProductModal :temp-product="tempProduct" :products="products" :product-modal-element="productModalElement"></FrontProductModal>
     </section>
   </main>
 </template>
