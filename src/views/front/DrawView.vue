@@ -43,7 +43,7 @@
     >按我開始，決定今天吃什麼
     </button>
     <div class="mt-5 fs-5" v-if="winner">
-      您覺得今天吃 『 {{ winner.mainTitle }} 』 好嗎？
+      您覺得今天吃 『 {{ winner.title }} 』 好嗎？
     </div>
           </div>
         </div>
@@ -127,7 +127,7 @@ export default {
         '精選套餐',
         '現烤總匯',
         '漢堡',
-        '現烤三明治',
+        '現烤吐司',
         '蛋餅、河粉蛋餅',
         '中西式點心'
       ],
@@ -153,12 +153,11 @@ export default {
       }
     },
     startLottery () {
-      // if (this.checkAll === true) {
-      //   this.selectdeProducts = this.products
-      // }else{
-      //   this.selectdeProducts =
-      // }
-
+      if (this.selectedCategorys.length !== 0) {
+        this.selectdeProducts = this.filterProduct()
+      } else {
+        this.selectdeProducts = this.products
+      }
       let lotterySpeed = 20 // 毫秒
       const maxLotterySpeed = 2000 // 毫秒
       const lotterySpeedUpInterval = 20 // 毫秒
@@ -166,8 +165,8 @@ export default {
       let lotterySpeedUpTimes = 0
 
       const timer = setInterval(() => {
-        const index = Math.floor(Math.random() * this.products.length)
-        const candidate = this.products[index]
+        const index = Math.floor(Math.random() * this.selectdeProducts.length)
+        const candidate = this.selectdeProducts[index]
         this.winner = candidate
         if (lotterySpeedUpTimes < maxLotterySpeedUpTimes) {
           lotterySpeed += lotterySpeedUpInterval
@@ -180,6 +179,7 @@ export default {
           this.addToCart(id)
         }
       }, lotterySpeed)
+      this.selectedCategorys = []
     },
     getProduct () {
       this.$http
@@ -193,6 +193,7 @@ export default {
         })
     },
     addToCart (id, qty = 1) {
+      this.selectdeProducts = []
       const data = {
         product_id: id,
         qty,
@@ -207,6 +208,11 @@ export default {
         .catch((err) => {
           this.swalError(err)
         })
+    },
+    filterProduct () {
+      return this.products.filter(product =>
+        this.selectedCategorys.findIndex(e => e === product.category) !== -1
+      )
     },
     ...mapActions(cartStore, ['getCartData', 'addToCart', 'deleteOneCart', 'swalClearAllCart']),
     ...mapActions(sweetAlertStore, ['swalError', 'swalToastTopEnd'])

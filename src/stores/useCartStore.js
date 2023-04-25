@@ -116,7 +116,6 @@ const cartStore = defineStore('cart', {
         })
         .catch((err) => {
           sweetAlert.swalError(err)
-          console.dir(err)
         })
     }
   },
