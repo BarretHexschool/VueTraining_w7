@@ -42,7 +42,9 @@ export default {
         imagesUrl: []
       },
       isNew: false,
-      pageData: {}
+      pageData: {
+      },
+      page: 1
     }
   },
   methods: {
