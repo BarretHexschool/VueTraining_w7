@@ -7,9 +7,9 @@
     aria-labelledby="productModalLabel"
     aria-hidden="true"
   >
-  <div class="modal-dialog modal-dialog-centered modal-sm">
+  <div class="modal-dialog modal-dialog-centered modal-md">
     <div class="modal-content">
-      <img class="w-100" :src="tempProduct.imageUrl">
+      <img class="productModalImg" :src="tempProduct.imageUrl">
       <div class="modal-header d-block">
         <div class="d-flex justify-content-between flex-wrap">
           <h3>{{ tempProduct.mainTitle }}</h3>
@@ -20,7 +20,7 @@
       </div>
       <div class="modal-body">
         <form>
-          <div v-if="tempProduct.select1" class="mb-2">
+          <div v-if="tempProduct.select1" class="mb-2 radioBox">
             <p class="mb-0"> 主食選擇：</p>
               <div v-for="option in tempProduct.select1" :key="option">
             <label>
@@ -34,6 +34,14 @@
     <div v-for="option in tempProduct.select2" :key="option">
           <label>
       <input type="radio" :value="option" v-model="selectedOption2">
+      {{ option }}</label>
+    </div>
+    </div>
+    <div v-if="tempProduct.iceLevel" class="mb-2">
+    <p class="mb-0"> 冰冷熱選擇：</p>
+    <div v-for="(option,index) in drinkType" :key="index">
+          <label>
+      <input type="radio" :value="option" v-model="iceLevel">
       {{ option }}</label>
     </div>
     </div>
@@ -58,10 +66,11 @@ export default {
   props: ['tempProduct', 'products', 'productModalElement'],
   data () {
     return {
-      drinkType: [{ selectValue: 'cold', chinese: '冷飲(去冰)' }, { selectValue: 'ice', chinese: '冰飲' }, { selectValue: 'hot', chinese: '熱飲' }],
+      drinkType: ['冰', '冷(去冰)', '熱'],
       message: '',
       selectedOption1: '',
-      selectedOption2: ''
+      selectedOption2: '',
+      iceLevel: ''
     }
   },
   methods: {
@@ -74,12 +83,23 @@ export default {
       this.message = ''
       this.selectedOption1 = ''
       this.selectedOption2 = ''
+      this.iceLevel = ''
     },
     findId () {
+      if (this.selectedOption1 === '') {
+        this.selectedOption1 = undefined
+      }
+      if (this.selectedOption2 === '') {
+        this.selectedOption2 = undefined
+      }
+      if (this.iceLevel === '') {
+        this.iceLevel = undefined
+      }
       const findProduct = this.products.find(p => {
         return p.mainTitle === this.tempProduct.mainTitle &&
         p.select1 === this.selectedOption1 &&
-             p.select2 === this.selectedOption2
+             p.select2 === this.selectedOption2 &&
+             p.iceLevel === this.iceLevel
       })
       return findProduct.id
     },

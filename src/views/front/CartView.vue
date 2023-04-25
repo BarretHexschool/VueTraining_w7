@@ -85,10 +85,10 @@
                   <option value="8">8</option>
                   <option value="9">9</option>
                 </v-field>
-                <error-message
+                <ErrorMessage
                   name="桌號"
                   class="invalid-feedback"
-                ></error-message>
+                ></ErrorMessage>
               </div>
               <div class="mb-3">
                 <label for="name" class="form-label">訂購人姓名</label>
@@ -102,10 +102,10 @@
                   rules="required"
                   v-model="form.user.name"
                 ></v-field>
-                <error-message
+                <ErrorMessage
                   name="姓名"
                   class="invalid-feedback"
-                ></error-message>
+                ></ErrorMessage>
               </div>
               <div class="mb-3">
                 <label for="tel" class="form-label">聯絡電話</label>
@@ -119,10 +119,10 @@
                   rules="required|min:8|max:10"
                   v-model="form.user.tel"
                 ></v-field>
-                <error-message
+                <ErrorMessage
                   name="電話"
                   class="invalid-feedback"
-                ></error-message>
+                ></ErrorMessage>
               </div>
 
               <div class="mb-3">

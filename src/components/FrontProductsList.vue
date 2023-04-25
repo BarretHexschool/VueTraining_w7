@@ -95,19 +95,23 @@ export default {
             ...item
           }
         } else {
-          if (typeof (setGroup[mainTitle].select1) === 'string') {
-            if (setGroup[mainTitle].select1 !== select1) {
-              setGroup[mainTitle].select1 = [setGroup[mainTitle].select1, select1]
-            }
-            if (typeof (setGroup[mainTitle].select2) === 'string') {
-              if (setGroup[mainTitle].select2 !== select2) {
-                setGroup[mainTitle].select2 = [setGroup[mainTitle].select2, select2]
+          if (select1 !== undefined) {
+            if (typeof (setGroup[mainTitle].select1) === 'string') {
+              if (setGroup[mainTitle].select1 !== select1) {
+                setGroup[mainTitle].select1 = [setGroup[mainTitle].select1, select1]
+              }
+            } else {
+              if (!this.checkHas(setGroup[mainTitle].select1, select1)) {
+                setGroup[mainTitle].select1 = [...setGroup[mainTitle].select1, select1]
               }
             }
-          } else {
-            if (!this.checkHas(setGroup[mainTitle].select1, select1)) {
-              setGroup[mainTitle].select1 = [...setGroup[mainTitle].select1, select1]
+          }
+
+          if (typeof (setGroup[mainTitle].select2) === 'string') {
+            if (setGroup[mainTitle].select2 !== select2) {
+              setGroup[mainTitle].select2 = [setGroup[mainTitle].select2, select2]
             }
+          } else {
             if (!this.checkHas(setGroup[mainTitle].select2, select2)) {
               setGroup[mainTitle].select2 = [...setGroup[mainTitle].select2, select2]
             }
