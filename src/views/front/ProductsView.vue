@@ -72,7 +72,7 @@
       <FrontProductsList
       :open-modal="openModal"
         :products="products"
-        category="現烤三明治"
+        category="現烤吐司"
       ></FrontProductsList>
       <h2
         class="ls-2 mb-1 text-sm-start text-center"
