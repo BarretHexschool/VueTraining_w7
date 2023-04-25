@@ -66,7 +66,7 @@ export default {
   props: ['tempProduct', 'products', 'productModalElement'],
   data () {
     return {
-      drinkType: ['冰', '冷(去冰)', '熱'],
+      drinkType: ['冰', '冷(去冰)', '溫'],
       message: '',
       selectedOption1: '',
       selectedOption2: '',
