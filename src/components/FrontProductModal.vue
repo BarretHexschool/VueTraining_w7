@@ -182,6 +182,7 @@ export default {
       this.addToCart(addid, 1, this.message)
       this.productModalElement.hide()
       this.$refs.form.resetForm()
+      this.message = ''
     },
     findId () {
       if (this.selectedOption1 === '') {
