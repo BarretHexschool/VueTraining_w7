@@ -1,5 +1,5 @@
 <template>
-  <nav aria-label="Page navigation example">
+  <nav aria-label="Page navigation">
     <ul class="pagination">
       <li class="page-item" :class="{ disabled: !pageData.has_pre }">
         <a
@@ -17,7 +17,7 @@
             class="page-item"
             :class="{ active: page == pageData.current_page }"
             v-for="page in 9"
-            :key="page + 'page'"
+            :key="'page' + page"
           >
             <a class="page-link" href="#" @click.prevent="getDatas(page)">{{
               page
@@ -39,7 +39,7 @@
           <li
             class="page-item"
             :class="{ active: page == pageData.total_pages }"
-            :key="pageData.total_pages + 'page'"
+            :key="'page' + pageData.total_pages"
           >
             <a
               class="page-link"
@@ -53,7 +53,7 @@
           <li
             class="page-item"
             :class="{ active: page == 1 }"
-            :key="1 + 'page'"
+            :key="'page' + 1 "
           >
             <a class="page-link" href="#" @click.prevent="getDatas(1)">1</a>
           </li>
@@ -72,7 +72,7 @@
             class="page-item"
             :class="{ active: page == pageData.total_pages - page + 1 }"
             v-for="page in 9"
-            :key="page + 'page'"
+            :key="'page' + page"
           >
             <a
               class="page-link"
@@ -86,7 +86,7 @@
           <li
             class="page-item"
             :class="{ active: page == 1 }"
-            :key="1 + 'page'"
+            :key="'page' + 1"
           >
             <a class="page-link" href="#" @click.prevent="getDatas(1)">1</a>
           </li>
@@ -104,13 +104,13 @@
           <li
             class="page-item"
             v-for="i in 4"
-            :key="pageData.current_page - i + 'page'"
+            :key="'page' + (pageData.current_page - 5 + i)"
           >
             <a
               class="page-link"
               href="#"
-              @click.prevent="getDatas(pageData.current_page - i)"
-              >{{ pageData.current_page - i }}</a
+              @click.prevent="getDatas(pageData.current_page - 5 + i)"
+              >{{ pageData.current_page - 5 + i }}</a
             >
           </li>
           <li class="page-item active">
@@ -119,7 +119,7 @@
           <li
             class="page-item"
             v-for="i in 4"
-            :key="pageData.current_page + i + 'page'"
+            :key="'page' + (pageData.current_page + i)"
           >
             <a
               class="page-link"
@@ -144,7 +144,7 @@
           <li
             class="page-item"
             :class="{ active: page == pageData.total_pages }"
-            :key="pageData.total_pages + 'page'"
+            :key="'page' + pageData.total_pages"
           >
             <a
               class="page-link"
