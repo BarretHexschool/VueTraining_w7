@@ -18,13 +18,13 @@
           <p class="mb-2">{{ tempProduct.description }}</p>
           <button
             type="button"
-            class="btn-close position-absolute top-0 end-0 p-1 m-1 rounded-circle bg-opacity-75 bg-danger"
+            class="btn-close position-absolute top-0 end-0 p-1 m-1 rounded-circle bg-opacity-90 bg-white"
             data-bs-dismiss="modal"
             aria-label="Close"
           ></button>
         </div>
         <div class="modal-body">
-          <v-form ref="form" @submit="addToCartBtn">
+          <VForm ref="form" @submit="addToCartBtn">
             <div v-if="tempProduct.select1" class="mb-2 radioBox">
               <p class="mb-0">主食選擇：</p>
               <ErrorMessage name="selectedOption1"
@@ -32,7 +32,7 @@
                   *請選擇您所想要的主食
                 </p></ErrorMessage
               >
-              <v-field
+              <Field
                 id="selectedOption1"
                 name="selectedOption1"
                 type="radio"
@@ -52,7 +52,7 @@
                     {{ option }}
                   </label>
                 </div>
-              </v-field>
+              </Field>
             </div>
 
             <div v-if="tempProduct.select2" class="mb-2 radioBox">
@@ -62,7 +62,7 @@
                   *請問你要喝什麼？
                 </p></ErrorMessage
               >
-              <v-field
+              <Field
                 id="selectedOption2"
                 name="selectedOption2"
                 type="radio"
@@ -82,7 +82,7 @@
                     {{ option }}
                   </label>
                 </div>
-              </v-field>
+              </Field>
             </div>
             <div v-if="tempProduct.iceLevel" class="mb-2 radioBox">
               <p class="mb-0">冰冷熱選擇：</p>
@@ -91,7 +91,7 @@
                   *請問要冰的？還是熱的？
                 </p></ErrorMessage
               >
-              <v-field
+              <Field
                 id="iceLevel"
                 name="iceLevel"
                 type="radio"
@@ -115,21 +115,26 @@
                     {{ option }}
                   </label>
                 </div>
-              </v-field>
+              </Field>
             </div>
             <div class="mb-3">
+
               <label for="message" class="col-form-label"
                 >餐點備註<br /><span class="fs-6"
                   >我們將盡量配合，未符合期待還請多包容哦，如兩份一樣的餐點要不同做法，請寫在一起。</span
                 ></label
               >
-              <v-field
-                v-model="message"
+              <Field
                 class="form-control"
                 name="message"
-                id="message"
-                placeholder="例如：不要小黃瓜、不要沙拉醬、要加番茄醬、一份正常做，一份不要沙拉醬"
-              ></v-field>
+              >
+              <textarea
+                  id="message"
+                  class="form-control"
+                  v-model="message"
+                  placeholder="例如：不要小黃瓜、不要沙拉醬、要加番茄醬、一份正常做，一份不要沙拉醬"
+                ></textarea>
+              </Field>
             </div>
             <div class="modal-footer justify-content-between">
           <button
@@ -141,7 +146,7 @@
           </button>
           <button type="submit" class="btn btn-secondary">放入購物車</button>
         </div>
-          </v-form>
+          </VForm>
         </div>
 
       </div>
@@ -151,6 +156,7 @@
 <script>
 import cartStore from '@/stores/useCartStore'
 import { mapActions } from 'pinia'
+import { Field, Form, ErrorMessage } from 'vee-validate'
 export default {
   props: ['tempProduct', 'products', 'productModalElement'],
   data () {
@@ -188,12 +194,10 @@ export default {
         this.iceLevel = undefined
       }
       const findProduct = this.products.find((p) => {
-        return (
-          p.mainTitle === this.tempProduct.mainTitle &&
-          p.select1 === this.selectedOption1 &&
-          p.select2 === this.selectedOption2 &&
-          p.iceLevel === this.iceLevel
-        )
+        return (p.mainTitle === this.tempProduct.mainTitle &&
+                    p.select1 === this.selectedOption1 &&
+                    p.select2 === this.selectedOption2 &&
+                    p.iceLevel === this.iceLevel)
       })
       return findProduct.id
     },
@@ -202,6 +206,11 @@ export default {
       this.$router.push(`/product/${id}`)
     },
     ...mapActions(cartStore, ['addToCart'])
+  },
+  components: {
+    ErrorMessage,
+    VForm: Form,
+    Field
   }
 }
 </script>
