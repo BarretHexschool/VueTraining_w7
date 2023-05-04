@@ -64,10 +64,10 @@
             class="row justify-content-center bg-third rounded rounded-4 rounded-lg-6 p-4 p-md-7"
           >
             <h2 class=" mb-2 mb-lg-3">請輸入訂購資料</h2>
-            <v-form ref="form" v-slot="{ errors }" @submit="createOrder">
+            <VForm ref="form" v-slot="{ errors }" @submit="createOrder">
               <div class="mb-3">
                 <label for="desk" class="form-label">桌次</label>
-                <v-field
+                <Field
                   id="desk"
                   name="desk"
                   as="select"
@@ -84,15 +84,15 @@
                   <option value="7">7</option>
                   <option value="8">8</option>
                   <option value="9">9</option>
-                </v-field>
+                </Field>
                 <ErrorMessage
                   name="桌號"
                   class="invalid-feedback"
                 ></ErrorMessage>
               </div>
               <div class="mb-3">
-                <label for="name" class="form-label">訂購人姓名</label>
-                <v-field
+                <label for="name" class="form-label">訂購人姓名*</label>
+                <Field
                   id="name"
                   name="姓名"
                   type="text"
@@ -101,15 +101,15 @@
                   placeholder="請輸入姓名"
                   rules="required"
                   v-model="form.user.name"
-                ></v-field>
+                ></Field>
                 <ErrorMessage
                   name="姓名"
                   class="invalid-feedback"
                 ></ErrorMessage>
               </div>
               <div class="mb-3">
-                <label for="tel" class="form-label">聯絡電話</label>
-                <v-field
+                <label for="tel" class="form-label">聯絡電話*</label>
+                <Field
                   id="tel"
                   name="電話"
                   type="tel"
@@ -118,7 +118,7 @@
                   placeholder="請輸入電話"
                   rules="required|min:8|max:10"
                   v-model="form.user.tel"
-                ></v-field>
+                ></Field>
                 <ErrorMessage
                   name="電話"
                   class="invalid-feedback"
@@ -139,7 +139,7 @@
               <div class="text-center w-100">
                 <button type="submit" class="btn btn-danger w-100">送出訂單</button>
               </div>
-            </v-form>
+            </VForm>
           </div>
         </div>
       </div>
@@ -149,6 +149,7 @@
 <script>
 import FrontCart from '@/components/FrontCart.vue'
 import sweetAlert from '@/stores/useSweetAlertStore'
+import { Field, Form, ErrorMessage } from 'vee-validate'
 import { mapActions, mapState } from 'pinia'
 import cartStore from '@/stores/useCartStore'
 const { VITE_APP_URL, VITE_APP_PATH } = import.meta.env
@@ -193,7 +194,10 @@ export default {
     ...mapState(cartStore, ['carts'])
   },
   components: {
-    FrontCart
+    FrontCart,
+    ErrorMessage,
+    VForm: Form,
+    Field
   },
   mounted () {
     this.getCartData('CartView')

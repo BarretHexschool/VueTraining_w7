@@ -56,11 +56,9 @@ const cartStore = defineStore('cart', {
         })
     },
     updateCart (cart) {
-      // eslint-disable-next-line camelcase
-      const { product_id, qty } = cart
+      const { productId, qty } = cart
       const data = {
-        // eslint-disable-next-line camelcase
-        product_id,
+        productId,
         qty
       }
       this.loadingItem = cart.id
