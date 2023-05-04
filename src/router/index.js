@@ -75,7 +75,7 @@ const routes = [
 
 const router = createRouter({
   history: createWebHashHistory(),
-  linkActiveClass: 'active',
+  // linkActiveClass: 'active',
   routes,
   scrollBehavior (to, from, savedPosition) {
     if (to.hash) {

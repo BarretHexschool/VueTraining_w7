@@ -1,13 +1,14 @@
 <template>
   <LoadingDesign :is-loading="isLoading"></LoadingDesign>
 
-  <main class="w-100 position-relative pb-3">
+  <main class="w-100 pb-3">
     <section class="common-hero container">
       <div class="row row-cols-1 row-cols-lg-2">
         <img :src="product.imageUrl" class="img-fluid" alt="" />
         <div>
-          <div>
-    <h2>{{ product.title }}</h2>
+          <div class="">
+    <h2 class="mb-2">{{ product.mainTitle }}</h2>
+    <h3>{{ product.description }}</h3>
     <p>{{ product.price }} 元</p>
   </div>
         </div>

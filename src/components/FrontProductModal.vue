@@ -127,14 +127,11 @@
               <Field
                 class="form-control"
                 name="message"
-              >
-              <textarea
-                  id="message"
-                  class="form-control"
-                  v-model="message"
-                  placeholder="例如：不要小黃瓜、不要沙拉醬、要加番茄醬、一份正常做，一份不要沙拉醬"
-                ></textarea>
-              </Field>
+                as="textarea"
+                id="message"
+                v-model="message"
+                placeholder="例如：不要小黃瓜、不要沙拉醬、要加番茄醬、一份正常做，一份不要沙拉醬"
+              />
             </div>
             <div class="modal-footer justify-content-between">
           <button
@@ -171,9 +168,6 @@ export default {
     }
   },
   methods: {
-    testBtn () {
-      console.log(this.selectedOption1)
-    },
     addToCartBtn (data) {
       let addid = this.tempProduct.id
       if (this.tempProduct.is_select === 1) {
@@ -182,7 +176,6 @@ export default {
       this.addToCart(addid, 1, this.message)
       this.productModalElement.hide()
       this.$refs.form.resetForm()
-      this.message = ''
     },
     findId () {
       if (this.selectedOption1 === '') {
