@@ -16,6 +16,7 @@
           class="btn position-absolute z-2 btn-porduct-add"
           @click="openModal(product)"
         ></button>
+        <div class="d-flex flex-column justify-content-between h-100">
         <div class="d-flex align-items-start align-items-lg-center h-100">
           <div class="box-img me-2 ratio ratio-1x1 product-img">
             <ProgressiveImage
@@ -26,7 +27,7 @@
             />
           </div>
           <div
-            class="box-word w-100 h-100 d-flex flex-column justify-content-between"
+            class="box-word w-100 d-flex flex-column justify-content-between"
           >
             <div class="product-word ls-15">
                 <h3>{{ product.mainTitle }}</h3>
@@ -63,6 +64,8 @@
         >
           <span class="material-symbols-rounded me-1">add_box</span>加入購物車
         </div>
+        </div>
+
       </div>
     </li>
   </ul>

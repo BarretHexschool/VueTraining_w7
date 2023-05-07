@@ -80,8 +80,12 @@
         </div>
           </VForm>
   </template>
+  <template v-if="product.is_select!==1">
+    <button type="btn" class="btn btn-secondary" @click="addToCartBtn">放入購物車</button>
+  </template>
         </div>
       </div>
+      {{ product }}
     </section>
   </main>
 </template>
@@ -185,7 +189,6 @@ export default {
       if (this.product.is_select === 1) {
         addid = this.findId()
       }
-      console.log(addid)
       this.addToCart(addid, 1, this.message)
     },
     findId () {
