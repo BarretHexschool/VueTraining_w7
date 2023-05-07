@@ -147,6 +147,7 @@ export default {
         .then((res) => {
           this.products = res.data.products
           this.isLoading = false
+          this.$router.push(this.$route.fullPath)
         })
         .catch((err) => {
           this.swalError(err)
