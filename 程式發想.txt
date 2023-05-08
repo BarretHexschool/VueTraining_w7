@@ -1,4 +1,4 @@
-1. getProduct 
+1. getProduct  
 2. 確認是否為套餐
 3. 如果是套餐，撈取所有的產品資料
 4. 搜尋 mainTitle 相同的 products

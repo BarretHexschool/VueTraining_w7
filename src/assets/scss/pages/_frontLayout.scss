@@ -1,3 +1,8 @@
+
+:root {
+    --swiper-theme-color: transparent !important;
+  }
+
 .nav-m-bg{
     background-image: url(@/assets/images/nav-m.png);
     background-size:100%;
@@ -68,6 +73,21 @@
     max-height: 200px;
     width: 100%;
     object-fit: cover;
+}
+.card-img{
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    top: -50%;
+    width: 100%;
+    border-radius: 16%;
+}
+.card-img-top{
+    width: 87%;
+    border-radius: 16%;
+}
+.card-body{
+    padding-top: 105px;
 }
 
 @include media-breakpoint-up(lg){
