@@ -50,6 +50,10 @@
         box-shadow: 0 5px 5px 1px #CF8516;
     }
 }
+.cardHover:hover{
+    transform: scale(1.01);
+    box-shadow: 0 0.5rem 1rem #CF8516;
+}
 .productCard button {
     line-height: 1.2;
 }

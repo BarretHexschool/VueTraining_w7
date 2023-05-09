@@ -4,12 +4,14 @@
   <main class="w-100 pb-3">
     <section class="common-hero container">
       <div class="row row-cols-1 row-cols-lg-2">
-        <img :src="product.imageUrl" class="img-fluid" alt="" />
-        <div>
+        <div class="col rounded-4 mb-3">
+          <img :src="`${product.imageUrl}?width=550`" class="img-fluid object-top rounded-4 w-100" :alt="product.mainTitle" />
+        </div>
+        <div class="col">
           <div class="">
-            <h2 class="mb-2">{{ product.mainTitle }}</h2>
-            <h3>{{ product.description }}</h3>
-            <p>{{ product.price }} 元</p>
+            <h2 class="mb-2 text-lg-start text-center">{{ product.mainTitle }}</h2>
+            <h3 class="fs-5">{{ product.description }}</h3>
+            <p class="fs-5 text-end">{{ product.price }} 元</p>
           </div>
           <VForm ref="form" @submit="addToCartBtn">
             <div v-if="product.select1" class="mb-2 radioBox">
@@ -29,6 +31,7 @@
                 rules="required"
                 v-model="selectedOption1"
               >
+              {{  product.select1 }}
                 <template v-for:="option in product.select1">
                   <option :value="option">{{ option }}</option>
                 </template>
@@ -80,12 +83,12 @@
             <div class="modal-footer justify-content-between">
               <button
                 type="button"
-                class="btn btn-danger"
+                class="btn btn-danger ls-15"
                 @click="$router.back(-1)"
               >
                 回上頁
               </button>
-              <button type="submit" class="btn btn-secondary">
+              <button type="submit" class="btn btn-secondary ls-15">
                 放入購物車
               </button>
             </div>
@@ -98,45 +101,56 @@
         :loop="true"
         :autoplay="true"
         :modules="modules"
-        class="mySwiper"
+        class="mySwiper px-3"
         style="padding-top: 120px"
         >
         <SwiperSlide
           v-for:="product in showProducts"
           class="card position-relative h-100  border-0"
         >
-          <RouterLink :to="`/product/${product.id}`">
-            <div class="card position-relative border border-2 border-secondary" style="margin-top: 120px">
-              <img
-                :src="product.imageUrl"
+        <div class="mb-3">
+
+          <RouterLink :to="`/product/${product.id}`" class="h-100">
+            <div class="card position-relative border border-2 border-secondary h-100 cardHover" style="margin-top: 120px">
+              <template v-if="product.imageUrl ==='' || product.imageUrl === undefined">
+                <img
+                src="/src/assets/images/no-photo.jpg"
                 class="card-img-top position-absolute top-0 start-50 translate-middle img-fluid"
                 :alt="product.title"
-              />
+                />
+              </template>
+              <template v-else>
+                <img
+                :src="`${product.imageUrl}?width=250`"
+                class="card-img-top position-absolute top-0 start-50 translate-middle img-fluid"
+                :alt="product.title"
+                />
+              </template>
 
-              <div class="card-body">
-                <p class="text-black">{{ product.mainTitle }}</p>
-                <div class="priceBox text-black">
-                  <div
-                    class="fs-5"
+              <div class="card-body text-center h-100">
+                <p class="text-black fs-5 mb-1">{{ product.mainTitle }}</p>
+                <div class="priceBox text-black mb-2 ">
+                  <h2
+                    class="fs-6"
                     v-if="product.price == product.origin_price"
                   >
                     ${{ product.price }} 元
-                  </div>
-                  <div
-                    class="d-flex flex-column flex-lg-row align-content-end align-items-end me-1"
+                </h2>
+                  <h2
+                    class="fs-6 fw-bold"
                     v-else
                   >
-                    <del class="fs-7 me-lg-1">
-                      原價：$ {{ product.origin_price }} 元</del
-                    >
-                    <span class="fs-5 fw-bold"
-                      >特價： $ {{ product.price }} 元</span
-                    >
-                  </div>
+                 特價： $ {{ product.price }} 元
+                    </h2>
                 </div>
+                <button type="submit" class="btn btn-secondary w-100 ls-2">
+                看更多
+              </button>
               </div>
+
             </div>
           </RouterLink>
+        </div>
         </SwiperSlide>
       </Swiper>
 
@@ -159,6 +173,7 @@ export default {
     return {
       product: [],
       products: [],
+      groupProducts: [],
       showProducts: [],
       isLoading: true,
       title: '鮮堡美食',
@@ -211,7 +226,8 @@ export default {
       this.$http
         .get(`${VITE_APP_URL}/v2/api/${VITE_APP_PATH}/products/all`)
         .then((res) => {
-          this.products = Object.values(
+          this.products = res.data.products
+          this.groupProducts = Object.values(
             this.gropuSetProducts(res.data.products)
           )
           this.showProducts = this.randomArray()
@@ -221,7 +237,7 @@ export default {
     },
     checkIsSet () {
       if (this.product.is_select === 1) {
-        this.product = this.products.find((item) => {
+        this.product = this.groupProducts.find((item) => {
           return item.mainTitle === this.title
         })
       }
@@ -318,7 +334,7 @@ export default {
       return array
     },
     randomArray () {
-      const random = this.shuffleArray(this.products)
+      const random = this.shuffleArray(this.groupProducts)
       if (random.length <= 12) {
         return random
       }
