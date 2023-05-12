@@ -3,17 +3,17 @@
 
   <main class="w-100 pb-3">
     <section class="common-hero container">
-      <div class="row row-cols-1 row-cols-lg-2">
+      <div class="row row-cols-1 row-cols-lg-2 h-100">
         <div class="col rounded-4 mb-3">
           <img :src="`${product.imageUrl}?width=550`" class="img-fluid object-top rounded-4 w-100" :alt="product.mainTitle" />
         </div>
-        <div class="col">
-          <div class="">
+        <div class="col d-flex flex-column justify-content-between">
+          <div>
             <h2 class="mb-2 text-lg-start text-center">{{ product.mainTitle }}</h2>
             <h3 class="fs-5">{{ product.description }}</h3>
             <p class="fs-5 text-end">{{ product.price }} 元</p>
           </div>
-          <VForm ref="form" @submit="addToCartBtn">
+          <VForm ref="form" @submit="addToCartBtn" class="mb-3">
             <div v-if="product.select1" class="mb-2 radioBox">
               <p class="mb-0">主食選擇：</p>
               <ErrorMessage name="selectedOption1"
@@ -215,6 +215,7 @@ export default {
             this.title = this.product.mainTitle
             this.selectedOption1 = this.product.select1
             this.selectedOption2 = this.product.select2
+            this.checkIsSet()
           })
           .catch((err) => {
             this.swalError(err.response.data.message)
