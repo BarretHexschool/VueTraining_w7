@@ -12,15 +12,15 @@
 希望可以藉由這樣的點餐系統產生，讓客人可以更方便的點餐，也提升櫃台的出餐效率。<br/>
 
 #### 首頁
-![index page view](assets/images/about/indexView.jpg)
+![index page view](src/assets/images/about/indexView.jpg)
 #### 產品列表
-![products list page view](assets/images/about/productsView.jpg)
+![products list page view](src/assets/images/about/productsView.jpg)
 #### 單一產品
-![single product page view](assets/images/about/singleProductView.jpg)
+![single product page view](src/assets/images/about/singleProductView.jpg)
 #### 簡單點
-![we can help](assets/images/about/drawView.jpg)
+![we can help](src/assets/images/about/drawView.jpg)
 #### 訂單完成
-![order page view](assets/images/about/orderView.jpg)
+![order page view](src/assets/images/about/orderView.jpg)
 
 
 ## 網站功能
