@@ -216,6 +216,9 @@ export default {
   mounted () {
     this.getCartData()
     document.title = '鮮堡漢堡 文化店 | 早餐轉轉轉'
+    if (document.readyState === 'complete') {
+      this.isLoading = false
+    }
   }
 }
 </script>
