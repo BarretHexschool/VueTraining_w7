@@ -7,14 +7,21 @@
 相關連結：[Site Map 網站地圖](https://whimsical.com/sitemap-2cPys6SMYZe37V4pSNay3Z)、[whimsical 線稿圖](https://whimsical.com/2MFuUh1xvd94cMyCesy5Rs)
 </br>
 
-### 作品緣由
+## 作品緣由
 家裡經營早餐店，在忙碌時希望客人可以手寫點餐，有些客人還是習慣直接用說的點餐。在忙碌時會不小心遺漏，以導致客訴。<br/>
 希望可以藉由這樣的點餐系統產生，讓客人可以更方便的點餐，也提升櫃台的出餐效率。<br/>
 
-![Alt text](src/assets/images/feature/Frame%205.png)
-![Alt text](src/assets/images/banner/JoinSportImage.png)
-![Alt text](src/assets/images/banner/JoinSportImage2.png)
-![Alt text](src/assets/images/banner/JoinSportImage3.png)
+#### 首頁
+![index page view](assets/images/about/indexView.jpg)
+#### 產品列表
+![products list page view](assets/images/about/productsView.jpg)
+#### 單一產品
+![single product page view](assets/images/about/singleProductView.jpg)
+#### 簡單點
+![we can help](assets/images/about/drawView.jpg)
+#### 訂單完成
+![order page view](assets/images/about/orderView.jpg)
+
 
 ## 網站功能
 ### 顧客
@@ -34,8 +41,8 @@
 - Vue Router 建構路由
 - Pinia 全局狀態管理
 - 元件拆分與使用
-- Vue axios 串接 RESTful API 資料
 - Bootstrap 完成 RWD 版型
+- Vue axios 串接 RESTful API 資料
 - Vuelidate 表單驗證
 
 </br>
@@ -47,6 +54,6 @@
 - 感謝六角學院，提供設計師媒合平台
 </br>
 
-## Contact me 聯繫我
+## 聯繫我
 - Email：jianhong.liou@gmail.com
 
