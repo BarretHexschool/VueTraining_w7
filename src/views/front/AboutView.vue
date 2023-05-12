@@ -1,5 +1,5 @@
 <template>
-  <LoadingDesign :is-Loading="isLoading"></LoadingDesign>
+  <LoadingDesign :is-Loading="isLoading"/>
   <main class="w-100 position-relative z-2">
     <section class="container common-hero">
       <div class="row flex-column flex-lg-row mb-sm-96 mb-4">

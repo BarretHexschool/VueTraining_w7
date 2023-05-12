@@ -12,7 +12,7 @@
           }"
         >
           <div class="container">
-            <router-link @click="navClose()" class="nav-link" to="/"
+            <RouterLink @click="navClose()" class="nav-link" to="/"
               ><img
                 src="/src/assets/images/logo.png"
                 alt="Logo"
@@ -24,7 +24,7 @@
                 alt="Logo"
                 height="22"
                 class="d-inline-block align-text-top d-lg-none"
-            /></router-link>
+            /></RouterLink>
             <button
               class="navbar-toggler border-0 position-relative"
               type="button"
@@ -59,25 +59,25 @@
             >
               <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-center">
                 <li class="nav-item rounded rounded-pill mb-6 mb-lg-0 mx-2">
-                  <router-link
+                  <RouterLink
                     @click="navClose()"
                     class="nav-link fs-6-btn ls-3 font-black p-1 py-2 px-4"
                     to="/products"
-                    >鮮堡美食</router-link
+                    >鮮堡美食</RouterLink
                   >
                 </li>
                 <li class="nav-item rounded rounded-pill mb-6 mb-lg-0 mx-2">
-                  <router-link
+                  <RouterLink
                     @click="navClose()"
                     class="nav-link fs-6-btn ls-3 p-1 py-2 px-4"
                     to="/about"
-                    >關於我們</router-link
+                    >關於我們</RouterLink
                   >
                 </li>
                 <li
                   class="nav-item rounded rounded-pill mb-6 mb-lg-0 mx-2"
                 >
-                  <router-link
+                  <RouterLink
                     @click="navClose()"
                     to="/draw"
                     class="fs-6-btn btn d-flex justify-content-center align-items-center ls-3 p-1 py-2 px-4 border-0"
@@ -97,12 +97,12 @@
                       />
                     </div>
                     簡單點
-                  </router-link>
+                  </RouterLink>
                 </li>
                 <li
                   class="nav-item rounded rounded-pill position-relative nav-m-height mb-lg-0"
                 >
-                  <router-link
+                  <RouterLink
                     @click="navClose()"
                     to="/cart"
                     class="fs-6-btn btn d-flex justify-content-center align-items-center ls-3 p-1 py-2 px-4 bg-secondary rounded-pill border-0"
@@ -127,7 +127,7 @@
                     </div>
 
                     購物車
-                  </router-link>
+                  </RouterLink>
                 </li>
               </ul>
             </div>
@@ -153,6 +153,7 @@ import { RouterView } from 'vue-router'
 import Collapse from 'bootstrap/js/dist/collapse.js'
 import { mapActions, mapState } from 'pinia'
 import cartStore from '@/stores/useCartStore'
+import { useProductStore } from '@/stores/useFrontProducts'
 let navCollapse = ''
 export default {
   data () {
@@ -177,12 +178,14 @@ export default {
         this.isScrolled = false
       }
     },
+    ...mapActions(useProductStore, ['getProducts']),
     ...mapActions(cartStore, ['getCartData'])
   },
   components: {
     RouterView
   },
   computed: {
+    ...mapState(useProductStore, ['products']),
     ...mapState(cartStore, ['carts'])
   },
   mounted () {
@@ -190,6 +193,7 @@ export default {
       toggle: false
     })
     window.addEventListener('scroll', this.handleScroll)
+    this.getProducts()
     this.getCartData()
   }
 }

@@ -11,7 +11,7 @@
       <span class="border-end-12"></span>
     </div>
   </section> -->
-  <LoadingDesign :is-Loading="isLoading"></LoadingDesign>
+  <LoadingDesign :is-Loading="isLoading"/>
 
   <section class="position-absolute z-1 w-100">
     <img
@@ -74,7 +74,7 @@
         </div>
         <ul class="row row-cols-1 row-cols-md-2 row-cols-lg-3 list-unstyled">
           <li class="col mb-4 text-center productCard" v-for="(product ,index) in homeProducts" :key="index">
-            <router-link :to="`/products#${product.link}`" class="btn mw-416">
+            <RouterLink :to="`/products#${product.link}`" class="btn mw-416">
               <div class="card border-0 align-items-center">
                 <div class="card-header position-relative mb-3 mb-md-4 border-0 w-100">
                   <div class="border-top-104"></div>
@@ -101,7 +101,7 @@
                   <div class="border-bottom-104"></div>
                 </div>
               </div>
-            </router-link>
+            </RouterLink>
           </li>
         </ul>
       </div>
@@ -131,7 +131,7 @@
           </div>
           <img src="/src/assets/images/hero2-m.png" class="mb-3 w-100" alt="" />
           <div class="container text-center">
-            <router-link
+            <RouterLink
               to="/draw"
               class="btn btn-secondary rounded-pill fs-6 ls-3 px-4 py-2 nav-item"
               role="button"
@@ -151,7 +151,7 @@
                 srcset=""
               />
               讓我幫你選早餐吧
-            </router-link>
+            </RouterLink>
           </div>
         </div>
       </div>
@@ -171,7 +171,7 @@
               <p class="fs-6 ls-15 mb-6">
                 每天早上都要煩惱吃什麼嗎？除了日復一日的餐點，來試試樂透的早餐吧！
               </p>
-              <router-link
+              <RouterLink
                 to="/draw"
                 class="btn btn-secondary rounded-pill fs-6 ls-3 px-4 py-2 nav-item"
                 role="button"
@@ -191,7 +191,7 @@
                   srcset=""
                 />
                 讓我幫你選早餐吧
-              </router-link>
+              </RouterLink>
             </div>
           </div>
         </div>

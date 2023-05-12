@@ -53,8 +53,8 @@
     <button class="btn btn-danger" type="button" @click="swalClearAllCart">
       清空商品
     </button>
-    <router-link class="btn btn-secondary" type="button" to="/products"
-      >想點更多</router-link
+    <RouterLink class="btn btn-secondary" type="button" to="/products"
+      >想點更多</RouterLink
     >
   </div>
 </template>

@@ -2,12 +2,12 @@
   <header
     class="navbar navbar-dark sticky-top bg-primary flex-md-nowrap p-0 shadow"
   >
-    <router-link
+    <RouterLink
       to="/admin"
       class="navbar-brand col-md-3 col-lg-2 me-0 px-3 py-2 fs-6"
     >
       <img src="/src/assets/images/logo.png" alt="Logo" height="35" />
-    </router-link>
+    </RouterLink>
 
     <button
       class="navbar-toggler position-absolute d-md-none collapsed"
@@ -35,28 +35,28 @@
         <div class="position-sticky pt-3 sidebar-sticky">
           <ul class="nav flex-column">
             <li>
-              <router-link to="/" class=" nav-item nav-link active d-flex align-items-center" aria-current="page">
+              <RouterLink to="/" class=" nav-item nav-link active d-flex align-items-center" aria-current="page">
                 <span class="material-symbols-rounded me-1"> home </span>
                 返回前台
-              </router-link>
+              </RouterLink>
             </li>
             <li>
-              <router-link to="/admin/orders" class=" nav-item nav-link active d-flex align-items-center" aria-current="page">
+              <RouterLink to="/admin/orders" class=" nav-item nav-link active d-flex align-items-center" aria-current="page">
                 <span class="material-symbols-rounded me-1"> receipt_long </span>
                 訂單列表
-              </router-link>
+              </RouterLink>
             </li>
             <li>
-              <router-link to="/admin/products" class=" nav-item nav-link active d-flex align-items-center" aria-current="page">
+              <RouterLink to="/admin/products" class=" nav-item nav-link active d-flex align-items-center" aria-current="page">
                 <span class="material-symbols-rounded me-1"> fastfood </span>
                 產品列表
-              </router-link>
+              </RouterLink>
             </li>
             <li>
-              <router-link to="/admin/news" class=" nav-item nav-link active d-flex align-items-center" aria-current="page">
+              <RouterLink to="/admin/news" class=" nav-item nav-link active d-flex align-items-center" aria-current="page">
                 <span class="material-symbols-rounded me-1"> list_alt </span>
                 最新消息
-              </router-link>
+              </RouterLink>
             </li>
           </ul>
         </div>

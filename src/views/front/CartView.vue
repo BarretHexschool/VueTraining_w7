@@ -1,4 +1,5 @@
 <template>
+  <LoadingDesign :is-Loading="isLoading"/>
   <main class="w-100 position-relative z-2">
     <section class="common-hero container">
       <!-- progress bar -->
@@ -156,9 +157,7 @@ const { VITE_APP_URL, VITE_APP_PATH } = import.meta.env
 export default {
   data () {
     return {
-      products: [],
-      productID: '',
-      finalTotal: '',
+      isLoading: true,
       form: {
         user: {
           name: '',
@@ -191,7 +190,7 @@ export default {
     ...mapActions(sweetAlert, ['swalError', 'swalToastTopEnd'])
   },
   computed: {
-    ...mapState(cartStore, ['carts'])
+    ...mapState(cartStore, ['carts', 'finalTotal'])
   },
   components: {
     FrontCart,

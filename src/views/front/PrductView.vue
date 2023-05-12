@@ -159,10 +159,11 @@
 </template>
 <script>
 import LoadingDesign from '@/components/LoadingDesign.vue'
+import { useProductStore } from '@/stores/useFrontProducts'
 import cartStore from '@/stores/useCartStore'
 import sweetAlertStore from '@/stores/useSweetAlertStore'
 import { Field, Form, ErrorMessage } from 'vee-validate'
-import { mapActions } from 'pinia'
+import { mapActions, mapState } from 'pinia'
 import { Swiper, SwiperSlide } from 'swiper/vue'
 import 'swiper/css'
 import 'swiper/css/navigation'
@@ -172,10 +173,7 @@ export default {
   data () {
     return {
       product: [],
-      products: [],
-      groupProducts: [],
       showProducts: [],
-      isLoading: true,
       title: '鮮堡美食',
       drinkType: ['冰', '冷(去冰)', '溫'],
       message: '',
@@ -209,29 +207,26 @@ export default {
   methods: {
     getProduct () {
       const { id } = this.$route.params
-      this.$http
-        .get(`${VITE_APP_URL}/v2/api/${VITE_APP_PATH}/product/${id}`)
-        .then((res) => {
-          this.product = res.data.product
-          this.title = this.product.mainTitle
-          this.selectedOption1 = this.product.select1
-          this.selectedOption2 = this.product.select2
-          this.getAllProducts()
-        })
-        .catch((err) => {
-          this.swalError(err.response.data.message)
-        })
+      if (id !== undefined) {
+        this.$http
+          .get(`${VITE_APP_URL}/v2/api/${VITE_APP_PATH}/product/${id}`)
+          .then((res) => {
+            this.product = res.data.product
+            this.title = this.product.mainTitle
+            this.selectedOption1 = this.product.select1
+            this.selectedOption2 = this.product.select2
+          })
+          .catch((err) => {
+            this.swalError(err.response.data.message)
+          })
+      }
     },
     getAllProducts () {
       this.$http
         .get(`${VITE_APP_URL}/v2/api/${VITE_APP_PATH}/products/all`)
         .then((res) => {
           this.products = res.data.products
-          this.groupProducts = Object.values(
-            this.gropuSetProducts(res.data.products)
-          )
-          this.showProducts = this.randomArray()
-          this.checkIsSet()
+
           this.isLoading = false
         })
     },
@@ -241,61 +236,6 @@ export default {
           return item.mainTitle === this.title
         })
       }
-    },
-    gropuSetProducts (setProducts) {
-      const setGroup = {}
-      setProducts.forEach((item) => {
-        const { mainTitle, select1, select2 } = item
-        if (item.is_select === 1) {
-          if (setGroup[mainTitle] === undefined) {
-            setGroup[mainTitle] = {
-              ...item
-            }
-          } else {
-            if (select1 !== undefined) {
-              if (typeof setGroup[mainTitle].select1 === 'string') {
-                if (setGroup[mainTitle].select1 !== select1) {
-                  setGroup[mainTitle].select1 = [
-                    setGroup[mainTitle].select1,
-                    select1
-                  ]
-                }
-              } else {
-                if (!this.checkHas(setGroup[mainTitle].select1, select1)) {
-                  setGroup[mainTitle].select1 = [
-                    ...setGroup[mainTitle].select1,
-                    select1
-                  ]
-                }
-              }
-            }
-
-            if (typeof setGroup[mainTitle].select2 === 'string') {
-              if (setGroup[mainTitle].select2 !== select2) {
-                setGroup[mainTitle].select2 = [
-                  setGroup[mainTitle].select2,
-                  select2
-                ]
-              }
-            } else {
-              if (!this.checkHas(setGroup[mainTitle].select2, select2)) {
-                setGroup[mainTitle].select2 = [
-                  ...setGroup[mainTitle].select2,
-                  select2
-                ]
-              }
-            }
-          }
-        } else {
-          setGroup[mainTitle] = {
-            ...item
-          }
-        }
-      })
-      return setGroup
-    },
-    checkHas (arr, find) {
-      return arr.includes(find)
     },
     addToCartBtn () {
       let addid = this.product.id
@@ -343,8 +283,13 @@ export default {
     ...mapActions(cartStore, ['addToCart']),
     ...mapActions(sweetAlertStore, ['swalError', 'swalToastTopEnd'])
   },
+  computed: {
+    ...mapState(useProductStore, ['products', 'groupProducts', 'isLoading'])
+  },
   mounted () {
     this.getProduct()
+    this.showProducts = this.randomArray()
+    this.checkIsSet()
     document.title = `鮮堡漢堡 文化店 | ${this.title} `
   },
   watch: {

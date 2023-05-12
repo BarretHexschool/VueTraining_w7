@@ -1,5 +1,5 @@
 <template>
-  <LoadingDesign :is-Loading="isLoading"></LoadingDesign>
+  <LoadingDesign :is-Loading="isLoading" />
   <main class="w-100 position-relative z-2">
     <section class="common-hero container">
       <h2 class="mb-1ls-2 text-sm-start text-center">
@@ -104,8 +104,8 @@
             <button class="btn btn-danger" type="button" @click="swalClearAllCart">
               清空商品
             </button>
-            <router-link class="btn btn-secondary" type="button" to="/products"
-              >想點更多</router-link
+            <RouterLink class="btn btn-secondary" type="button" to="/products"
+              >想點更多</RouterLink
             >
           </div>
         </div>
@@ -118,6 +118,7 @@ import { mapActions, mapState } from 'pinia'
 import cartStore from '@/stores/useCartStore'
 import sweetAlertStore from '@/stores/useSweetAlertStore'
 import LoadingDesign from '@/components/LoadingDesign.vue'
+import { useProductStore } from '@/stores/useFrontProducts'
 const { VITE_APP_URL, VITE_APP_PATH } = import.meta.env
 export default {
   data () {
@@ -136,7 +137,6 @@ export default {
       checkAll: false,
       canStartLottery: false,
       winner: null,
-      products: [],
       productID: '',
       loadingItem: ''
     }
@@ -181,17 +181,6 @@ export default {
       }, lotterySpeed)
       this.selectedCategorys = []
     },
-    getProduct () {
-      this.$http
-        .get(`${VITE_APP_URL}/v2/api/${VITE_APP_PATH}/products/all`)
-        .then((res) => {
-          this.products = res.data.products
-          this.isLoading = false
-        })
-        .catch((err) => {
-          this.swalError(err)
-        })
-    },
     addToCart (id, qty = 1) {
       this.selectdeProducts = []
       const data = {
@@ -218,13 +207,13 @@ export default {
     ...mapActions(sweetAlertStore, ['swalError', 'swalToastTopEnd'])
   },
   computed: {
+    ...mapState(useProductStore, ['products']),
     ...mapState(cartStore, ['finalTotal', 'carts'])
   },
   components: {
     LoadingDesign
   },
   mounted () {
-    this.getProduct()
     this.getCartData()
     document.title = '鮮堡漢堡 文化店 | 早餐轉轉轉'
   }

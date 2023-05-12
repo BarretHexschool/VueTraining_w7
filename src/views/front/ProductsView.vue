@@ -1,6 +1,5 @@
 <template>
-  <LoadingDesign :is-loading="isLoading"></LoadingDesign>
-
+  <LoadingDesign :is-loading="isLoading" />
   <main class="w-100 position-relative pb-3">
     <section class="common-hero container">
       <div
@@ -14,22 +13,46 @@
       </div>
       <ul class="list-unstyled overflow-x-auto productsCatalogNav">
         <li>
-          <router-link to="/products#selectSet" class="btn btn-secondary rounded-4 px-md-4 p-2 me-2 text-nowrap ls-15">嚴選套餐</router-link>
+          <RouterLink
+            to="/products#selectSet"
+            class="btn btn-secondary rounded-4 px-md-4 p-2 me-2 text-nowrap ls-15"
+            >嚴選套餐</RouterLink
+          >
         </li>
         <li>
-          <router-link to="/products#hamburger"  class="btn btn-secondary rounded-4 px-md-4 p-2 me-2 text-nowrap ls-15">漢堡</router-link>
+          <RouterLink
+            to="/products#hamburger"
+            class="btn btn-secondary rounded-4 px-md-4 p-2 me-2 text-nowrap ls-15"
+            >漢堡</RouterLink
+          >
         </li>
         <li>
-          <router-link to="/products#toast"  class="btn btn-secondary rounded-4 px-md-4 p-2 me-2 text-nowrap ls-15">現烤吐司</router-link>
+          <RouterLink
+            to="/products#toast"
+            class="btn btn-secondary rounded-4 px-md-4 p-2 me-2 text-nowrap ls-15"
+            >現烤吐司</RouterLink
+          >
         </li>
         <li>
-          <router-link to="/products#sandwich"  class="btn btn-secondary rounded-4 px-md-4 p-2 me-2 text-nowrap ls-15">現烤總匯</router-link>
+          <RouterLink
+            to="/products#sandwich"
+            class="btn btn-secondary rounded-4 px-md-4 p-2 me-2 text-nowrap ls-15"
+            >現烤總匯</RouterLink
+          >
         </li>
         <li>
-          <router-link to="/products#snack"  class="btn btn-secondary rounded-4 px-md-4 p-2 me-2 text-nowrap ls-15">中西式點心</router-link>
+          <RouterLink
+            to="/products#snack"
+            class="btn btn-secondary rounded-4 px-md-4 p-2 me-2 text-nowrap ls-15"
+            >中西式點心</RouterLink
+          >
         </li>
         <li>
-          <router-link to="/products#omelet"  class="btn btn-secondary rounded-4 px-md-4 p-2 me-2 text-nowrap ls-15">蛋餅、河粉蛋餅</router-link>
+          <RouterLink
+            to="/products#omelet"
+            class="btn btn-secondary rounded-4 px-md-4 p-2 me-2 text-nowrap ls-15"
+            >蛋餅、河粉蛋餅</RouterLink
+          >
         </li>
       </ul>
       <h2
@@ -56,7 +79,7 @@
         漢堡
       </h2>
       <FrontProductsList
-      :open-modal="openModal"
+        :open-modal="openModal"
         :products="products"
         category="漢堡"
       ></FrontProductsList>
@@ -70,7 +93,7 @@
         現烤吐司
       </h2>
       <FrontProductsList
-      :open-modal="openModal"
+        :open-modal="openModal"
         :products="products"
         category="現烤吐司"
       ></FrontProductsList>
@@ -84,7 +107,7 @@
         現烤總匯
       </h2>
       <FrontProductsList
-      :open-modal="openModal"
+        :open-modal="openModal"
         :products="products"
         category="現烤總匯"
       ></FrontProductsList>
@@ -98,7 +121,7 @@
         中西式點心
       </h2>
       <FrontProductsList
-      :open-modal="openModal"
+        :open-modal="openModal"
         :products="products"
         category="中西式點心"
       ></FrontProductsList>
@@ -112,11 +135,15 @@
         蛋餅、河粉蛋餅
       </h2>
       <FrontProductsList
-      :open-modal="openModal"
+        :open-modal="openModal"
         :products="products"
         category="蛋餅、河粉蛋餅"
       ></FrontProductsList>
-      <FrontProductModal :temp-product="tempProduct" :products="products" :product-modal-element="productModalElement"></FrontProductModal>
+      <FrontProductModal
+        :temp-product="tempProduct"
+        :products="products"
+        :product-modal-element="productModalElement"
+      />
     </section>
   </main>
 </template>
@@ -124,49 +151,43 @@
 import FrontProductsList from '@/components/FrontProductsList.vue'
 import FrontProductModal from '@/components/FrontProductModal.vue'
 import LoadingDesign from '@/components/LoadingDesign.vue'
+import { useProductStore } from '@/stores/useFrontProducts'
 import cartStore from '@/stores/useCartStore'
 import sweetAlertStore from '@/stores/useSweetAlertStore'
 import Modal from 'bootstrap/js/dist/modal.js'
-import { mapActions } from 'pinia'
-
-const { VITE_APP_URL, VITE_APP_PATH } = import.meta.env
+import { mapActions, mapState } from 'pinia'
 export default {
   data () {
     return {
-      products: [],
-      isLoading: true,
-      tempProduct: {
-      },
+      tempProduct: {},
       productModalElement: ''
     }
   },
   methods: {
-    getProduct () {
-      this.$http
-        .get(`${VITE_APP_URL}/v2/api/${VITE_APP_PATH}/products/all`)
-        .then((res) => {
-          this.products = res.data.products
-          this.isLoading = false
-          this.$router.push(this.$route.fullPath)
-        })
-        .catch((err) => {
-          this.swalError(err)
-        })
-    },
     openModal (item) {
       this.tempProduct = { ...item }
       this.productModalElement.show()
     },
+    ...mapActions(useProductStore, ['getProducts']),
     ...mapActions(cartStore, ['addToCart']),
     ...mapActions(sweetAlertStore, ['swalError', 'swalToastTopEnd'])
   },
+  computed: {
+    ...mapState(useProductStore, ['products', 'isLoading'])
+  },
   mounted () {
     document.title = '鮮堡漢堡 文化店 | 美味鮮堡'
-    this.getProduct()
-    this.productModalElement = new Modal(document.querySelector('#productModal'), {
-      keyboard: false
-    })
+    this.productModalElement = new Modal(
+      document.querySelector('#productModal'),
+      {
+        keyboard: false
+      }
+    )
     this.productModalElement.hide()
+    this.$router.push(this.$route.fullPath)
+    if (document.readyState === 'complete') {
+      this.$router.push(this.$route.fullPath)
+    }
   },
   components: {
     LoadingDesign,
