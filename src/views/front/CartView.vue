@@ -130,6 +130,7 @@
                 <label for="message" class="form-label">備註留言</label>
                 <textarea
                   id="message"
+                  name="message"
                   class="form-control"
                   placeholder="如果有任何餐點製作需求，您可在此留言，我們將盡量配合。"
                   cols="30"
