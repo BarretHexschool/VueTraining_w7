@@ -50,7 +50,10 @@
         box-shadow: 0 5px 5px 1px #CF8516;
     }
 }
-.cardHover:hover{
+.swiperCard{
+    margin-top: 72px;
+}
+.swiperCard:hover{
     transform: scale(1.01);
     box-shadow: 0 0.5rem 1rem #CF8516;
 }
@@ -91,7 +94,10 @@
     border-radius: 16%;
 }
 .card-body{
-    padding-top: 105px;
+    padding-top: 77px;
+}
+.mySwiper{
+    padding-top: 0;
 }
 
 @include media-breakpoint-up(lg){
@@ -126,7 +132,15 @@
             padding-bottom: 16px;
             top:110px;
         }      
-
+        .card-body{
+            padding-top: 105px;
+        }
+        .mySwiper{
+            padding-top: 32px;
+        }
+        .swiperCard{
+            margin-top: 120px;
+        }
 }
 
 //productsView

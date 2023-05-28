@@ -295,10 +295,9 @@ export default {
     LoadingDesign
   },
   mounted () {
+    document.title = '鮮堡漢堡 文化店'
     this.getNews()
-    if (document.readyState === 'complete') {
-      this.isLoading = false
-    }
+    this.isLoading = false
   }
 }
 </script>

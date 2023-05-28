@@ -1,5 +1,6 @@
 import { defineStore } from 'pinia'
 import axios from 'axios'
+import router from '../router'
 import sweetAlertStore from './useSweetAlertStore'
 const sweetAlert = sweetAlertStore()
 const { VITE_APP_URL, VITE_APP_PATH } = import.meta.env
@@ -8,10 +9,17 @@ export const useProductStore = defineStore('useProductStore', {
     return {
       products: [],
       groupProducts: [],
-      isLoading: true
+      isLoading: true,
+      actionPage: null
     }
   },
   actions: {
+    loadingStatue (state) {
+      this.isLoading = state
+    },
+    getActionPage () {
+      this.actionPage = router.options.history.location
+    },
     getProducts () {
       axios
         .get(`${VITE_APP_URL}/v2/api/${VITE_APP_PATH}/products/all`)
@@ -20,6 +28,10 @@ export const useProductStore = defineStore('useProductStore', {
           this.groupProducts = Object.values(
             this.gropuSetProducts(res.data.products)
           )
+          this.getActionPage()
+          if (this.actionPage.includes('products')) {
+            router.push(this.actionPage)
+          }
           this.isLoading = false
         })
         .catch((err) => {

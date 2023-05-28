@@ -13,7 +13,7 @@
       <div class="row row-cols-1 row-cols-lg-2 p-1 pb-6">
         <div class="col">
           <div
-            class="row justify-content-center bg-third rounded rounded-4 rounded-lg-5 p-4 p-md-6"
+            class="d-flex flex-column justify-content-center bg-third rounded rounded-4 rounded-lg-5 p-4 p-md-6"
           >
             <h5>有特別想要的餐點類別嗎？（預設全選）</h5>
             <div class="form-group mb-2">
@@ -30,7 +30,6 @@
                   :id="category"
                   :value="category"
                   v-model="selectedCategorys"
-                  @change="watchSelectedCategorys"
                 />
                 <label class="form-check-label" :for="category">{{
                   category
@@ -42,9 +41,12 @@
       @click="startLottery"
     >按我開始，決定今天吃什麼
     </button>
-    <div class="mt-5 fs-5" v-if="winner">
+    <p class="mt-5 fs-5" v-if="winner">
+      <span class="text-danger">
+        *會自動幫您放入購物車*
+      </span><br/>
       您覺得今天吃 『 {{ winner.title }} 』 好嗎？
-    </div>
+    </p>
           </div>
         </div>
         <div class="col">
@@ -117,8 +119,8 @@
 import { mapActions, mapState } from 'pinia'
 import cartStore from '@/stores/useCartStore'
 import sweetAlertStore from '@/stores/useSweetAlertStore'
-import LoadingDesign from '@/components/LoadingDesign.vue'
 import { useProductStore } from '@/stores/useFrontProducts'
+import LoadingDesign from '@/components/LoadingDesign.vue'
 const { VITE_APP_URL, VITE_APP_PATH } = import.meta.env
 export default {
   data () {
@@ -134,23 +136,15 @@ export default {
       ],
       selectedCategorys: [],
       selectdeProducts: [],
-      checkAll: false,
-      canStartLottery: false,
       winner: null,
-      productID: '',
       loadingItem: ''
     }
   },
   methods: {
-    onCheckAllChange () {
-      this.selectedCategorys = this.checkAll ? [...this.categorys] : []
-    },
-    watchSelectedCategorys () {
-      if (this.selectedCategorys.length === 0 || this.selectedCategorys.length === this.categorys.length) {
-        this.checkAll = true
-      } else {
-        this.checkAll = false
-      }
+    filterProduct () {
+      return this.products.filter(product =>
+        this.selectedCategorys.findIndex(e => e === product.category) !== -1
+      )
     },
     startLottery () {
       if (this.selectedCategorys.length !== 0) {
@@ -186,24 +180,19 @@ export default {
       const data = {
         product_id: id,
         qty,
-        message: '抽抽樂抽到的'
+        message: '簡單點自動加入'
       }
       this.$http
         .post(`${VITE_APP_URL}/v2/api/${VITE_APP_PATH}/cart`, { data })
         .then((res) => {
-          this.swalToastTopEnd('已幫您自動加入購物車')
           this.getCartData()
+          this.swalToastTopEnd('已幫您自動加入購物車')
         })
         .catch((err) => {
           this.swalError(err)
         })
     },
-    filterProduct () {
-      return this.products.filter(product =>
-        this.selectedCategorys.findIndex(e => e === product.category) !== -1
-      )
-    },
-    ...mapActions(cartStore, ['getCartData', 'addToCart', 'deleteOneCart', 'swalClearAllCart']),
+    ...mapActions(cartStore, ['getCartData', 'deleteOneCart', 'swalClearAllCart']),
     ...mapActions(sweetAlertStore, ['swalError', 'swalToastTopEnd'])
   },
   computed: {

@@ -3,15 +3,21 @@
 
   <main class="w-100 pb-3">
     <section class="common-hero container">
-      <div class="row row-cols-1 row-cols-lg-2 h-100">
+      <div class="row row-cols-1 row-cols-lg-2">
         <div class="col rounded-4 mb-3">
-          <img :src="`${product.imageUrl}?width=550`" class="img-fluid object-top rounded-4 w-100" :alt="product.mainTitle" />
+          <img
+            :src="`${product.imageUrl}?width=550`"
+            class="img-fluid object-top rounded-4 w-100"
+            :alt="product.mainTitle"
+          />
         </div>
         <div class="col d-flex flex-column justify-content-between">
           <div>
-            <h2 class="mb-2 text-lg-start text-center">{{ product.mainTitle }}</h2>
+            <h2 class="mb-2 text-lg-start text-center">
+              {{ product.mainTitle }}
+            </h2>
             <h3 class="fs-5">{{ product.description }}</h3>
-            <p class="fs-5 text-end">{{ product.price }} 元</p>
+            <p class="fs-5 text-end mb-2 mb-lg-0">{{ product.price }} 元</p>
           </div>
           <VForm ref="form" @submit="addToCartBtn" class="mb-3">
             <div v-if="product.select1" class="mb-2 radioBox">
@@ -21,7 +27,6 @@
                   *請選擇您所想要的主食
                 </p></ErrorMessage
               >
-
               <Field
                 id="selectedOption1"
                 name="selectedOption1"
@@ -31,7 +36,7 @@
                 rules="required"
                 v-model="selectedOption1"
               >
-              {{  product.select1 }}
+                {{ product.select1 }}
                 <template v-for:="option in product.select1">
                   <option :value="option">{{ option }}</option>
                 </template>
@@ -95,65 +100,69 @@
           </VForm>
         </div>
       </div>
-        <Swiper
+      <Swiper
         :breakpoints="swiperBreakpoints"
         :navigation="false"
         :loop="true"
-        :autoplay="true"
+        :autoplay="{
+          delay: 2500,
+          disableOnInteraction: false
+        }"
         :modules="modules"
         class="mySwiper px-3"
-        style="padding-top: 120px"
-        >
+      >
         <SwiperSlide
           v-for:="product in showProducts"
-          class="card position-relative h-100  border-0"
+          class="card position-relative border-0"
         >
-        <div class="mb-3">
+          <div class="mb-3">
+            <a href="#" @click.prevent="swiperClick(product.id)">
+              <div
+                class="card position-relative border border-2 border-secondary swiperCard"
+              >
+                <template
+                  v-if="
+                    product.imageUrl === '' || product.imageUrl === undefined
+                  "
+                >
+                  <img
+                    src="/src/assets/images/no-photo.jpg"
+                    class="card-img-top position-absolute top-0 start-50 translate-middle img-fluid"
+                    :alt="product.title"
+                  />
+                </template>
+                <template v-else>
+                  <img
+                    :src="`${product.imageUrl}?width=250`"
+                    class="card-img-top position-absolute top-0 start-50 translate-middle img-fluid"
+                    :alt="product.title"
+                  />
+                </template>
 
-          <RouterLink :to="`/product/${product.id}`" class="h-100">
-            <div class="card position-relative border border-2 border-secondary h-100 cardHover" style="margin-top: 120px">
-              <template v-if="product.imageUrl ==='' || product.imageUrl === undefined">
-                <img
-                src="/src/assets/images/no-photo.jpg"
-                class="card-img-top position-absolute top-0 start-50 translate-middle img-fluid"
-                :alt="product.title"
-                />
-              </template>
-              <template v-else>
-                <img
-                :src="`${product.imageUrl}?width=250`"
-                class="card-img-top position-absolute top-0 start-50 translate-middle img-fluid"
-                :alt="product.title"
-                />
-              </template>
-
-              <div class="card-body text-center h-100">
-                <p class="text-black fs-5 mb-1">{{ product.mainTitle }}</p>
-                <div class="priceBox text-black mb-2 ">
-                  <h2
-                    class="fs-6"
-                    v-if="product.price == product.origin_price"
-                  >
-                    ${{ product.price }} 元
-                </h2>
-                  <h2
-                    class="fs-6 fw-bold"
-                    v-else
-                  >
-                 特價： $ {{ product.price }} 元
+                <div class="card-body text-center">
+                  <p class="text-black fs-5 mb-1">
+                    {{ replaceToDot(product.mainTitle) }}
+                  </p>
+                  <div class="priceBox text-black mb-2">
+                    <h2
+                      class="fs-6"
+                      v-if="product.price == product.origin_price"
+                    >
+                      ${{ product.price }} 元
                     </h2>
+                    <h2 class="fs-6 fw-bold" v-else>
+                      特價： $ {{ product.price }} 元
+                    </h2>
+                  </div>
+                  <button type="submit" class="btn btn-secondary w-100 ls-2">
+                    看更多
+                  </button>
                 </div>
-                <button type="submit" class="btn btn-secondary w-100 ls-2">
-                看更多
-              </button>
               </div>
-
-            </div>
-          </RouterLink>
-        </div>
+            </a>
+          </div>
         </SwiperSlide>
       </Swiper>
-
     </section>
   </main>
 </template>
@@ -215,21 +224,23 @@ export default {
             this.title = this.product.mainTitle
             this.selectedOption1 = this.product.select1
             this.selectedOption2 = this.product.select2
-            this.checkIsSet()
+            this.checkProductsExist()
+            this.loadingStatue(false)
           })
           .catch((err) => {
             this.swalError(err.response.data.message)
           })
       }
     },
-    getAllProducts () {
-      this.$http
-        .get(`${VITE_APP_URL}/v2/api/${VITE_APP_PATH}/products/all`)
-        .then((res) => {
-          this.products = res.data.products
-
-          this.isLoading = false
-        })
+    swiperClick (id) {
+      this.loadingStatue(true)
+      this.$router.push(`/product/${id}`)
+    },
+    checkProductsExist () {
+      if (this.products.length !== 0) {
+        this.showProducts = this.randomArray()
+        this.checkIsSet()
+      }
     },
     checkIsSet () {
       if (this.product.is_select === 1) {
@@ -281,16 +292,21 @@ export default {
       }
       return random.slice(2, 12)
     },
+    replaceToDot (word) {
+      if (word.length > 13) {
+        return word.slice(0, 11) + '...'
+      }
+      return word
+    },
     ...mapActions(cartStore, ['addToCart']),
-    ...mapActions(sweetAlertStore, ['swalError', 'swalToastTopEnd'])
+    ...mapActions(sweetAlertStore, ['swalError', 'swalToastTopEnd']),
+    ...mapActions(useProductStore, ['loadingStatue'])
   },
   computed: {
     ...mapState(useProductStore, ['products', 'groupProducts', 'isLoading'])
   },
   mounted () {
     this.getProduct()
-    this.showProducts = this.randomArray()
-    this.checkIsSet()
     document.title = `鮮堡漢堡 文化店 | ${this.title} `
   },
   watch: {
@@ -299,6 +315,11 @@ export default {
     },
     $route: function () {
       this.getProduct()
+    },
+    products (newVal) {
+      this.getProduct()
+      this.showProducts = this.randomArray()
+      this.checkIsSet()
     }
   },
   components: {

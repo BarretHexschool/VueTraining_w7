@@ -9,7 +9,7 @@
   >
     <div class="modal-dialog modal-dialog-centered modal-md">
       <div class="modal-content">
-        <img class="productModalImg" :src="tempProduct.imageUrl" />
+        <img class="productModalImg" :src="`${tempProduct.imageUrl}?width=450`" />
         <div class="modal-header d-block">
           <div class="d-flex justify-content-between flex-wrap">
             <h3>{{ tempProduct.mainTitle }}</h3>
@@ -152,10 +152,11 @@
 </template>
 <script>
 import cartStore from '@/stores/useCartStore'
-import { mapActions } from 'pinia'
+import { useProductStore } from '@/stores/useFrontProducts'
+import { mapActions, mapState } from 'pinia'
 import { Field, Form, ErrorMessage } from 'vee-validate'
 export default {
-  props: ['tempProduct', 'products', 'productModalElement'],
+  props: ['tempProduct', 'productModalElement'],
   data () {
     return {
       drinkType: ['冰', '冷(去冰)', '溫'],
@@ -200,6 +201,9 @@ export default {
       this.$router.push(`/product/${id}`)
     },
     ...mapActions(cartStore, ['addToCart'])
+  },
+  computed: {
+    ...mapState(useProductStore, ['products'])
   },
   components: {
     ErrorMessage,

@@ -4,7 +4,6 @@
       class="col mb-2"
       data-aos="fade-up"
       data-aos-easing="liner"
-      data-aos-delay="30"
       v-for="product in filteredProducts"
       :key="product.id"
     >
@@ -72,62 +71,18 @@
 </template>
 <script>
 import cartStore from '@/stores/useCartStore'
-import { mapActions } from 'pinia'
+import { useProductStore } from '@/stores/useFrontProducts'
+import { mapActions, mapState } from 'pinia'
 export default {
   name: 'FrontProductsList',
   props: ['openModal', 'products', 'category'],
   computed: {
     filteredProducts () {
-      return this.filterProducts(this.products)
-    }
+      return this.groupProducts.filter(product => product.category === this.category)
+    },
+    ...mapState(useProductStore, ['groupProducts'])
   },
   methods: {
-    filterProducts (products) {
-      if (this.category === '精選套餐') {
-        const setProducts = products.filter(product => product.category === this.category)
-        return this.gropuSetProducts(setProducts)
-      } else {
-        return products.filter(product => product.category === this.category)
-      }
-    },
-    gropuSetProducts (setProducts) {
-      const setGroup = {}
-      setProducts.forEach((item) => {
-        const { mainTitle, select1, select2 } = item
-        if (setGroup[mainTitle] === undefined) {
-          setGroup[mainTitle] = {
-            ...item
-          }
-        } else {
-          if (select1 !== undefined) {
-            if (typeof (setGroup[mainTitle].select1) === 'string') {
-              if (setGroup[mainTitle].select1 !== select1) {
-                setGroup[mainTitle].select1 = [setGroup[mainTitle].select1, select1]
-              }
-            } else {
-              if (!this.checkHas(setGroup[mainTitle].select1, select1)) {
-                setGroup[mainTitle].select1 = [...setGroup[mainTitle].select1, select1]
-              }
-            }
-          }
-
-          if (typeof (setGroup[mainTitle].select2) === 'string') {
-            if (setGroup[mainTitle].select2 !== select2) {
-              setGroup[mainTitle].select2 = [setGroup[mainTitle].select2, select2]
-            }
-          } else {
-            if (!this.checkHas(setGroup[mainTitle].select2, select2)) {
-              setGroup[mainTitle].select2 = [...setGroup[mainTitle].select2, select2]
-            }
-          }
-        }
-      })
-      return (setGroup)
-    },
-    checkHas (arr, find) {
-      return arr.includes(find)
-    },
-
     ...mapActions(cartStore, ['addToCart'])
   }
 }

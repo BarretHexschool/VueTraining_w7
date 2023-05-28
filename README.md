@@ -1,7 +1,3 @@
-# 鮮堡漢堡 早餐 
-
-## 六角 Vte Template
-
 # 來鮮堡點早餐！
 ### Demo：[https://barret0720.github.io/FreshHanber/#/](https://barret0720.github.io/FreshHanber/#/)
 相關連結：[Site Map 網站地圖](https://whimsical.com/sitemap-2cPys6SMYZe37V4pSNay3Z)、[whimsical 線稿圖](https://whimsical.com/2MFuUh1xvd94cMyCesy5Rs)
@@ -46,7 +42,6 @@
 - Vuelidate 表單驗證
 
 </br>
-
 
 ## 設計稿
 #### [鮮堡漢堡 設計稿](https://www.figma.com/file/yuvWcrhBKOWDTlEJzCqenj/%E5%85%AD%E8%A7%92---%E9%AE%AE%E5%A0%A1%E6%BC%A2%E5%A0%A1?type=design&node-id=243-299)

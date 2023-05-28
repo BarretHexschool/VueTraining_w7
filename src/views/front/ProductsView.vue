@@ -12,136 +12,32 @@
         />
       </div>
       <ul class="list-unstyled overflow-x-auto productsCatalogNav">
-        <li>
+        <li v-for="(item, index) in categorys" :key="index">
           <RouterLink
-            to="/products#selectSet"
+            :to="`/products#${item.english}`"
             class="btn btn-secondary rounded-4 px-md-4 p-2 me-2 text-nowrap ls-15"
-            >嚴選套餐</RouterLink
-          >
-        </li>
-        <li>
-          <RouterLink
-            to="/products#hamburger"
-            class="btn btn-secondary rounded-4 px-md-4 p-2 me-2 text-nowrap ls-15"
-            >漢堡</RouterLink
-          >
-        </li>
-        <li>
-          <RouterLink
-            to="/products#toast"
-            class="btn btn-secondary rounded-4 px-md-4 p-2 me-2 text-nowrap ls-15"
-            >現烤吐司</RouterLink
-          >
-        </li>
-        <li>
-          <RouterLink
-            to="/products#sandwich"
-            class="btn btn-secondary rounded-4 px-md-4 p-2 me-2 text-nowrap ls-15"
-            >現烤總匯</RouterLink
-          >
-        </li>
-        <li>
-          <RouterLink
-            to="/products#snack"
-            class="btn btn-secondary rounded-4 px-md-4 p-2 me-2 text-nowrap ls-15"
-            >中西式點心</RouterLink
-          >
-        </li>
-        <li>
-          <RouterLink
-            to="/products#omelet"
-            class="btn btn-secondary rounded-4 px-md-4 p-2 me-2 text-nowrap ls-15"
-            >蛋餅、河粉蛋餅</RouterLink
+            >{{ item.chinese }}</RouterLink
           >
         </li>
       </ul>
-      <h2
-        class="ls-2 mb-1 text-sm-start text-center"
-        data-aos="fade-up"
-        data-aos-easing="liner"
-        data-aos-delay="30"
-        id="selectSet"
-      >
-        嚴選套餐
-      </h2>
-      <FrontProductsList
-        :open-modal="openModal"
-        :products="products"
-        category="精選套餐"
-      ></FrontProductsList>
-      <h2
-        class="ls-2 mb-1 text-sm-start text-center"
-        data-aos="fade-up"
-        data-aos-easing="liner"
-        data-aos-delay="30"
-        id="hamburger"
-      >
-        漢堡
-      </h2>
-      <FrontProductsList
-        :open-modal="openModal"
-        :products="products"
-        category="漢堡"
-      ></FrontProductsList>
-      <h2
-        class="ls-2 mb-1 text-sm-start text-center"
-        data-aos="fade-up"
-        data-aos-easing="liner"
-        data-aos-delay="30"
-        id="toast"
-      >
-        現烤吐司
-      </h2>
-      <FrontProductsList
-        :open-modal="openModal"
-        :products="products"
-        category="現烤吐司"
-      ></FrontProductsList>
-      <h2
-        class="ls-2 mb-1 text-sm-start text-center"
-        data-aos="fade-up"
-        data-aos-easing="liner"
-        data-aos-delay="30"
-        id="sandwich"
-      >
-        現烤總匯
-      </h2>
-      <FrontProductsList
-        :open-modal="openModal"
-        :products="products"
-        category="現烤總匯"
-      ></FrontProductsList>
-      <h2
-        class="ls-2 mb-1 text-sm-start text-center"
-        data-aos="fade-up"
-        data-aos-easing="liner"
-        data-aos-delay="30"
-        id="snack"
-      >
-        中西式點心
-      </h2>
-      <FrontProductsList
-        :open-modal="openModal"
-        :products="products"
-        category="中西式點心"
-      ></FrontProductsList>
-      <h2
-        class="ls-2 mb-1 text-sm-start text-center"
-        data-aos="fade-up"
-        data-aos-easing="liner"
-        data-aos-delay="30"
-        id="omelet"
-      >
-        蛋餅、河粉蛋餅
-      </h2>
-      <FrontProductsList
-        :open-modal="openModal"
-        :products="products"
-        category="蛋餅、河粉蛋餅"
-      ></FrontProductsList>
+      <template v-for="(item, index) in categorys" :key="index">
+        <h2
+          class="ls-2 mb-1 text-sm-start text-center"
+          data-aos="fade-up"
+          data-aos-easing="liner"
+          data-aos-delay="30"
+          :id = item.english
+        >
+          {{item.chinese}}
+        </h2>
+        <FrontProductsList
+          :open-modal="openModal"
+          :products="products"
+          :category=item.chinese
+        ></FrontProductsList>
+      </template>
       <FrontProductModal
         :temp-product="tempProduct"
-        :products="products"
         :product-modal-element="productModalElement"
       />
     </section>
@@ -160,7 +56,26 @@ export default {
   data () {
     return {
       tempProduct: {},
-      productModalElement: ''
+      productModalElement: '',
+      categorys: [{
+        english: 'selectSet',
+        chinese: '精選套餐'
+      }, {
+        english: 'hamburger',
+        chinese: '漢堡'
+      }, {
+        english: 'toast',
+        chinese: '現烤吐司'
+      }, {
+        english: 'sandwich',
+        chinese: '現烤總匯'
+      }, {
+        english: 'snack',
+        chinese: '中西式點心'
+      }, {
+        english: 'omelet',
+        chinese: '蛋餅、河粉蛋餅'
+      }]
     }
   },
   methods: {
@@ -168,12 +83,12 @@ export default {
       this.tempProduct = { ...item }
       this.productModalElement.show()
     },
-    ...mapActions(useProductStore, ['getProducts']),
+    ...mapActions(useProductStore, ['loadingStatue']),
     ...mapActions(cartStore, ['addToCart']),
     ...mapActions(sweetAlertStore, ['swalError', 'swalToastTopEnd'])
   },
   computed: {
-    ...mapState(useProductStore, ['products', 'isLoading'])
+    ...mapState(useProductStore, ['products', 'groupProducts', 'isLoading'])
   },
   mounted () {
     document.title = '鮮堡漢堡 文化店 | 美味鮮堡'
@@ -184,10 +99,7 @@ export default {
       }
     )
     this.productModalElement.hide()
-    this.$router.push(this.$route.fullPath)
-    if (document.readyState === 'complete') {
-      this.$router.push(this.$route.fullPath)
-    }
+    this.loadingStatue(false)
   },
   components: {
     LoadingDesign,

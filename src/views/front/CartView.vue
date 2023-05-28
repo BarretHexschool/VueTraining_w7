@@ -149,11 +149,12 @@
   </main>
 </template>
 <script>
-import FrontCart from '@/components/FrontCart.vue'
+import cartStore from '@/stores/useCartStore'
 import sweetAlert from '@/stores/useSweetAlertStore'
+import FrontCart from '@/components/FrontCart.vue'
+import LoadingDesign from '@/components/LoadingDesign.vue'
 import { Field, Form, ErrorMessage } from 'vee-validate'
 import { mapActions, mapState } from 'pinia'
-import cartStore from '@/stores/useCartStore'
 const { VITE_APP_URL, VITE_APP_PATH } = import.meta.env
 export default {
   data () {
@@ -168,8 +169,7 @@ export default {
         },
         message: '',
         orderStatus: ''
-      },
-      visible: false
+      }
     }
   },
   methods: {
@@ -195,13 +195,14 @@ export default {
   },
   components: {
     FrontCart,
+    LoadingDesign,
     ErrorMessage,
     VForm: Form,
     Field
   },
   mounted () {
     this.getCartData('CartView')
-    this.visible = true
+    this.isLoading = false
     document.title = '鮮堡漢堡 文化店 | 購物車'
   }
 }

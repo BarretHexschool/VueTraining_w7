@@ -123,7 +123,8 @@
 </template>
 <script>
 import sweetAlertStore from '@/stores/useSweetAlertStore'
-import { mapActions } from 'pinia'
+import { useProductStore } from '@/stores/useFrontProducts'
+import { mapActions, mapState } from 'pinia'
 const { VITE_APP_URL, VITE_APP_PATH } = import.meta.env
 export default {
   data () {
@@ -133,19 +134,24 @@ export default {
   },
   methods: {
     getOrderData () {
+      this.loadingStatue(true)
       const { id } = this.$route.params
       this.$http
         .get(`${VITE_APP_URL}/v2/api/${VITE_APP_PATH}/order/${id}`)
         .then((res) => {
           this.order = res.data.order
+          this.loadingStatue(false)
         })
         .catch((err) => {
           this.swalError(err)
         })
     },
-    ...mapActions(sweetAlertStore, ['swalError', 'swalToastTopEnd'])
+    ...mapActions(sweetAlertStore, ['swalError', 'swalToastTopEnd']),
+    ...mapActions(useProductStore, ['loadingStatue'])
   },
-
+  computed: {
+    ...mapState(useProductStore, ['isLoading'])
+  },
   mounted () {
     this.getOrderData()
     document.title = '鮮堡漢堡 文化店 | 完成點餐'
