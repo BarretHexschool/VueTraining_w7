@@ -3,59 +3,7 @@
   <main class="w-100 position-relative z-2">
     <section class="common-hero container">
       <!-- progress bar -->
-      <div class="position-relative m-5">
-        <div class="progress bg-third" style="height: 2px">
-          <div
-            class="progress-bar bg-danger"
-            role="progressbar"
-            aria-label="Progress"
-            style="width: 33.33%"
-            aria-valuenow="33.33"
-            aria-valuemin="0"
-            aria-valuemax="100"
-          ></div>
-        </div>
-        <button
-          type="button"
-          class="position-absolute top-0 start-0 translate-middle btn btn-sm btn-danger rounded-pill text-white"
-          style="width: 1rem; height: 1rem"
-        ></button>
-        <p
-          class="position-absolute top-0 start-0 translate-middle pt-6 fs-7 fw-bold"
-        >
-          選擇餐點
-        </p>
-        <button
-          type="button"
-          class="position-absolute top-0 start-33 translate-middle btn btn-sm btn-danger rounded-pill text-white"
-          style="width: 1rem; height: 1rem"
-        ></button>
-        <p
-          class="position-absolute top-0 start-33 translate-middle pt-6 fs-7 fw-bold"
-        >
-          訂購資料
-        </p>
-        <button
-          type="button"
-          class="position-absolute top-0 start-66 translate-middle btn btn-sm btn-third rounded-pill text-white"
-          style="width: 1rem; height: 1rem"
-        ></button>
-        <p
-          class="position-absolute top-0 start-66 translate-middle pt-6 fs-7 text-secondary"
-        >
-        餐點準備中
-        </p>
-        <button
-          type="button"
-          class="position-absolute top-0 start-100 translate-middle btn btn-sm btn-third rounded-pill"
-          style="width: 1rem; height: 1rem"
-        ></button>
-        <p
-          class="position-absolute top-0 start-100 translate-middle pt-6 fs-7 text-secondary text-nowrap"
-        >
-          完成取餐
-        </p>
-      </div>
+      <FrontCartBar :currentState="'訂購資料'" />
       <div class="row row-cols-1 row-cols-lg-2 p-1 pb-6">
         <div class="col mt-2 mt-lg-5">
           <FrontCart />
@@ -153,6 +101,7 @@ import cartStore from '@/stores/useCartStore'
 import sweetAlert from '@/stores/useSweetAlertStore'
 import FrontCart from '@/components/FrontCart.vue'
 import LoadingDesign from '@/components/LoadingDesign.vue'
+import FrontCartBar from '@/components/FrontCartBar.vue'
 import { Field, Form, ErrorMessage } from 'vee-validate'
 import { mapActions, mapState } from 'pinia'
 const { VITE_APP_URL, VITE_APP_PATH } = import.meta.env
@@ -196,6 +145,7 @@ export default {
   components: {
     FrontCart,
     LoadingDesign,
+    FrontCartBar,
     ErrorMessage,
     VForm: Form,
     Field

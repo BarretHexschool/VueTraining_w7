@@ -29,8 +29,8 @@
             class="box-word w-100 d-flex flex-column justify-content-between"
           >
             <div class="product-word ls-15">
-                <h3>{{ product.mainTitle }}</h3>
-                <p class="fs-6 ms-lg-2">{{ product.description }}</p>
+                <h3 :style=" product.is_select ? 'margin-left:-1rem;' : '' " >{{ product.mainTitle }}</h3>
+                <p class="fs-6">{{ product.description }}</p>
             </div>
             <div
               class="d-flex justify-content-between align-items-start flex-column flex-lg-row align-content-end align-items-end"

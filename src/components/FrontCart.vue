@@ -25,7 +25,7 @@
           <td class="text-center">
             {{ cart.total }}
           </td>
-          <td>
+          <td class="text-end">
             <button
               type="button"
               class="btn btn-outline-secondary btn-sm"
@@ -67,12 +67,11 @@ import { mapActions, mapState } from 'pinia'
 export default {
   data () {
     return {
-      loadingItem: '',
-      finalTotal: ''
+      loadingItem: ''
     }
   },
   computed: {
-    ...mapState(cartStore, ['carts'])
+    ...mapState(cartStore, ['carts', 'finalTotal'])
   },
   methods: {
     ...mapActions(cartStore, ['getCartData', 'deleteOneCart', 'swalClearAllCart']),

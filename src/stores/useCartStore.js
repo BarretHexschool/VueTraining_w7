@@ -25,6 +25,7 @@ const cartStore = defineStore('cart', {
         .then((res) => {
           this.getActionPage()
           this.carts = res.data.data.carts
+          this.finalTotal = res.data.data.final_total
           if (this.actionPage === '/cart') {
             this.cartDataExist()
           }

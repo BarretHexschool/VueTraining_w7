@@ -9,7 +9,13 @@
   >
     <div class="modal-dialog modal-dialog-centered modal-md">
       <div class="modal-content">
-        <img class="productModalImg" :src="`${tempProduct.imageUrl}?width=450`" />
+            <ProgressiveImage
+            v-if="tempProduct.imageUrl"
+            :src="`${tempProduct.imageUrl}?width=450`"
+              class="productModalImg"
+              :alt="tempProduct.mainTitle "
+              style="max-width: 100%;"
+            />
         <div class="modal-header d-block">
           <div class="d-flex justify-content-between flex-wrap">
             <h3>{{ tempProduct.mainTitle }}</h3>
