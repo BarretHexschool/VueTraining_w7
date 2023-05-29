@@ -32,6 +32,14 @@ const routes = [
         component: () => import('../views/front/CartView.vue')
       },
       {
+        path: 'cartPay/:id',
+        component: () => import('../views/front/CartPayView.vue')
+      },
+      {
+        path: 'cartLinePay/:id',
+        component: () => import('../views/front/CartLinePayView.vue')
+      },
+      {
         path: 'cartfinal/:id',
         component: () => import('../views/front/CartFinalView.vue')
       },

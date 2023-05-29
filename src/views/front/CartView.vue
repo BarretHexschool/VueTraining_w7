@@ -2,8 +2,7 @@
   <LoadingDesign :is-Loading="isLoading"/>
   <main class="w-100 position-relative z-2">
     <section class="common-hero container">
-      <!-- progress bar -->
-      <FrontCartBar :currentState="'訂購資料'" />
+      <FrontCartBar :currentState="'購物清單'" />
       <div class="row row-cols-1 row-cols-lg-2 p-1 pb-6">
         <div class="col mt-2 mt-lg-5">
           <FrontCart />
@@ -128,9 +127,8 @@ export default {
         .post(`${VITE_APP_URL}/v2/api/${VITE_APP_PATH}/order`, { data: order })
         .then((res) => {
           const { orderId } = res.data
-          this.$swal(res.data.message)
           this.$refs.form.resetForm()
-          this.$router.push(`/cartfinal/${orderId}`)
+          this.$router.push(`/cartPay/${orderId}`)
         })
         .catch((err) => {
           this.swalError(err)

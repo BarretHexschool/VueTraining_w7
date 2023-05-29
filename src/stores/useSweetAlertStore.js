@@ -28,6 +28,14 @@ const sweetAlertStore = defineStore('sweetAlertStore', {
         text: '請重新操作，若再次出現請通知管理者，謝謝'
       })
     },
+    swalSuccess (message) {
+      Swal.fire({
+        icon: 'success',
+        title: message,
+        showConfirmButton: false,
+        timer: 2000
+      })
+    },
     loginCheckError (message) {
       router.push('/login')
       Swal.fire({

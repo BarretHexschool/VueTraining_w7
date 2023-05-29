@@ -152,9 +152,9 @@ export default {
       } else {
         this.selectdeProducts = this.products
       }
-      let lotterySpeed = 20 // 毫秒
-      const maxLotterySpeed = 2000 // 毫秒
-      const lotterySpeedUpInterval = 20 // 毫秒
+      let lotterySpeed = 20
+      const maxLotterySpeed = 2000
+      const lotterySpeedUpInterval = 20
       const maxLotterySpeedUpTimes = 100
       let lotterySpeedUpTimes = 0
 
