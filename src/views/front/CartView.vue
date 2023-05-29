@@ -2,7 +2,7 @@
   <LoadingDesign :is-Loading="isLoading"/>
   <main class="w-100 position-relative z-2">
     <section class="common-hero container">
-      <FrontCartBar :currentState="'購物清單'" />
+      <FrontCartBar :currentState="'訂購內容'" />
       <div class="row row-cols-1 row-cols-lg-2 p-1 pb-6">
         <div class="col mt-2 mt-lg-5">
           <FrontCart />

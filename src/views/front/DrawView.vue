@@ -107,8 +107,9 @@
               清空商品
             </button>
             <RouterLink class="btn btn-secondary" type="button" to="/products"
-              >想點更多</RouterLink
-            >
+              >想點更多</RouterLink>
+            <RouterLink class="btn btn-third" type="button" to="/products"
+              >來去結帳</RouterLink>
           </div>
         </div>
       </div>
