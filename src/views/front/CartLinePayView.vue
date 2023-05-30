@@ -5,7 +5,15 @@
     </section>
     <button type="button" class="btn btn-primary" @click="linePayV2">按我執行line pay V2 (沒經過 cross)</button>
     <button type="button" class="btn btn-secondary" @click="linePayV3">按我執行line pay V2 (經過 第三方cross)</button>
-    {{ feedback }}
+    <div class="container">
+      <p>正確回傳：</p>
+      {{ feedback }}
+    </div>
+    <div class="container">
+      <p>錯誤回傳：</p>
+      {{ err }}
+    </div>
+
   </main>
 </template>
 <script>
@@ -20,7 +28,8 @@ export default {
   data () {
     return {
       orderstr: {},
-      feedback: null
+      feedback: null,
+      err: null
     }
   },
   methods: {
@@ -83,6 +92,8 @@ export default {
       this.$http.post(`${corsURL}${apiURL}`, body, configs).then((res) => {
         console.log(res.data)
         this.feedback = res.data
+      }).catch((err) => {
+        this.err = err
       })
     },
     linePayV2 () {
@@ -106,6 +117,8 @@ export default {
       this.$http.post(`${apiURL}`, body, configs).then((res) => {
         console.log(res.data)
         this.feedback = res.data
+      }).catch((err) => {
+        this.err = err
       })
     },
     ...mapActions(sweetAlertStore, ['swalError', 'swalToastTopEnd']),
