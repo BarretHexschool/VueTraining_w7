@@ -108,7 +108,7 @@
             </button>
             <RouterLink class="btn btn-secondary" type="button" to="/products"
               >想點更多</RouterLink>
-            <RouterLink class="btn btn-third" type="button" to="/products"
+            <RouterLink class="btn btn-third" type="button" to="/cart"
               >來去結帳</RouterLink>
           </div>
         </div>
