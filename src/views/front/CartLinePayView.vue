@@ -5,6 +5,7 @@
     </section>
     <button type="button" class="btn btn-primary" @click="linePayV2">按我執行line pay V2 (沒經過 cross)</button>
     <button type="button" class="btn btn-secondary" @click="linePayV3">按我執行line pay V2 (經過 第三方cross)</button>
+    {{ feedback }}
   </main>
 </template>
 <script>
@@ -18,7 +19,8 @@ const { VITE_APP_URL, VITE_APP_PATH } = import.meta.env
 export default {
   data () {
     return {
-      orderstr: {}
+      orderstr: {},
+      feedback: null
     }
   },
   methods: {
@@ -28,7 +30,7 @@ export default {
       this.$http
         .get(`${VITE_APP_URL}/v2/api/${VITE_APP_PATH}/order/${id}`)
         .then((res) => {
-          this.order = res.data.order
+          this.orderstr = res.data.order
           this.loadingStatue(false)
         })
         .catch((err) => {
@@ -80,6 +82,7 @@ export default {
       const apiURL = 'https://sandbox-api-pay.line.me/v3/payments/request'
       this.$http.post(`${corsURL}${apiURL}`, body, configs).then((res) => {
         console.log(res.data)
+        this.feedback = res.data
       })
     },
     linePayV2 () {
@@ -102,6 +105,7 @@ export default {
       const apiURL = 'https://sandbox-api-pay.line.me/v2/payments/request'
       this.$http.post(`${apiURL}`, body, configs).then((res) => {
         console.log(res.data)
+        this.feedback = res.data
       })
     },
     ...mapActions(sweetAlertStore, ['swalError', 'swalToastTopEnd']),
