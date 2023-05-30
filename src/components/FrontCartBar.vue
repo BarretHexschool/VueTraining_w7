@@ -32,48 +32,24 @@ export default {
     }
   },
   computed: {
-    progressBarValue () {
-      switch (this.currentState) {
-        case '選擇餐點':
-          return 0
-        case '訂購內容':
-          return 25
-        case '付款方式':
-          return 50
-        case '餐點準備中':
-          return 75
-        case '完成取餐':
-          return 100
-        default:
-          return 0
-      }
-    },
     steps () {
       return [
         { id: 1, label: '選擇餐點', value: '0' },
-        { id: 2, label: '訂購資料', value: '25' },
+        { id: 2, label: '訂購內容', value: '25' },
         { id: 3, label: '付款方式', value: '50' },
         { id: 4, label: '餐點準備中', value: '75' },
         { id: 5, label: '完成取餐', value: '100' }
       ]
+    },
+    progressBarValue () {
+      const step = this.steps.find(item => item.label === this.currentState)
+      return step ? parseInt(step.value) : 0
     }
   },
   methods: {
     getCurrentStepId () {
-      switch (this.currentState) {
-        case '選擇餐點':
-          return 1
-        case '訂購資料':
-          return 2
-        case '付款方式':
-          return 3
-        case '餐點準備中':
-          return 4
-        case '完成取餐':
-          return 5
-        default:
-          return 0
-      }
+      const step = this.steps.find(item => item.label === this.currentState)
+      return step ? parseInt(step.id) : 0
     },
     stepButtonClass (step) {
       const baseClass = 'position-absolute top-0 translate-middle btn btn-sm rounded-pill text-white'

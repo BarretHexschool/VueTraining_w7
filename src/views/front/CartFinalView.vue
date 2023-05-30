@@ -119,7 +119,7 @@ export default {
     },
     mobileShareBtn () {
       const orderDate = this.$moment(new Date(this.order.create_at * 1000)).format('YYYY-MM-DD HH:mm')
-      const text = `這是鮮堡漢堡的訂單 \r\n訂購日期：${orderDate}\r\n 訂單連結：`
+      const text = `這是鮮堡漢堡的訂單 \r\n訂購日期：${orderDate}\r\n訂單連結：`
       if (navigator.share) {
         navigator.share({
           title: '鮮堡漢堡，位於新北板橋新埔的早餐店',
