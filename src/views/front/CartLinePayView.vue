@@ -3,7 +3,7 @@
     <section class="common-hero container">
       <FrontCartBar :currentState="'餐點準備中'" />
     </section>
-    <button type="button" class="btn btn-primary" @click="linePayV2">按我執行line pay V2 (沒經過 cross)</button>
+    <button type="button" class="btn btn-third" @click="linePayV2">按我執行line pay V2 (沒經過 cross)</button>
     <button type="button" class="btn btn-secondary" @click="linePayV3">按我執行line pay V2 (經過 第三方cross)</button>
     <div class="container">
       <p>正確回傳：</p>
@@ -47,6 +47,8 @@ export default {
         })
     },
     linePayV3 () {
+      this.feedback = null
+      this.err = null
       const key = '2833ce3359ab0ae6aa5320923feca1d8'
       const nonce = uuid()
       const uri = '/v3/payments/request'
@@ -97,6 +99,8 @@ export default {
       })
     },
     linePayV2 () {
+      this.feedback = null
+      this.err = null
       const key = '2833ce3359ab0ae6aa5320923feca1d8'
       const body = {
         productName: 'Hamber',
