@@ -3,7 +3,8 @@
     <section class="common-hero container">
       <FrontCartBar :currentState="'餐點準備中'" />
     </section>
-    <button @click="linePayV2">按我執行line pay</button>
+    <button type="button" class="btn btn-primary" @click="linePayV2">按我執行line pay V2 (沒經過 cross)</button>
+    <button type="button" class="btn btn-secondary" @click="linePayV3">按我執行line pay V2 (經過 第三方cross)</button>
   </main>
 </template>
 <script>
@@ -21,7 +22,6 @@ export default {
     }
   },
   methods: {
-
     getOrderData () {
       this.loadingStatue(true)
       const { id } = this.$route.params
@@ -42,14 +42,14 @@ export default {
       const body = {
         amount: 500,
         currency: 'TWD',
-        orderId: 'order202sdfs10921003',
+        orderId: uuid(),
         packages: [
           {
             id: '20210921003',
             amount: 500,
             products: [
               {
-                name: '買不起的iphone13pro',
+                name: 'testProduct',
                 quantity: 1,
                 price: 500
               }
@@ -62,8 +62,10 @@ export default {
         }
       }
 
-      const encrypt = crypto.HmacSHA256(key + uri + JSON.stringify(body) + nonce, key)
-      // 這邊蠻特別的，與官方文件相反，應該是此套件的原因。
+      const encrypt = crypto.HmacSHA256(
+        key + uri + JSON.stringify(body) + nonce,
+        key
+      )
       const hmacBase64 = crypto.enc.Base64.stringify(encrypt)
 
       const configs = {
@@ -76,18 +78,18 @@ export default {
       }
       const corsURL = 'https://cors-anywhere.herokuapp.com/'
       const apiURL = 'https://sandbox-api-pay.line.me/v3/payments/request'
-      this.$http.post(`${corsURL}${apiURL}`, body, configs).then(res => {
+      this.$http.post(`${corsURL}${apiURL}`, body, configs).then((res) => {
         console.log(res.data)
       })
     },
     linePayV2 () {
       const key = '2833ce3359ab0ae6aa5320923feca1d8'
       const body = {
-        productName: 'PS8',
-        amount: 16800,
+        productName: 'Hamber',
+        amount: 100,
         currency: 'TWD',
         confirmUrl: 'http://127.0.0.1:3000',
-        orderId: 'BUY202109200102'
+        orderId: uuid()
       }
       const configs = {
         headers: {
@@ -98,7 +100,7 @@ export default {
       }
       // const corsURL = 'https://cors-anywhere.herokuapp.com/'
       const apiURL = 'https://sandbox-api-pay.line.me/v2/payments/request'
-      this.$http.post(`${apiURL}`, body, configs).then(res => {
+      this.$http.post(`${apiURL}`, body, configs).then((res) => {
         console.log(res.data)
       })
     },
